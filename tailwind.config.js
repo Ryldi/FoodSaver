@@ -22,12 +22,16 @@ export default {
       },
       extend: {
         colors: {
-          primary: "#1c1c22",
-          secondary: "#E17F12",
+          primary: "#2F4F4F",
+          secondary: "#606060",
+          tertiary:"#4A90E2",
+          neutral: {
+            DEFAULT: "#E3F2FD",
+            light: "#E8F5E9",
+          },
           accent: {
-            DEFAULT: "#F2B518",
+            DEFAULT: "#4A90E2",
             hover: "#E6AE1D",
-            selected: "#FFF0CB",
           },
           dark: {
             DEFAULT: "#152238",

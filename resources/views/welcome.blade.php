@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <script src="../path/to/flowbite/dist/flowbite.min.js" defer></script>
 </head>
 <body>
-    <div class="text-3xl">Hello</div>
+    <div class="text-3xl bg-accent">Hello</div>
 </body>
 </html>
