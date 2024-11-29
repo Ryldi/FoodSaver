@@ -25,6 +25,7 @@ export default {
           primary: "#2F4F4F",
           secondary: "#606060",
           tertiary:"#4A90E2",
+          davy:"#525252",
           neutral: {
             DEFAULT: "#E3F2FD",
             light: "#E8F5E9",
