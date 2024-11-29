@@ -10,7 +10,7 @@
 <body>
     @include('components.navbar')
     
-    <div class="container min-h-screen">
+    <div class="min-h-screen">
         @yield('content')
     </div>
 

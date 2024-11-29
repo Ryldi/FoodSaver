@@ -31,7 +31,7 @@ export default {
           },
           accent: {
             DEFAULT: "#4A90E2",
-            hover: "#E6AE1D",
+            hover: "#357ABD",
           },
           dark: {
             DEFAULT: "#152238",
