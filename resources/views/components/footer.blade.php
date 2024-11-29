@@ -1,12 +1,23 @@
-<footer class="bg-accent/80">
+<footer class="bg-neutral-light">
     <div class="container flex justify-center items-center p-6 gap-10 md:gap-20">
         <div class="flex justify-center items-center gap-2 md:gap-6">
-            <img src="{{ asset('img/logo.png') }}" alt="logo" class="w-16 md:w-24">
-            <span class="text-white text-4xl md:text-5xl font-pattaya hover:text-accent-hover transition-all duration-500">Beeli</span>
+            <img src="{{ asset('img/logo.png') }}" alt="logo" class="w-72">
         </div>
-        <div class="flex flex-col md:flex-row md:gap-10 justify-center text-white items-center font-semibold">
-            <div class="text-2xl font-pattaya">Follow us on</div>
-            <a href="https://www.instagram.com/beeli.id" class="ig-icon"><img src="{{ asset('img/ig.before.png') }}" alt="instagram" class="w-8 md:w-10 transition-all duration-500"></a>
+        <div class="flex flex-col gap-2 text-black font-semibold">
+            <a href="" class="hover:text-accent-hover transition-all duration-500">Tentang Kami</a>
+            <a href="" class="hover:text-accent-hover transition-all duration-500">Product</a>
+            <a href="" class="hover:text-accent-hover transition-all duration-500">Kebijakan Privasi</a>
+            <a href="" class="hover:text-accent-hover transition-all duration-500">Syarat dan Ketentuan</a>
+        </div>
+        <div class="flex flex-col gap-2">
+            <span class="text-black font-semibold text-2xl text-center">Follow Us</span>
+            <div class="flex gap-3 justify-content-center">
+                <a href=""><img src="{{ asset('img/social/facebook.png') }}" alt="" width="30"></a>
+                <a href=""><img src="{{ asset('img/social/twitter.png') }}" alt="" width="30"></a>
+                <a href=""><img src="{{ asset('img/social/youtube.png')  }}" alt="" width="30"></a>
+                <a href=""><img src="{{ asset('img/social/instagram.png') }}" alt="" width="30"></a>
+                <a href=""><img src="{{ asset('img/social/linkedin.png') }}" alt="" width="30"></a>
+            </div>
         </div>
     </div>
 </footer>
