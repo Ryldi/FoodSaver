@@ -18,7 +18,7 @@ export default {
         xl: "1280px",
       },
       fontFamily: {
-        pattaya: ["Pattaya", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       extend: {
         colors: {
@@ -34,7 +34,7 @@ export default {
           },
           accent: {
             DEFAULT: "#4A90E2",
-            hover: "#E6AE1D",
+            hover: "#357ABD",
           },
           dark: {
             DEFAULT: "#152238",
@@ -44,8 +44,20 @@ export default {
             DEFAULT: "#1c1c22",
             hover: "#1c1c22",
           },
+          clipPath: {
+            'mountain': 'polygon(0% 100%, 25% 55%, 50% 65%, 75% 55%, 100% 100%)', 
+          },
         },
       },
+      animation: {
+        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+      },
+      keyframes: {
+          'infinite-scroll': {
+              from: { transform: 'translateX(0)' },
+              to: { transform: 'translateX(-100%)' },
+          }
+      }         
     },
     plugins: [
       require('flowbite/plugin')

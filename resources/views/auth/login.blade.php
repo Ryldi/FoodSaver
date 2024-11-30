@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    @include('layouts.dependency')
+    <title>Document</title>
+    @vite(['resources/css/app.css','resources/js/app.js'])
+    <script src="../path/to/flowbite/dist/flowbite.min.js" defer></script>
 </head>
 <body class="bg-neutral overflow-hidden">
     <div class="flex flex-row h-screen">
-        <div class="w-1/2 flex items-center justify-center">
+        <div class="w-1/2 flex">
             <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-8 mx-auto my-10 items-center">
                 @csrf
->>>>>>> Stashed changes:resources/views/auth/login.blade.php
                 <div class="flex flex-col gap-4">
                     <h1 class="text-5xl text-primary font-semibold text-center">Masuk</h1>
                     <p class="text-davy font-medium text-2xl text-center">Halo, silahkan masuk menggunakan akun anda</p>
                 </div>  
                 <div class="flex flex-col w-5/6 gap-4 mt-4">
-                    <input type="text" id="username" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Username">
-                    <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password">
+                    <input type="email" id="email" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email">
+                    <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password">
                 </div>
                 <button class="bg-accent hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-10 rounded-xl" type="submit">
                     Masuk
@@ -45,12 +45,12 @@
                 </div>
                 <p class="mt-6 text-center text-davy">
                     Belum Punya Akun? 
-                    <a href="{{ route('register') }}" class="text-tertiary hover:text-blue-700 font-medium">Registrasi</a>
+                    <a href="{{ route('registerPage') }}" class="text-tertiary hover:text-blue-700 font-medium">Registrasi</a>
                 </p>
             </form>
         </div>
         <div class="w-1/2">
-            <img src="{{ asset('img/auth/loginBG.png') }}" class="" alt="Login Background">
+            <img src="{{ asset('Assets/loginBG.png') }}" class="" alt="Login Background">
         </div>
     </div>
 </body>

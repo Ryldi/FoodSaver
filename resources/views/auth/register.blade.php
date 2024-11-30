@@ -12,7 +12,7 @@
         <div class="w-1/2">
             <img src="{{ asset('img/auth/registerBG.png') }}" class="" alt="Register Background">
         </div>
-        <form action="{{ route('register') }}" method="POST" class="w-1/2 flex items-center">
+        <form action="{{ route('register') }}" method="POST" class="w-1/2 flex">
             @csrf
             <div class="flex flex-col gap-6 mx-auto my-4 items-center">
                 <div class="flex flex-col gap-4">
@@ -20,10 +20,10 @@
                     <p class="text-davy font-medium text-2xl text-center">Halo, silahkan registrasi akun anda</p>
                 </div>  
                 <div class="flex flex-col w-5/6 gap-4 mt-4">
-                    <input type="text" id="username" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Username">
-                    <input type="text" id="email" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email">
-                    <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password">
-                    <input type="text" id="phoneNumber" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP">
+                    <input type="text" id="username" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Full Name" name="name">
+                    <input type="text" id="email" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email">
+                    <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password">
+                    <input type="text" id="phoneNumber" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone">
                 </div>
                 <button class="bg-accent hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-10 rounded-xl" type="submit">
                     Registrasi
@@ -49,7 +49,7 @@
                 </div>
                 <p class="mt-4 text-center text-davy">
                    Sudah Punya Akun? 
-                    <a href="{{ route('login') }}" class="text-tertiary hover:text-blue-700 font-medium">Masuk</a>
+                    <a href="{{ route('loginPage') }}" class="text-tertiary hover:text-blue-700 font-medium">Masuk</a>
                 </p>
             </div>
         </form>
