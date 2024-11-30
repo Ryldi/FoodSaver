@@ -23,5 +23,9 @@ Route::get('/policy', function(){
     return view('pages.policy');
 })->name('policy');
 
+Route::get('/categoryDetail', function(){
+    return view('pages.categoryDetail');
+})->name('categoryDetail');
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');

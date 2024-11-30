@@ -27,6 +27,7 @@ export default {
           tertiary:"#4A90E2",
           davy:"#525252",
           skyBlue: "#81D4FA",
+          sunshine:"#EEFF53",
           neutral: {
             DEFAULT: "#E3F2FD",
             light: "#E8F5E9",
