@@ -12,6 +12,11 @@
 <<<<<<< Updated upstream:resources/views/login.blade.php
         <div class="w-1/2 flex">
             <form action="" class="flex flex-col gap-8 mx-auto my-10 items-center">
+=======
+        <div class="w-1/2 flex items-center justify-center">
+            <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-8 mx-auto my-10 items-center">
+                @csrf
+>>>>>>> Stashed changes:resources/views/auth/login.blade.php
                 <div class="flex flex-col gap-4">
                     <h1 class="text-5xl text-primary font-semibold text-center">Masuk</h1>
                     <p class="text-davy font-medium text-2xl text-center">Halo, silahkan masuk menggunakan akun anda</p>
