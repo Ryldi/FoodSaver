@@ -16,16 +16,16 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
-            $table->text('description');
-            $table->integer('balance');
-            $table->string('logo');
             $table->string('phone');
-            $table->float('rating');
-            $table->string('address');
-            $table->string('province');
-            $table->string('city');
-            $table->string('subdistrict');
-            $table->integer('postal_code');
+            $table->text('description')->nullable();
+            $table->integer('balance')->nullable();
+            $table->string('logo')->nullable();
+            $table->float('rating')->nullable();
+            $table->string('address')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('subdistrict')->nullable();
+            $table->integer('postal_code')->nullable();
             $table->timestamps();
         });
     }
