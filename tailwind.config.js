@@ -18,7 +18,7 @@ export default {
         xl: "1280px",
       },
       fontFamily: {
-        pattaya: ["Pattaya", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       extend: {
         colors: {
