@@ -13,3 +13,8 @@ Route::get('/login', function(){
 Route::get('/register', function(){
     return view('register');
 })->name('register');
+
+Route::get('/about', function(){
+    return view('pages.about');
+})->name('about-us');
+
