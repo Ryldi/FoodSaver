@@ -26,6 +26,11 @@ export default {
           secondary: "#606060",
           tertiary:"#4A90E2",
           davy:"#525252",
+<<<<<<< Updated upstream
+=======
+          skyBlue: "#81D4FA",
+          sunshine:"#EEFF53",
+>>>>>>> Stashed changes
           neutral: {
             DEFAULT: "#E3F2FD",
             light: "#E8F5E9",

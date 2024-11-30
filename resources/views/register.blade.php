@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
-    <script src="../path/to/flowbite/dist/flowbite.min.js" defer></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    @include('layouts.dependency')
 </head>
 <body class="bg-neutral overflow-hidden">
-    <div class="flex flex-row h-screen">
+    <div class="flex flex-row h-screen items-center justify-center">
         <div class="w-1/2">
-            <img src="{{ asset('Assets/registerBG.png') }}" class="" alt="Register Background">
+            <img src="{{ asset('img/auth/registerBG.png') }}" class="" alt="Register Background">
         </div>
         <form action="" class="w-1/2 flex">
             <div class="flex flex-col gap-6 mx-auto my-4 items-center">

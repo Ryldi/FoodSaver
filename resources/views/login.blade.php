@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
-    <script src="../path/to/flowbite/dist/flowbite.min.js" defer></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    @include('layouts.dependency')
 </head>
 <body class="bg-neutral overflow-hidden">
     <div class="flex flex-row h-screen">
+<<<<<<< Updated upstream:resources/views/login.blade.php
         <div class="w-1/2 flex">
             <form action="" class="flex flex-col gap-8 mx-auto my-10 items-center">
                 <div class="flex flex-col gap-4">
@@ -49,7 +49,7 @@
             </form>
         </div>
         <div class="w-1/2">
-            <img src="{{ asset('Assets/loginBG.png') }}" class="" alt="Login Background">
+            <img src="{{ asset('img/auth/loginBG.png') }}" class="" alt="Login Background">
         </div>
     </div>
 </body>
