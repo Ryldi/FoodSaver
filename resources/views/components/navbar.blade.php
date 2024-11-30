@@ -1,6 +1,6 @@
 <navbar class="bg-neutral-light flex justify-between items-center border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
     <div class="flex justify-between items-center container mx-auto">
-      <a class="flex items-center gap-2" href="{{ route('home.view') }}">
+      <a class="flex items-center gap-2" href="{{ route('indexPage') }}">
         <img src="{{ asset('img/logo.png') }}" alt="" class="w-32">
       </a>
   
@@ -66,12 +66,12 @@
         </div>
         <ul class="flex gap-2 md:gap-4">
             <li class="border hover:border-accent py-1 px-6 rounded-full hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500">
-                <a class="" href="">Masuk</a>
+                <a class="" href="{{ route('loginPage') }}">Masuk</a>
             </li>
             <li class="border hover:border-accent py-1 px-6 rounded-full hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500">
-                <a class="" href="">Daftar Sekarang</a>
+                <a class="" href="{{ route('registerPage') }}">Daftar Sekarang</a>
             </li>
         </ul>
       </div>
     </div>
-  </navbar>
+</navbar>

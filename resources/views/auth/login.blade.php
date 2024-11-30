@@ -11,14 +11,15 @@
 <body class="bg-neutral overflow-hidden">
     <div class="flex flex-row h-screen">
         <div class="w-1/2 flex">
-            <form action="" class="flex flex-col gap-8 mx-auto my-10 items-center">
+            <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-8 mx-auto my-10 items-center">
+                @csrf
                 <div class="flex flex-col gap-4">
                     <h1 class="text-5xl text-primary font-semibold text-center">Masuk</h1>
                     <p class="text-davy font-medium text-2xl text-center">Halo, silahkan masuk menggunakan akun anda</p>
                 </div>  
                 <div class="flex flex-col w-5/6 gap-4 mt-4">
-                    <input type="text" id="username" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Username">
-                    <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password">
+                    <input type="email" id="email" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email">
+                    <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password">
                 </div>
                 <button class="bg-accent hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-10 rounded-xl" type="submit">
                     Masuk
@@ -44,7 +45,7 @@
                 </div>
                 <p class="mt-6 text-center text-davy">
                     Belum Punya Akun? 
-                    <a href="{{ route('register') }}" class="text-tertiary hover:text-blue-700 font-medium">Registrasi</a>
+                    <a href="{{ route('registerPage') }}" class="text-tertiary hover:text-blue-700 font-medium">Registrasi</a>
                 </p>
             </form>
         </div>
