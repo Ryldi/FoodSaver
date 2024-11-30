@@ -26,6 +26,7 @@ export default {
           secondary: "#606060",
           tertiary:"#4A90E2",
           davy:"#525252",
+          skyBlue: "#81D4FA",
           neutral: {
             DEFAULT: "#E3F2FD",
             light: "#E8F5E9",
@@ -41,6 +42,9 @@ export default {
           light: {
             DEFAULT: "#1c1c22",
             hover: "#1c1c22",
+          },
+          clipPath: {
+            'mountain': 'polygon(0% 100%, 25% 55%, 50% 65%, 75% 55%, 100% 100%)', 
           },
         },
       },
