@@ -14,28 +14,22 @@
             >
                 <ul x-ref="logos" class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
                     <li>
-                        <img src="{{ asset('img/restaurant/store/mcd_store.png') }}" alt="" class="h-60 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/MCD.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/store/jco_store.jpg') }}" alt="" class="h-60 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Hokben.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/store/hokben_store.jpeg') }}" alt="" class="h-60 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/store/breadtalk_store.jpg') }}" alt="" class="h-60 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Dunkin.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/store/burgerking_store.jpg') }}" alt="" class="h-60 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Holland.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/store/dunkin_store.jpg') }}" alt="" class="h-60 rounded-xl"/>
-                    </li>
-                    <li>
-                        <img src="{{ asset('img/restaurant/store/holland_store.png') }}" alt="" class="h-60 rounded-xl"/>
-                    </li>
-                    <li>
-                        <img src="{{ asset('img/restaurant/store/kfc_store.jpeg') }}" alt="" class="h-60 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/BurgerKing.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                 </ul>                
             </div>

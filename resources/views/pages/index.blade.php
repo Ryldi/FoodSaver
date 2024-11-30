@@ -33,7 +33,7 @@
     </div>
 </section>
 
-<section class="">
+<section>
     <div class="flex flex-row justify-center gap-2 my-12">
         <span class="text-5xl font-bold text-accent italic">SISA Santap</span>
         <span class="text-5xl text-accent/80">menjadi solusinya!</span>
@@ -90,5 +90,10 @@
     </div>
     
 </section>
+
+<div class="my-10">
+    <p class="text-5xl font-bold text-accent text-center">MITRA KAMI</p>
+    @include('components.rest_logo_carousel')
+</div>
 
 @endsection
