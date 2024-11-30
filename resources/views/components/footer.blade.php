@@ -4,9 +4,9 @@
             <img src="{{ asset('img/logo.png') }}" alt="logo" class="w-72">
         </div>
         <div class="flex flex-col gap-2 text-black font-semibold">
-            <a href="" class="hover:text-accent-hover transition-all duration-500">Tentang Kami</a>
+            <a href="{{ route('about-us') }}" class="hover:text-accent-hover transition-all duration-500">Tentang Kami</a>
             <a href="" class="hover:text-accent-hover transition-all duration-500">Product</a>
-            <a href="" class="hover:text-accent-hover transition-all duration-500">Kebijakan Privasi</a>
+            <a href="{{ route('policy') }}" class="hover:text-accent-hover transition-all duration-500">Kebijakan Privasi</a>
             <a href="" class="hover:text-accent-hover transition-all duration-500">Syarat dan Ketentuan</a>
         </div>
         <div class="flex flex-col gap-2">
