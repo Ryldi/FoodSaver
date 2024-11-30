@@ -11,10 +11,6 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::get('/register', function(){
-<<<<<<< Updated upstream
-    return view('register');
-})->name('register');
-=======
     return view('auth.register');
 })->name('registerPage');
 
@@ -32,4 +28,3 @@ Route::get('/categoryDetail', function(){
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
->>>>>>> Stashed changes

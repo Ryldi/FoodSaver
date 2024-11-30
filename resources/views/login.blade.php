@@ -9,10 +9,6 @@
 </head>
 <body class="bg-neutral overflow-hidden">
     <div class="flex flex-row h-screen">
-<<<<<<< Updated upstream:resources/views/login.blade.php
-        <div class="w-1/2 flex">
-            <form action="" class="flex flex-col gap-8 mx-auto my-10 items-center">
-=======
         <div class="w-1/2 flex items-center justify-center">
             <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-8 mx-auto my-10 items-center">
                 @csrf

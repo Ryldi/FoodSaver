@@ -12,7 +12,8 @@
         <div class="w-1/2">
             <img src="{{ asset('img/auth/registerBG.png') }}" class="" alt="Register Background">
         </div>
-        <form action="" class="w-1/2 flex">
+        <form action="{{ route('register') }}" method="POST" class="w-1/2 flex items-center">
+            @csrf
             <div class="flex flex-col gap-6 mx-auto my-4 items-center">
                 <div class="flex flex-col gap-4">
                     <h1 class="text-5xl text-primary font-semibold text-center">Registrasi</h1>
