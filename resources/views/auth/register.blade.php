@@ -20,15 +20,27 @@
                     <p class="text-davy font-medium text-2xl text-center">Halo, silahkan registrasi akun anda</p>
                 </div>  
                 <div class="flex flex-col w-5/6 gap-4 mt-4">
-                    <input type="text" id="username" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Full Name" name="name">
-                    <input type="text" id="email" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email">
+                    <input type="text" id="name" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Full Name" name="name" value="{{ old('name') }}">
+                    @error('name')
+                        <p>{{ $message }}</p>
+                    @enderror
+                    <input type="text" id="email" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
+                    @error('email')
+                        <p>{{ $message }}</p>
+                    @enderror
                     <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password">
-                    <input type="text" id="phoneNumber" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone">
+                    @error('password')
+                        <p>{{ $message }}</p>
+                    @enderror
+                    <input type="text" id="phoneNumber" class="rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ old('phone') }}">
+                    @error('phone')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
-                <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-2 px-10 rounded-xl" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
+                <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-2 px-10 rounded-xl"  type="submit">
                     Registrasi
                 </button>
-                <div id="authentication-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+                {{-- <div id="authentication-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
                     <div class="bg-white rounded-lg shadow-lg w-96 p-6">
                         <div class="text-center mb-4">
                             <h3 class="text-xl font-semibold text-primary">Verifikasi OTP</h3>
@@ -51,7 +63,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- ini untuk yang otp success --}}
                 {{-- <div id="authentication-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
                     <div class="flex flex-col bg-white rounded-lg shadow-lg w-96 p-6 gap-2 items-center justify-center">
@@ -91,7 +103,7 @@
             </div>
         </form>
     </div>
-    <script>
+    {{-- <script>
         
     const otpInputs = document.querySelectorAll('#otpFields input');
 
@@ -135,6 +147,6 @@
             }
         });
     });
-    </script>
+    </script> --}}
 </body>
 </html>
