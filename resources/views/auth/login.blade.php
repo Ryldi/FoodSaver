@@ -21,7 +21,7 @@
                     <input type="email" id="email" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email">
                     <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password">
                 </div>
-                <button class="bg-accent hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-10 rounded-xl" type="submit">
+                <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-2 px-10 rounded-xl" type="submit">
                     Masuk
                 </button>
                 <div class="flex items-center w-4/6 justify-between mt-4">
@@ -50,7 +50,7 @@
             </form>
         </div>
         <div class="w-1/2">
-            <img src="{{ asset('Assets/loginBG.png') }}" class="" alt="Login Background">
+            <img src="{{ asset('img/auth/loginBG.png') }}" class="" alt="Login Background">
         </div>
     </div>
 </body>
