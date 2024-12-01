@@ -12,7 +12,7 @@
         <div class="w-1/2">
             <img src="{{ asset('img/auth/registerBG.png') }}" class="" alt="Register Background">
         </div>
-        <form action="{{ route('register') }}" method="POST" class="w-1/2 flex">
+        <form action="{{ route('sendOtp') }}" method="POST" class="w-1/2 flex">
             @csrf
             <div class="flex flex-col gap-6 mx-auto my-4 items-center">
                 <div class="flex flex-col gap-4">

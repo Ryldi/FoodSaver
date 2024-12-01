@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OTP;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class AuthController extends Controller
         }
     }
 
-    public function register(Request $request)
+    public static function register(Request $request)
     {
         Restaurant::create([
             'name' => $request->name,
