@@ -32,3 +32,12 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/send-otp', [OTPController::class, 'sendOtp'])->name('sendOtp');
+
+Route::get('/profile', function(){
+    return view('pages.profile');
+})->name('profile');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect()->route('loginPage');
+})->name('logout');

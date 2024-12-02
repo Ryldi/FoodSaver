@@ -44,6 +44,10 @@ export default {
             DEFAULT: "#1c1c22",
             hover: "#1c1c22",
           },
+          red: {
+            DEFAULT: "#EF4444", 
+            hover: "#DC2626", 
+          },
           clipPath: {
             'mountain': 'polygon(0% 100%, 25% 55%, 50% 65%, 75% 55%, 100% 100%)', 
           },
