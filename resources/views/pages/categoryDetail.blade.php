@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="flex flex-col justify-center items-center gap-8 mt-20 mx-28 text-primary">
-        <h1 class="text-3xl font-semibold">Fast Food</h1>
+        <h1 class="text-3xl font-semibold">Makanan Cepat Saji</h1>
         <form class="w-4/6 mx-auto" method="">
             <div class="flex gap-4">
                 <div class="relative w-full">
