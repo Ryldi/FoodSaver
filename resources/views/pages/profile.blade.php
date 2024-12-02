@@ -93,16 +93,40 @@
     </div>
 </div>
 
-{{-- Modal --}}
 <div id="ubahAlamatModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white rounded-lg w-96 p-6">
         <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
-        <form action="#" method="POST">
+        <form id="ubahAlamatForm" action="#" method="POST">
             @csrf
+            <!-- Nama Jalan -->
             <div class="mb-4">
-                <textarea id="alamat" name="alamat" rows="4" class="w-full p-2 border border-gray-300 rounded-md"></textarea>
+                <label for="nama_jalan" class="block text-primary font-medium">Nama Jalan</label>
+                <input id="nama_jalan" name="nama_jalan" type="text" class="w-full p-2 border border-gray-300 rounded-md">
             </div>
-            <div class="flex justify-end space-x-4">
+            <!-- Kecamatan -->
+            <div class="mb-4">
+                <label for="kecamatan" class="block text-primary font-medium">Kecamatan</label>
+                <input id="kecamatan" name="kecamatan" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+            </div>
+            <!-- Kota -->
+            <div class="mb-4">
+                <label for="kota" class="block text-primary font-medium">Kota</label>
+                <input id="kota" name="kota" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+            </div>
+            <!-- Provinsi -->
+            <div class="mb-4">
+                <label for="provinsi" class="block text-primary font-medium">Provinsi</label>
+                <input id="provinsi" name="provinsi" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+            </div>
+            <!-- Kode Pos -->
+            <div class="mb-4">
+                <label for="kode_pos" class="block text-primary font-medium">Kode Pos</label>
+                <input id="kode_pos" name="kode_pos" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+            </div>
+            <!-- Pesan Wajib -->
+            <p id="error-message" class="text-red-500 text-sm mt-2 hidden">* Semua field wajib diisi</p>
+            <!-- Action Buttons -->
+            <div class="flex justify-end space-x-4 mt-4">
                 <button type="button" class="bg-gray-300 text-primary py-2 px-4 rounded-md" id="closeModalBtn">Batal</button>
                 <button type="submit" class="bg-accent text-white py-2 px-4 rounded-md">Simpan</button>
             </div>
@@ -113,28 +137,48 @@
 @endsection
 
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const ubahAlamatBtn = document.getElementById('ubahAlamatBtn');
-            const modal = document.getElementById('ubahAlamatModal');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const form = modal.querySelector('form');
+    document.addEventListener('DOMContentLoaded', () => {
+        const ubahAlamatBtn = document.getElementById('ubahAlamatBtn');
+        const modal = document.getElementById('ubahAlamatModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const form = document.getElementById('ubahAlamatForm');
+        const errorMessage = document.getElementById('error-message');
 
-            if (ubahAlamatBtn && modal && closeModalBtn) {
-                ubahAlamatBtn.addEventListener('click', () => {
-                    modal.classList.remove('hidden');
-                });
+        // Event listener untuk tombol "Ubah Alamat"
+        if (ubahAlamatBtn && modal && closeModalBtn) {
+            ubahAlamatBtn.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
 
-                closeModalBtn.addEventListener('click', () => {
-                    modal.classList.add('hidden');
-                });
+            // Event listener untuk tombol "Batal"
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
 
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    window.location.href = '/profile';
-                });
-            } else {
-                console.error('Element not found!');
-            }
-        });
+            // Validasi dan pengiriman form
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Mencegah form dikirim jika validasi gagal
+
+                // Ambil nilai dari setiap input field
+                const namaJalan = document.getElementById('nama_jalan').value;
+                const kecamatan = document.getElementById('kecamatan').value;
+                const kota = document.getElementById('kota').value;
+                const provinsi = document.getElementById('provinsi').value;
+                const kodePos = document.getElementById('kode_pos').value;
+
+                // Cek apakah ada field yang kosong
+                if (!namaJalan || !kecamatan || !kota || !provinsi || !kodePos) {
+                    errorMessage.classList.remove('hidden'); // Tampilkan pesan error jika ada field yang kosong
+                } else {
+                    errorMessage.classList.add('hidden'); // Sembunyikan pesan error jika semua field diisi
+                    // Form valid, kirim form
+                    window.location.href = '/profile'; // Ganti sesuai dengan URL yang sesuai
+                }
+            });
+        } else {
+            console.error('Element not found!');
+        }
+    });
+
 </script>
 
