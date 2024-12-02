@@ -62,7 +62,7 @@
                                     <p>{{ $message }}</p>
                                 @enderror
                             </div>
-                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
+                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" type="submit">
                                 Registrasi
                             </button>
                         </form>
@@ -179,13 +179,14 @@
                     <h3 class="text-xl font-semibold text-primary">Verifikasi OTP</h3>
                     <p class="text-sm text-primary">Kode kamu sudah dikirim melalui email</p>
                 </div>
-                <form action="" id="otpFields" class="flex justify-center gap-2 mb-4">
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <form action="" method="POST" id="otpFields" class="flex justify-center gap-2 mb-4">
+                    @csrf
+                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_1"/>
+                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_2"/>
+                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_3"/>
+                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_4"/>
+                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_5"/>
+                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_6"/>
                 </form>
                 <div class="flex flex-col gap-2">
                     <button id="resendOtp" class="text-primary hover:underline text-sm">
@@ -210,8 +211,21 @@
                 </a>
             </div>
         </div>  --}}
+        @if (session('otp'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    otpModal.show()
+                });
+            </script>
+        @endif
     </div>
-    {{-- <script>
+    <script>
+        const modalEl = document.getElementById('authentication-modal');
+        const otpModal = new Modal(modalEl, {
+            placement: 'center'
+        });
+    </script>
+    <script>
         
     const otpInputs = document.querySelectorAll('#otpFields input');
 
@@ -255,6 +269,6 @@
             }
         });
     });
-    </script> --}}
+    </script>
 </body>
 </html>

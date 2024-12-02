@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OTPController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,17 +31,14 @@ Route::get('/categoryDetail', function(){
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/send-otp', [OTPController::class, 'sendOtp'])->name('sendOtp');
+Route::post('/verify-otp', [OTPController::class, 'verifyOtp'])->name('verifyOtp');
 
 Route::get('/profile', function(){
     return view('pages.profile');
 })->name('profile');
-
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect()->route('loginPage');
-})->name('logout');
 
 Route::get('/manageProduct', function () {
     return view('pages.manageProduct');
