@@ -41,3 +41,7 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('loginPage');
 })->name('logout');
+
+Route::get('restaurant', function(){
+    return view('pages.restaurantDetail');
+})->name('restaurantPage');
