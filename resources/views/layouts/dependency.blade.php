@@ -4,6 +4,11 @@
 <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" defer></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+<style>
+    ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+    }
+</style>
 @vite(['resources/css/app.css','resources/js/app.js'])
 <title>SisaSantap</title>
