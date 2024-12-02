@@ -5,12 +5,12 @@
         </div>
         <div class="flex flex-col gap-2 text-black font-semibold">
             <a href="{{ route('about-us') }}" class="hover:text-accent-hover transition-all duration-500">Tentang Kami</a>
-            <a href="" class="hover:text-accent-hover transition-all duration-500">Product</a>
+            <a href="" class="hover:text-accent-hover transition-all duration-500">Produk</a>
             <a href="{{ route('policy') }}" class="hover:text-accent-hover transition-all duration-500">Kebijakan Privasi</a>
             <a href="" class="hover:text-accent-hover transition-all duration-500">Syarat dan Ketentuan</a>
         </div>
         <div class="flex flex-col gap-2">
-            <span class="text-black font-semibold text-2xl text-center">Follow Us</span>
+            <span class="text-black font-semibold text-2xl text-center">Ikuti Kami</span>
             <div class="flex gap-3 justify-content-center">
                 <a href=""><img src="{{ asset('img/social/facebook.png') }}" alt="" width="30"></a>
                 <a href=""><img src="{{ asset('img/social/twitter.png') }}" alt="" width="30"></a>
