@@ -93,44 +93,46 @@
     </div>
 </div>
 
-<div id="ubahAlamatModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white rounded-lg w-96 p-6">
-        <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
-        <form id="ubahAlamatForm" action="#" method="POST">
-            @csrf
-            <!-- Nama Jalan -->
-            <div class="mb-4">
-                <label for="nama_jalan" class="block text-primary font-medium">Nama Jalan</label>
-                <input id="nama_jalan" name="nama_jalan" type="text" class="w-full p-2 border border-gray-300 rounded-md">
-            </div>
-            <!-- Kecamatan -->
-            <div class="mb-4">
-                <label for="kecamatan" class="block text-primary font-medium">Kecamatan</label>
-                <input id="kecamatan" name="kecamatan" type="text" class="w-full p-2 border border-gray-300 rounded-md">
-            </div>
-            <!-- Kota -->
-            <div class="mb-4">
-                <label for="kota" class="block text-primary font-medium">Kota</label>
-                <input id="kota" name="kota" type="text" class="w-full p-2 border border-gray-300 rounded-md">
-            </div>
-            <!-- Provinsi -->
-            <div class="mb-4">
-                <label for="provinsi" class="block text-primary font-medium">Provinsi</label>
-                <input id="provinsi" name="provinsi" type="text" class="w-full p-2 border border-gray-300 rounded-md">
-            </div>
-            <!-- Kode Pos -->
-            <div class="mb-4">
-                <label for="kode_pos" class="block text-primary font-medium">Kode Pos</label>
-                <input id="kode_pos" name="kode_pos" type="text" class="w-full p-2 border border-gray-300 rounded-md">
-            </div>
-            <!-- Pesan Wajib -->
-            <p id="error-message" class="text-red-500 text-sm mt-2 hidden">* Semua field wajib diisi</p>
-            <!-- Action Buttons -->
-            <div class="flex justify-end space-x-4 mt-4">
-                <button type="button" class="bg-gray-300 text-primary py-2 px-4 rounded-md" id="closeModalBtn">Batal</button>
-                <button type="submit" class="bg-accent text-white py-2 px-4 rounded-md">Simpan</button>
-            </div>
-        </form>
+<div id="ubahAlamatModal" class="hidden">
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg w-96 p-6">
+            <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
+            <form id="ubahAlamatForm" action="#" method="POST">
+                @csrf
+                <!-- Nama Jalan -->
+                <div class="mb-4">
+                    <label for="nama_jalan" class="block text-primary font-medium">Nama Jalan</label>
+                    <input id="nama_jalan" name="nama_jalan" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Kecamatan -->
+                <div class="mb-4">
+                    <label for="kecamatan" class="block text-primary font-medium">Kecamatan</label>
+                    <input id="kecamatan" name="kecamatan" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Kota -->
+                <div class="mb-4">
+                    <label for="kota" class="block text-primary font-medium">Kota</label>
+                    <input id="kota" name="kota" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Provinsi -->
+                <div class="mb-4">
+                    <label for="provinsi" class="block text-primary font-medium">Provinsi</label>
+                    <input id="provinsi" name="provinsi" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Kode Pos -->
+                <div class="mb-4">
+                    <label for="kode_pos" class="block text-primary font-medium">Kode Pos</label>
+                    <input id="kode_pos" name="kode_pos" type="text" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Pesan Wajib -->
+                <p id="error-message" class="text-red-500 text-sm mt-2 hidden">* Semua field wajib diisi</p>
+                <!-- Action Buttons -->
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button type="button" class="bg-gray-300 text-primary py-2 px-4 rounded-md" id="closeModalBtn">Batal</button>
+                    <button type="submit" class="bg-accent text-white py-2 px-4 rounded-md">Simpan</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
