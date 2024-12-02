@@ -41,3 +41,7 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('loginPage');
 })->name('logout');
+
+Route::get('/manageProduct', function () {
+    return view('pages.manageProduct');
+});
