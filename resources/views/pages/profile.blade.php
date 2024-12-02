@@ -10,14 +10,14 @@
     {{-- Profile Section --}}
     <div class="relative -mt-20 text-center overflow-hidden">
         <div class="relative w-32 h-32 mx-auto -mt-17">
-            <img src="{{ asset('img/profile/profileImage.png') }}" alt="Profile" class="w-full h-full rounded-full border-4 border-white">
+            <img src="{{ asset('img/profile/Jco.png') }}" alt="Profile" class="w-full h-full rounded-full border-4 border-white">
             <button class="absolute bottom-0 right-0 bg-accent text-white p-2 rounded-full hover:bg-accent-hover">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3l8 8-9 9H4v-8L13 3z"/>
                 </svg>
             </button>
         </div>
-        <p class="text-primary font-semibold text-3xl mt-2">Bernard Bereness</p>
+        <p class="text-primary font-semibold text-3xl mt-2">J.CO Central Park Mall</p>
         <p class="text-accent">Bergabung sejak November 2024</p>
     </div>
 
@@ -39,11 +39,11 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center border-b pb-2">
                         <p class="text-primary">Nama Lengkap</p>
-                        <p class="text-primary font-medium">Bernard Bereness</p>
+                        <p class="text-primary font-medium">J.CO Central Park Mall</p>
                     </div>
                     <div class="flex justify-between items-center border-b pb-2">
                         <p class="text-primary">Email</p>
-                        <p class="text-primary font-medium">bernard@gmail.com</p>
+                        <p class="text-primary font-medium">jcocp@gmail.com</p>
                     </div>
                     <div class="flex justify-between items-center border-b pb-2">
                         <p class="text-primary">Nomor HP</p>
@@ -52,6 +52,17 @@
                     <div class="flex justify-between items-center border-b pb-2">
                         <p class="text-primary">Bergabung</p>
                         <p class="text-primary font-medium">02 November 2024</p>
+                    </div>
+                    <div class="mt-6 flex flex-col gap-3">
+                        <button class="w-full bg-accent  text-white py-2 rounded-lg hover:bg-accent-hover">
+                            Ubah Password
+                        </button>
+                        <form action="{{ route('logout') }}" method="POST" class="mt-4">
+                            @csrf
+                            <button type="submit" class="w-full bg-red text-white py-2 rounded-lg hover:bg-red-hover">
+                                Keluar
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -62,7 +73,7 @@
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.61240586318!2d106.68943060595933!3d-6.229746562433691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNTAuNyJTIDEwNsKwNDAuNzUiRQ!5e0!3m2!1sen!2sid!4v1630918476474!5m2!1sen!2sid"
                     width="100%"
-                    height="200"
+                    height="300"
                     frameborder="0"
                     style="border:0;"
                     allowfullscreen=""
@@ -74,7 +85,7 @@
                         <path d="M12 2C8.13 2 5 5.13 5 8c0 3.13 3 6.7 7 11.93 4-5.23 7-8.8 7-11.93 0-2.87-3.13-6-7-6zm0 10c-1.38 0-2.5-1.12-2.5-2.5S10.62 7 12 7s2.5 1.12 2.5 2.5S13.38 12 12 12z"/>
                     </svg>
                     <p class="text-primary">
-                        Kyai Haji Syahdan Street, No. 38, RT.1/ RW.6, South Sukabumi, Kebon Jeruk, West Jakarta City, DKI Jakarta, ID 11540
+                        Jl. Letjen S. Parman No.28 #L162 & 163, RT.12/RW.6, Tj. Duren Sel., Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470
                     </p>
                 </div>
             </div>
@@ -92,7 +103,7 @@
                 <textarea id="alamat" name="alamat" rows="4" class="w-full p-2 border border-gray-300 rounded-md"></textarea>
             </div>
             <div class="flex justify-end space-x-4">
-                <button type="button" class="bg-gray-300 text-black py-2 px-4 rounded-md" id="closeModalBtn">Batal</button>
+                <button type="button" class="bg-gray-300 text-primary py-2 px-4 rounded-md" id="closeModalBtn">Batal</button>
                 <button type="submit" class="bg-accent text-white py-2 px-4 rounded-md">Simpan</button>
             </div>
         </form>
