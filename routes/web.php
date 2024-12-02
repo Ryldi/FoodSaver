@@ -42,6 +42,10 @@ Route::post('/logout', function () {
     return redirect()->route('loginPage');
 })->name('logout');
 
+Route::get('/manageProduct', function () {
+    return view('pages.manageProduct');
+});
+
 Route::get('restaurant', function(){
     return view('pages.restaurantDetail');
 })->name('restaurantPage');
