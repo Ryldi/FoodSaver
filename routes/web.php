@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OTPController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -36,6 +37,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/send-otp', [OTPController::class, 'sendOtp'])->name('sendOtp');
 Route::post('/verify-otp', [OTPController::class, 'verifyOtp'])->name('verifyOtp');
 
+Route::post('/updateAddress', [RestaurantController::class, 'updateAddress'])->name('updateAddress');
+Route::post('/updateProfileImage', [RestaurantController::class, 'updateProfileImage'])->name('updateProfileImage');
+Route::post('/updatePassword', [RestaurantController::class, 'updatePassword'])->name('updatePassword');
 Route::get('/myProfile', function(){
     return view('pages.profile');
 })->name('profilePage');
