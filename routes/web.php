@@ -51,3 +51,11 @@ Route::get('/manageProduct', function () {
 Route::get('restaurant', function(){
     return view('pages.restaurantDetail');
 })->name('restaurantPage');
+
+Route::get('promo', function(){
+    return view('pages.promo');
+})->name('promoPage');
+
+Route::get('myPromo', function(){
+    return view('pages.myPromo');
+})->name('myPromoPage');
