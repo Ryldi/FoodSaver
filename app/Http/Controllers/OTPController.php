@@ -12,21 +12,23 @@ class OTPController extends Controller
     public function sendOtp(Request $request)
     {
         // Validate
-        $user = $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
             'phone' => 'required'
         ]);
 
+        // || $selectedOtp->updated_at->addMinutes(1)->isPast()
         $selectedOtp = OTP::where('email', $request->email)->first();
+        $otp = rand(100000, 999999);
 
-        if (!$selectedOtp || $selectedOtp->updated_at->addMinutes(1)->isPast()) {
-            $otp = rand(100000, 999999);
+        if (!$selectedOtp) {
 
-            $selectedOtp->update([
+            OTP::create([
+                'email' => $request->email,
                 'otp' => $otp,
-                'updated_at' => now()
+            //    'updated_at' => now()
             ]);
         
             try {
@@ -34,9 +36,16 @@ class OTPController extends Controller
             } catch (\Exception $e) {
                 return response()->json(['error' => 'Failed to send OTP email.'], 500);
             }
+
+            session(['otp' => true]);
+        } else{
+            $selectedOtp->update([
+                'otp' => $otp,
+                'updated_at' => now()
+            ]);
         }
 
-        return back()->with('user', $user);
+        return back();
     }
 
     public function verifyOtp(Request $request)

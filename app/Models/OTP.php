@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class OTP extends Model
 {
-    public $primaryKey = null;
+    public $incrementing = false;
+    protected $primaryKey = null;
     protected $table = 'otps';
     protected $guarded = [];
 }

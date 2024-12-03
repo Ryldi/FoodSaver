@@ -11,19 +11,20 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('restaurant')->attempt($credentials))
-        {
-            return redirect(route('indexPage'));
+        if ($request->role === 'restaurant' && Auth::guard('restaurant')->attempt($credentials)) {
+            
+        } else if ($request->role === 'customer' && Auth::guard('customer')->attempt($credentials)) {
+            
         }
+        return redirect(route('indexPage'));
     }
 
     public static function register(Request $request)
     {
+        dd($request);
+
         Restaurant::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -42,5 +43,13 @@ class AuthController extends Controller
         }
         
         return back();
+    }
+
+    public function logout()
+    {
+        Auth::guard('customer')->logout();
+        Auth::guard('restaurant')->logout();
+
+        return redirect()->route('loginPage');
     }
 }
