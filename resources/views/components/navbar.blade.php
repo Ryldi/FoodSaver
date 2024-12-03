@@ -86,7 +86,7 @@
           @auth('restaurant')
           <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500">
             <button id="dropdownHoverButton" data-dropdown-toggle="dropdownProfile" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between gap-3">
-              <img src="{{ (Auth::guard('restaurant')->user()->image) ? asset('storage/' . Auth::guard('restaurant')->user()->image) : asset('img/rest_avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
+              <img src="{{ (Auth::guard('restaurant')->user()->image) ? Auth::guard('restaurant')->user()->image : asset('img/rest_avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
               <span class="text-lg">{{ Auth::guard('restaurant')->user()->name }}</span>
             </button>
           </div>
