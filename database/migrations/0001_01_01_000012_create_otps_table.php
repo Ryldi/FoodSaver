@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('otps', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->string('email')->unique();
             $table->string('otp');
             $table->timestamps();

@@ -49,25 +49,25 @@
                                 <p class="font-extrabold text-primary">Data Pengguna</p>
                             </div>
                             <div>
-                                <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ $currentData->name ?? old('name') }}">
+                                <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ $currentData['name'] ?? old('name') }}">
                                 @error('name')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ $currentData->email ?? old('name') }}">
+                                <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ $currentData['email'] ?? old('email') }}">
                                 @error('email')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password" value="{{ $currentData->password ?? old('password') }}">
+                                <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password" value="{{ $currentData['password'] ?? old('password') }}">
                                 @error('password')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ $currentData->phone ?? old('name') }}">
+                                <input type="text" id="phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ $currentData['phone'] ?? old('name') }}">
                                 @error('phone')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
