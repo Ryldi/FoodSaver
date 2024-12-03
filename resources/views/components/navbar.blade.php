@@ -72,7 +72,7 @@
           <div id="dropdownProfile" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li>
-                  <a href="{{ route('customerProfilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                  <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
               </li>
               <li>
                   <form action="{{ route('logout') }}" method="POST" class="block">
@@ -86,14 +86,14 @@
           @auth('restaurant')
           <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500">
             <button id="dropdownHoverButton" data-dropdown-toggle="dropdownProfile" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between gap-3">
-              <img src="{{ (Auth::guard('restaurant')->user()->logo) ? asset('storage/' . Auth::guard('restaurant')->user()->logo) : asset('img/avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
+              <img src="{{ (Auth::guard('restaurant')->user()->image) ? asset('storage/' . Auth::guard('restaurant')->user()->image) : asset('img/rest_avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
               <span class="text-lg">{{ Auth::guard('restaurant')->user()->name }}</span>
             </button>
           </div>
           <div id="dropdownProfile" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li>
-                  <a href="{{ route('customerProfilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                  <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
               </li>
               <li>
                   <form action="{{ route('logout') }}" method="POST" class="block">
