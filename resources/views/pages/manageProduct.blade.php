@@ -62,7 +62,7 @@
                 @csrf
                 <!-- Gambar Produk -->
                 <div class="mb-4">
-                    <label for="gambar" class="block text-sm font-medium text-gray-700">Gambar Produk *</label>
+                    <label for="gambar" class="block text-sm font-medium text-primary">Gambar Produk *</label>
                     <div id="currentImageContainer" class="mb-2">
                         <img id="currentImage" src="" alt="Current Product Image" class="h-32 rounded-xl mx-auto hidden" />
                     </div>
@@ -74,12 +74,12 @@
                         accept=".jpg, .jpeg, .png"  
                         onchange="validateImage()"
                     >
-                    <small id="gambarHelp" class="text-sm text-gray-500">Format gambar: jpg, jpeg, png (maksimal 2MB).</small>
-                    <span id="gambarError" class="text-red-500 text-sm mt-2 hidden">Mohon pilih gambar yang valid.</span>
+                    <small id="gambarHelp" class="text-sm text-primary">Format gambar: jpg, jpeg, png (maksimal 2MB).</small>
+                    <span id="gambarError" class="text-red text-sm mt-2 hidden">Mohon pilih gambar yang valid.</span>
                 </div>
                 <!-- Nama Produk -->
                 <div class="mb-4">
-                    <label for="nama" class="block text-sm font-medium text-gray-700">Nama Produk *</label>
+                    <label for="nama" class="block text-sm font-medium text-primary">Nama Produk *</label>
                     <input 
                         type="text" 
                         id="nama" 
@@ -88,11 +88,11 @@
                         placeholder="Masukkan nama produk" 
                         required
                     >
-                    <span id="namaError" class="text-red-500 text-sm mt-2 hidden">Nama produk tidak boleh kosong.</span>
+                    <span id="namaError" class="text-red text-sm mt-2 hidden">Nama produk tidak boleh kosong.</span>
                 </div>
                 <!-- Harga Produk -->
                 <div class="mb-4">
-                    <label for="harga" class="block text-sm font-medium text-gray-700">Harga *</label>
+                    <label for="harga" class="block text-sm font-medium text-primary">Harga *</label>
                     <input 
                         type="text" 
                         id="harga" 
@@ -101,11 +101,11 @@
                         placeholder="Masukkan harga produk" 
                         required
                     >
-                    <span id="hargaError" class="text-red-500 text-sm mt-2 hidden">Harga produk tidak valid.</span>
+                    <span id="hargaError" class="text-red text-sm mt-2 hidden">Harga produk tidak valid.</span>
                 </div>
                 <!-- Stok Produk -->
                 <div class="mb-4">
-                    <label for="stok" class="block text-sm font-medium text-gray-700">Stok *</label>
+                    <label for="stok" class="block text-sm font-medium text-primary">Stok *</label>
                     <input 
                         type="number" 
                         id="stok" 
@@ -115,14 +115,14 @@
                         required
                         min="0" 
                     >
-                    <span id="stokError" class="text-red-500 text-sm mt-2 hidden">Stok produk tidak boleh kosong.</span>
+                    <span id="stokError" class="text-red text-sm mt-2 hidden">Stok produk tidak boleh kosong.</span>
                 </div>
                 <!-- Tombol -->
                 <div class="flex justify-end gap-4">
                     <button type="button" onclick="hideModal()" class="px-4 py-2 text-sm font-medium bg-gray-200 rounded-lg hover:bg-gray-300">
                         Batal
                     </button>
-                    <button type="submit" class="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    <button type="submit" class="px-4 py-2 text-sm font-medium bg-accent text-white rounded-lg hover:bg-accent-hover">
                         Simpan
                     </button>
                 </div>
@@ -139,7 +139,7 @@
                 <button type="button" onclick="hideDeleteModal()" class="px-4 py-2 text-sm font-medium bg-gray-200 rounded-lg hover:bg-gray-300">
                     Batal
                 </button>
-                <button id="confirmDeleteButton" type="button" class="px-4 py-2 text-sm font-medium bg-red-600 text-white rounded-lg hover:bg-red-700">
+                <button id="confirmDeleteButton" type="button" class="px-4 py-2 text-sm font-medium bg-red text-white rounded-lg hover:bg-red-hover">
                     Hapus
                 </button>
             </div>

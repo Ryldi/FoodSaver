@@ -44,7 +44,7 @@
             </div>
         </form>
         <div class="w-4/6 grid grid-cols-2 items-center gap-x-4 gap-y-6">
-            <a href="" class="flex flex-col gap-2 p-4 rounded-lg bg-skyBlue border shadow-md">
+            <a href="" class="flex flex-col gap-2 p-4 rounded-lg bg-neutral-light border border-black shadow-md">
                 <img src="img\restaurant\store\mcd_store.png" alt="" class="rounded-xl">
                 <div class="flex justify-between text-primary">
                     <h2 class="font-extrabold text-xl">McDonald's Palmerah</h2>
