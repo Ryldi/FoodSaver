@@ -14,9 +14,7 @@ Route::get('/login', function(){
     return view('auth.login');
 })->name('loginPage');
 
-Route::get('/register', function(){
-    return view('auth.register');
-})->name('registerPage');
+Route::get('/register', [OTPController::class, 'registerPage'])->name('registerPage');
 
 Route::get('/about', function(){
     return view('pages.about');

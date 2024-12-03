@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class OTP extends Model
 {
-    public $incrementing = false;
-    protected $primaryKey = null;
+    use HasUuids;
+    
     protected $table = 'otps';
     protected $guarded = [];
 }
