@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('stock');
             $table->integer('sold');
-            $table->string('image');
+            $table->binary('image')->nullable();
             $table->timestamps();
         });
     }

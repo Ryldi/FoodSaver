@@ -37,7 +37,7 @@
       </div>
       <div class="md:flex gap-8">
           <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'bg-accent-selected' : '' }}">
-              <button id="dropdownHoverButton" data-dropdown-toggle="dropdown" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between">
+              <button id="dropdownHoverButton" data-dropdown-toggle="dropdownLanguage" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between">
                   <div class="gap-1 flex items-center">
                       <svg class="w-5 h-5 ms-2.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                           <circle cx="12" cy="12" r="10" />
@@ -52,7 +52,7 @@
               </button>
           </div>
           <!-- Dropdown menu -->
-          <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <div id="dropdownLanguage" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                   <li>
                       <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indonesia</a>
@@ -63,16 +63,46 @@
               </ul>
           </div>
           @auth('customer')
-          <form action="{{ route('logout') }}" method="POST">
-              @csrf
-              <button type="submit">Logout Customer</button>
-          </form>
+          <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500">
+            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownProfile" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between gap-3">
+              <img src="{{ (Auth::guard('customer')->user()->image) ? asset('storage/' . Auth::guard('customer')->user()->image) : asset('img/avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
+              <span class="text-lg">{{ Auth::guard('customer')->user()->name }}</span>
+            </button>
+          </div>
+          <div id="dropdownProfile" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li>
+                  <a href="{{ route('customerProfilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+              </li>
+              <li>
+                  <form action="{{ route('logout') }}" method="POST" class="block">
+                      @csrf
+                      <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                  </form>
+              </li>
+            </ul>
+          </div>
           @endauth
           @auth('restaurant')
-          <form action="{{ route('logout') }}" method="POST">
-              @csrf
-              <button type="submit">Logout Restaurant</button>
-          </form>
+          <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500">
+            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownProfile" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between gap-3">
+              <img src="{{ (Auth::guard('restaurant')->user()->logo) ? asset('storage/' . Auth::guard('restaurant')->user()->logo) : asset('img/avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
+              <span class="text-lg">{{ Auth::guard('restaurant')->user()->name }}</span>
+            </button>
+          </div>
+          <div id="dropdownProfile" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li>
+                  <a href="{{ route('customerProfilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+              </li>
+              <li>
+                  <form action="{{ route('logout') }}" method="POST" class="block">
+                      @csrf
+                      <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                  </form>
+              </li>
+            </ul>
+          </div>
           @endauth
           @guest('restaurant')
           @guest('customer')
