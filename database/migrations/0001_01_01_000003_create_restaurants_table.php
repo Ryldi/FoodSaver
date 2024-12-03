@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('phone');
             $table->text('description');
             $table->integer('balance')->default(0);
-            $table->string('logo');
+            $table->binary('image')->nullable();
             $table->float('rating')->default(0);
             $table->string('address');
+            $table->string('street');
             $table->string('province');
             $table->string('city');
             $table->string('subdistrict');

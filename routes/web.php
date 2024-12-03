@@ -36,9 +36,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/send-otp', [OTPController::class, 'sendOtp'])->name('sendOtp');
 Route::post('/verify-otp', [OTPController::class, 'verifyOtp'])->name('verifyOtp');
 
-Route::get('/profile', function(){
+Route::get('/myRestaurant', function(){
     return view('pages.profile');
 })->name('profile');
+
+Route::get('/myProfile', function(){
+    return view('pages.customerProfile');
+})->name('customerProfilePage');
 
 Route::get('/manageProduct', function () {
     return view('pages.manageProduct');
