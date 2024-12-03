@@ -10,7 +10,7 @@
 <body class="bg-neutral overflow-hidden">
     <div class="flex flex-row h-screen items-center justify-center">
         <div class="w-1/2">
-            <img src="{{ asset('img/auth/registerBG.png') }}" class="" alt="Register Background">
+            <img src="{{ asset('img/auth/registerBG.png') }}" class="h-full object-cover" alt="Register Background">
         </div>
         <div class="w-1/2 flex">
             <div class="flex flex-col gap-2 mx-auto my-10 items-center">
@@ -21,12 +21,22 @@
                     </div>  
                 </div>
                 <div class="border-b border-gray-200">
-                    <ul class="flex flex-wrap gap-2 -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300" role="tablist">
+                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-white bg-green-600 border-green-600" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300" role="tablist">
                         <li class="me-2" role="presentation">
-                            <button class="inline-block p-2 border-b-2 rounded-t-lg" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Pengguna</button>
+                            <button
+                            class="inline-block py-2 px-6 border-4 border-transparent rounded-lg text-black hover:border-green-600 hover:bg-green-600 hover:text-white transition-all duration-300"
+                            id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile"
+                            aria-selected="false">
+                            Pengguna
+                            </button>
                         </li>
                         <li class="me-2" role="presentation">
-                            <button class="inline-block p-2 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Restoran</button>
+                            <button
+                                class="inline-block py-2 px-6 border-4 border-transparent rounded-lg text-black hover:border-green-600 hover:bg-green-600 hover:text-white active:bg-green-600 active:text-white transition-all duration-300"
+                                id="dashboard-styled-tab" data-tabs-target="#styled-dashboard" type="button" role="tab" aria-controls="dashboard"
+                                aria-selected="false">
+                                Restoran
+                            </button>
                         </li>
                     </ul>
                 </div>
