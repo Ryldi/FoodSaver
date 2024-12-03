@@ -8,6 +8,7 @@
     @include('layouts.dependency')
 </head>
 <body class="bg-neutral overflow-hidden">
+    @include('components.toast')
     <div class="flex flex-row h-screen">
         <div class="w-1/2 flex">
             <div class="flex flex-col gap-6  mx-auto my-10 items-center">
@@ -34,14 +35,14 @@
                                     <div class="flex justify-center items-center">
                                         <div class="rounded-lg">
                                             <div class="inline-flex rounded-lg">
-                                                <input type="radio" name="role" id="pengguna" class="hidden peer" checked />
+                                                <input type="radio" name="role" id="pengguna" class="hidden peer" value="customer" checked />
                                                 <label for="pengguna"
                                                     class="cursor-pointer text-center py-2 px-6 rounded-lg text-black border-4 border-transparent peer-checked:border-green-600 peer-checked:bg-green-600 peer-checked:text-white transition-all duration-300 hover:border-green-600 hover:bg-green-600 hover:text-white">
                                                     Pengguna
                                                 </label>
                                             </div>
                                             <div class="inline-flex rounded-lg">
-                                                <input type="radio" name="role" id="restoran" class="hidden peer" />
+                                                <input type="radio" name="role" id="restoran" class="hidden peer" value="restaurant" />
                                                 <label for="restoran"
                                                     class="cursor-pointer text-center py-2 px-6 rounded-lg text-black border-4 border-transparent peer-checked:border-green-600 peer-checked:bg-green-600 peer-checked:text-white transition-all duration-300 hover:border-green-600 hover:bg-green-600 hover:text-white">
                                                     Restoran
@@ -51,8 +52,21 @@
                                     </div>     
                                 </div>
                             </div>                            
-                            <input type="email" id="email" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email">
-                            <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password">
+                            <div>
+                                <input type="email" id="email" class=" rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
+                                @error('email')
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-2 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Password" name="password" value="{{ old('password') }}">
+                                @error('password')
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
+                                @enderror
+                                @error('invalidCredentials')
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
                             <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-2 px-10 rounded-xl" type="submit">
                                 Masuk
                             </button>

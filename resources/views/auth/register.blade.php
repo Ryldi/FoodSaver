@@ -49,27 +49,27 @@
                                 <p class="font-extrabold text-primary">Data Pengguna</p>
                             </div>
                             <div>
-                                <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
+                                <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ $currentData->name ?? old('name') }}">
                                 @error('name')
-                                    <p>{{ $message }}</p>
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
+                                <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ $currentData->email ?? old('name') }}">
                                 @error('email')
-                                    <p>{{ $message }}</p>
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password">
+                                <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password" value="{{ $currentData->password ?? old('password') }}">
                                 @error('password')
-                                    <p>{{ $message }}</p>
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="phoneNumber" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ old('phone') }}">
+                                <input type="text" id="phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ $currentData->phone ?? old('name') }}">
                                 @error('phone')
-                                    <p>{{ $message }}</p>
+                                    <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" type="submit">
@@ -78,7 +78,7 @@
                         </form>
                     </div>
                     <div class="flex items-center justify-center rounded-lg" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                        <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-8 justify-center">
+                        {{-- <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-8 justify-center">
                             @csrf
                             <div class="flex flex-row gap-8">
                                 <div class="flex flex-col gap-4">
@@ -89,25 +89,25 @@
                                     <div>
                                         <input type="text" id="name" class=" rounded-xl w-full py-1 text-sm bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
                                         @error('name')
-                                        <p>{{ $message }}</p>
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="email" class="rounded-xl w-full py-1 text-sm bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
                                         @error('email')
-                                            <p>{{ $message }}</p>
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password">
                                         @error('password')
-                                            <p>{{ $message }}</p>
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="phoneNumber" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ old('phone') }}">
                                         @error('phone')
-                                            <p>{{ $message }}</p>
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -121,33 +121,33 @@
                                         <p class="font-extrabold text-primary">Alamat Restoran</p>
                                     </div>
                                     <div>
-                                        <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Jalan" name="password">
-                                        @error('password')
-                                            <p>{{ $message }}</p>
+                                        <input type="text" id="address" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Jalan" name="address" value="{{ old('address') }}">
+                                        @error('address')
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="phoneNumber" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="Kecamatan" value="{{ old('phone') }}">
-                                        @error('phone')
-                                            <p>{{ $message }}</p>
+                                        <input type="text" id="province" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Provinsi" name="province" value="{{ old('province') }}">
+                                        @error('province')
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kota" name="password">
-                                        @error('password')
-                                            <p>{{ $message }}</p>
+                                        <input type="text" id="city" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kota" name="city" value="{{ old('city') }}">
+                                        @error('city')
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Provinsi" name="password">
-                                        @error('password')
-                                            <p>{{ $message }}</p>
+                                        <input type="text" id="subdistrict" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kecamatan" name="subdistrict" value="{{ old('subdistrict') }}">
+                                        @error('subdistrict')
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kode Pos" name="password">
-                                        @error('password')
-                                            <p>{{ $message }}</p>
+                                        <input type="text" id="postal_code" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kode Pos" name="postal_code" value="{{ old('postal_code') }}">
+                                        @error('postal_code')
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@
                             <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
                                 Registrasi
                             </button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
                 <div class="flex items-center w-4/6 justify-between">

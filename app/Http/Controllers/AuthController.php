@@ -11,20 +11,19 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
-        if ($request->role === 'restaurant' && Auth::guard('restaurant')->attempt($credentials)) {
-            
-        } else if ($request->role === 'customer' && Auth::guard('customer')->attempt($credentials)) {
-            
-        }
-        return redirect(route('indexPage'));
+        $credentials = $request->only('email', 'password');
+        $role = $request->role;
+
+        return Auth::guard($role)->attempt($credentials) ? redirect(route('indexPage')) : back()->with('error', 'Autentikasi Gagal');
     }
 
     public static function register(Request $request)
     {
-        dd($request);
-
         Restaurant::create([
             'name' => $request->name,
             'email' => $request->email,

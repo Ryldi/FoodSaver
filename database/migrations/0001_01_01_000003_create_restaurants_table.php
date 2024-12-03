@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('phone');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('balance')->default(0);
             $table->mediumText('image')->nullable();
             $table->float('rating')->default(0);

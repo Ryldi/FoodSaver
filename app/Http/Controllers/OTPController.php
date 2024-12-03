@@ -44,8 +44,8 @@ class OTPController extends Controller
                 'updated_at' => now()
             ]);
         }
-
-        return back();
+        
+        return view('auth.register', ['currentData' => $request]);
     }
 
     public function verifyOtp(Request $request)
