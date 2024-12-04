@@ -78,7 +78,7 @@
                         </form>
                     </div>
                     <div class="flex items-center justify-center rounded-lg" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                        {{-- <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-8 justify-center">
+                        <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-8 justify-center">
                             @csrf
                             <div class="flex flex-row gap-8">
                                 <div class="flex flex-col gap-4">
@@ -87,13 +87,13 @@
                                         <p class="font-extrabold text-primary">Data Restoran</p>
                                     </div>
                                     <div>
-                                        <input type="text" id="name" class=" rounded-xl w-full py-1 text-sm bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
+                                        <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
                                         @error('name')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="email" class="rounded-xl w-full py-1 text-sm bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
+                                        <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
                                         @error('email')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
@@ -109,6 +109,13 @@
                                         @error('phone')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
+                                    </div>
+                                    <div>
+                                        <select id="countries" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:ring-blue-500 focus:border-blue-500 block">
+                                            <option disabled selected>Kategori</option>
+                                            <option>Home Food</option>
+                                            <option>Fast Food</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-4">
@@ -155,7 +162,7 @@
                             <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
                                 Registrasi
                             </button>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
                 <div class="flex items-center w-4/6 justify-between">
