@@ -80,38 +80,6 @@
             <button class="w-8 h-8 text-gray-500 hover:text-black">&raquo;</button>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div id="promoModal" tabindex="-1" 
-         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-        <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
-            <div class="relative bg-white rounded-lg shadow">
-                <div class="flex justify-between items-center p-5 border-b rounded-t">
-                    <h3 class="text-lg font-medium text-gray-900">
-                        Promo Detail
-                    </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="promoModal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-red-600 font-semibold text-sm">Syarat dan Ketentuan</h3>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-2">
-                        <li>Minimum Belanja: Rp. 50.000</li>
-                        <li>Ketentuan Berlaku: 1x per pelanggan</li>
-                    </ul>
-                </div>
-                <div class="flex justify-end items-center p-5 border-t border-gray-200 rounded-b">
-                    <button data-modal-hide="promoModal" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                        Tutup
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>

@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class RestaurantController extends Controller
 {
+    public function index($id)
+    {
+        $restaurant = Restaurant::find($id);
+
+        return view('pages.restaurantDetail', compact('restaurant'));
+    }
+
     public function updateAddress(Request $request)
     {
         Restaurant::where('id', Auth::guard('restaurant')->user()->id)->update([
