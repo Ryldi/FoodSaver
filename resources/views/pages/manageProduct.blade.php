@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+
     <div class="container mx-auto p-6 mt-24">
         <h2 class="text-2xl font-semibold text-center mb-6">Produk Tersedia</h2>
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -25,9 +26,7 @@ Route::get('/policy', function(){
     return view('pages.policy');
 })->name('policy');
 
-Route::get('/categoryDetail', function(){
-    return view('pages.categoryDetail');
-})->name('categoryDetail');
+Route::get('/categoryDetail/{id}', [CategoryController::class, 'index'])->name('categoryPage');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -48,11 +47,9 @@ Route::get('/myProfile', function(){
 
 Route::get('/manageProduct', function () {
     return view('pages.manageProduct');
-});
+})->name('manageProductPage');
 
-Route::get('restaurant', function(){
-    return view('pages.restaurantDetail');
-})->name('restaurantPage');
+Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
 
 Route::get('promo', function(){
     return view('pages.promo');

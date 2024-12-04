@@ -82,29 +82,31 @@
     </div>
 
     <!-- Modal -->
-    <div id="promoModal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div class="w-4/5 max-w-lg bg-white rounded-lg shadow-lg">
-            <div class="flex justify-between items-center p-4 bg-blue-100 rounded-t-lg">
-                <div class="flex items-center gap-4">
-                <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="" class="h-32 rounded-xl"/>
-                    <p class="text-gray-800 text-sm font-semibold">
-                        Diskon 70% hingga Rp 50.000 untuk pesan menu lezat pakai kode 
-                        <span class="font-bold">J.CO</span>
-                    </p>
+    <div  id="promoModal" class="hidden">
+        <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div class="w-4/5 max-w-lg bg-white rounded-lg shadow-lg">
+                <div class="flex justify-between items-center p-4 bg-blue-100 rounded-t-lg">
+                    <div class="flex items-center gap-4">
+                    <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <p class="text-gray-800 text-sm font-semibold">
+                            Diskon 70% hingga Rp 50.000 untuk pesan menu lezat pakai kode 
+                            <span class="font-bold">J.CO</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="p-6 bg-blue-50">
-                <h3 class="text-red-600 font-semibold text-sm">Syarat dan Ketentuan</h3>
-                <ul class="list-disc list-inside text-sm text-gray-700 mt-2">
-                    <li>Minimum Belanja: Rp. 50.000</li>
-                    <li>Ketentuan Berlaku: 1x per pelanggan</li>
-                </ul>
-            </div>
-
-            <div class="flex justify-between items-center p-4 bg-blue-100 rounded-b-lg">
-                <p class="text-sm text-gray-500">Berakhir 31/01/2025</p>
-                <button class="px-4 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600" onclick="closeModal()">Tutup</button>
+    
+                <div class="p-6 bg-blue-50">
+                    <h3 class="text-red-600 font-semibold text-sm">Syarat dan Ketentuan</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-700 mt-2">
+                        <li>Minimum Belanja: Rp. 50.000</li>
+                        <li>Ketentuan Berlaku: 1x per pelanggan</li>
+                    </ul>
+                </div>
+    
+                <div class="flex justify-between items-center p-4 bg-blue-100 rounded-b-lg">
+                    <p class="text-sm text-gray-500">Berakhir 31/01/2025</p>
+                    <button class="px-4 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600" onclick="closeModal()">Tutup</button>
+                </div>
             </div>
         </div>
     </div>
