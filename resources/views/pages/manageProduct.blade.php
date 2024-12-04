@@ -18,7 +18,7 @@
                         <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Nama Menu</th>
                         <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Harga</th>
                         <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Stock</th>
-                        <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Aksi</th>
+                        <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +31,7 @@
                         <td class="px-4 py-2 text-center text-primary border-r border-gray-300">Rp 6.000,00</td>
                         <td class="px-4 py-2 text-center text-primary border-r border-gray-300">10</td>
                         <td class="px-4 py-2 text-center border-l border-gray-300">
+                        <div class="flex items-center gap-4">
                             <!-- Edit Button -->
                             <button onclick="showModal('edit', {id: 1, nama: 'Alcapone', harga: '6000', stok: 10, image: '{{ asset('img/restaurant/product/alcaponeDonut.png') }}'})" 
                                 class="bg-accent text-white px-2 py-1 rounded-md inline-flex items-center justify-center">
@@ -39,14 +40,37 @@
                                 </svg>
                                 <span>Ubah</span>
                             </button>
+
                             <!-- Delete Button -->
                             <button onclick="showDeleteModal(1, 'Alcapone')" 
-                                class="bg-red text-white px-2 py-1 rounded-md inline-flex items-center justify-center ml-2">
+                                class="bg-red text-white px-2 py-1 rounded-md inline-flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="butt" stroke-linejoin="round" stroke-width="2" d="M19 7H5M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 7h16l-1 14H5L4 7z"></path>
                                 </svg>
                                 <span>Hapus</span>
                             </button>
+
+                            <!-- Dark Mode Toggle -->
+                            <div id="themeToggle" class="flex items-center w-32 h-12 bg-gray-200 rounded-full p-1 cursor-pointer transition-colors duration-300">
+    <!-- Text -->
+    <span id="toggleText" class="ml-2 text-sm font-medium text-gray-700">DAYMODE</span>
+    
+    <!-- Indicator (Circle) -->
+    <div id="toggleIndicator" class="flex items-center justify-center w-10 h-10 bg-white rounded-full shadow transition-transform duration-300">
+        <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+</div>
+                        </div>
                         </td>
                     </tr>
                 </tbody>
@@ -146,117 +170,44 @@
         </div>
     </div>
 
-    <!-- Script Modal dan Validasi -->
     <script>
-        const modal = document.getElementById('modalTambahProduk');
-        const modalDelete = document.getElementById('modalDeleteProduk');
-        let deleteProductId = null;
+    const toggle = document.getElementById('themeToggle');
+    const indicator = document.getElementById('toggleIndicator');
+    const toggleText = document.getElementById('toggleText');
+    const icon = document.getElementById('toggleIcon');
+    const htmlElement = document.documentElement;
 
-        // Show modal for add or edit
-        function showModal(action, product = null) {
-            modal.classList.remove('hidden');
-            resetValidationMessages();
-            if (action === 'add') {
-                document.getElementById('modalTitle').textContent = 'Tambah Produk';
-                document.getElementById('nama').value = '';
-                document.getElementById('harga').value = '';
-                document.getElementById('stok').value = '';
-                document.getElementById('gambar').value = '';
-                document.getElementById('currentImage').classList.add('hidden');
-            } else if (action === 'edit') {
-                document.getElementById('modalTitle').textContent = 'Ubah Produk';
-                document.getElementById('nama').value = product.nama;
-                document.getElementById('harga').value = product.harga;
-                document.getElementById('stok').value = product.stok;
-                document.getElementById('currentImage').src = product.image;
-                document.getElementById('currentImage').classList.remove('hidden');
-            }
+    // Add event listener for toggle button click
+    toggle.addEventListener('click', () => {
+        // Toggle classes to change background and icon position
+        toggle.classList.toggle('bg-green-500'); // Green background when active
+        toggle.classList.toggle('bg-gray-200'); // Gray background when inactive
+
+        // Change the text to "AKTIF" when active
+        if (toggle.classList.contains('bg-green-500')) {
+            toggleText.textContent = 'AKTIF';
+            toggleText.classList.add('text-white');
+            toggleText.classList.remove('text-gray-700');
+
+            // Move the toggle indicator to the right
+            indicator.classList.remove('translate-x-0');
+            indicator.classList.add('translate-x-16');
+
+            // Change icon to 'moon' when active
+            icon.setAttribute('d', 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z'); // Moon icon
+        } else {
+            toggleText.textContent = 'DAYMODE';
+            toggleText.classList.remove('text-white');
+            toggleText.classList.add('text-gray-700');
+
+            // Move the toggle indicator to the left
+            indicator.classList.remove('translate-x-16');
+            indicator.classList.add('translate-x-0');
+
+            // Change icon to 'sun' when inactive
+            icon.setAttribute('d', 'M12 2V4M12 20v2m10-10h2M2 12h2m14.828-7.172l1.414 1.414M16.95 7.05l1.414 1.414M7.05 7.05L8.464 5.636M5.636 8.464L7.05 10'); // Sun icon
         }
+    });
+</script>
 
-        // Hide modal
-        function hideModal() {
-            modal.classList.add('hidden');
-        }
-
-        // Show delete confirmation modal
-        function showDeleteModal(productId, productName) {
-            deleteProductId = productId;
-            document.getElementById('deleteMessage').textContent = `Apakah Anda yakin ingin menghapus produk: ${productName}?`;
-            modalDelete.classList.remove('hidden');
-        }
-
-        // Hide delete confirmation modal
-        function hideDeleteModal() {
-            modalDelete.classList.add('hidden');
-        }
-
-        // Confirm delete action
-        document.getElementById('confirmDeleteButton').addEventListener('click', function() {
-            alert(`Produk dengan ID ${deleteProductId} berhasil dihapus!`);
-            hideDeleteModal();
-        });
-
-        // Reset validation error messages
-        function resetValidationMessages() {
-            document.getElementById('gambarError').classList.add('hidden');
-            document.getElementById('namaError').classList.add('hidden');
-            document.getElementById('hargaError').classList.add('hidden');
-            document.getElementById('stokError').classList.add('hidden');
-        }
-
-        // Validate form
-        document.getElementById('productForm').addEventListener('submit', function(event) {
-            let isValid = true;
-
-            // Validate gambar
-            const gambar = document.getElementById('gambar');
-            if (!gambar.files.length) {
-                document.getElementById('gambarError').classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate nama
-            const nama = document.getElementById('nama').value;
-            if (!nama) {
-                document.getElementById('namaError').classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate harga
-            const harga = document.getElementById('harga').value;
-            if (!harga || isNaN(harga) || harga <= 0) {
-                document.getElementById('hargaError').classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate stok
-            const stok = document.getElementById('stok').value;
-            if (!stok || stok < 0) {
-                document.getElementById('stokError').classList.remove('hidden');
-                isValid = false;
-            }
-
-            if (!isValid) {
-                event.preventDefault();
-            }
-        });
-
-        // Image validation (format & size)
-        function validateImage() {
-            const gambarInput = document.getElementById('gambar');
-            const gambarFile = gambarInput.files[0];
-            const maxSize = 2 * 1024 * 1024; // 2MB
-            const allowedExtensions = ['image/jpeg', 'image/png'];
-
-            if (gambarFile) {
-                if (!allowedExtensions.includes(gambarFile.type)) {
-                    alert('Hanya file dengan ekstensi JPG, JPEG, atau PNG yang diperbolehkan.');
-                    gambarInput.value = ''; // Reset the file input
-                } else if (gambarFile.size > maxSize) {
-                    alert('Ukuran file terlalu besar. Maksimal 2MB.');
-                    gambarInput.value = ''; // Reset the file input
-                }
-            }
-        }
-    </script>
 @endsection
