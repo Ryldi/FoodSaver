@@ -63,7 +63,7 @@
                             </div>
                             <hr class="border-t-2 border-black w-full my-4" />
                             <div class="flex justify-between items-center">
-                                <a href="#" class="text-sm text-red-600 hover:underline" onclick="openModal(event)">Syarat</a>
+                                <a href="#" class="text-sm text-red-600 hover:underline" data-modal-target="promoModal" data-modal-toggle="promoModal">Syarat</a>
                                 <p class="text-sm text-gray-500">Berakhir 31/01/2025</p>
                             </div>
                         </div>
@@ -82,30 +82,28 @@
     </div>
 
     <!-- Modal -->
-    <div id="promoModal" tabindex="-1" 
-         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+    <div id="promoModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
         <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
             <div class="relative bg-white rounded-lg shadow">
-                <div class="flex justify-between items-center p-5 border-b rounded-t">
-                    <h3 class="text-lg font-medium text-gray-900">
-                        Promo Detail
-                    </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="promoModal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
+                <div class="flex justify-between items-center p-4 bg-blue-100 rounded-t-lg">
+                    <div class="flex items-center gap-4">
+                        <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <p class="text-gray-800 text-sm font-semibold">
+                            Diskon 70% hingga Rp 50.000 untuk pesan menu lezat pakai kode 
+                            <span class="font-bold">J.CO</span>
+                        </p>
+                    </div>
                 </div>
-                <div class="p-6">
+                <div class="p-6 bg-blue-50">
                     <h3 class="text-red-600 font-semibold text-sm">Syarat dan Ketentuan</h3>
                     <ul class="list-disc list-inside text-sm text-gray-700 mt-2">
                         <li>Minimum Belanja: Rp. 50.000</li>
                         <li>Ketentuan Berlaku: 1x per pelanggan</li>
                     </ul>
                 </div>
-                <div class="flex justify-end items-center p-5 border-t border-gray-200 rounded-b">
-                    <button data-modal-hide="promoModal" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <div class="flex justify-between items-center p-4 bg-blue-100 rounded-b-lg">
+                    <p class="text-sm text-gray-500">Berakhir 31/01/2025</p>
+                    <button data-modal-hide="promoModal" type="button" class="px-4 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600">
                         Tutup
                     </button>
                 </div>
@@ -116,9 +114,9 @@
 
 <script>
     function disableClaimButton() {
-        const button = document.getElementById("claimButton");
+        const button = document.getElementById('claimButton');
         button.disabled = true;
-        button.classList.add("bg-gray-400", "text-gray-200", "cursor-not-allowed");
-        button.textContent = "Claimed";
+        button.classList.add('bg-gray-400', 'cursor-not-allowed');
+        button.innerText = 'Claimed';
     }
 </script>
