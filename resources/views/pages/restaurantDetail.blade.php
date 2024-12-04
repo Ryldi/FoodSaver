@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="min-h-screen py-24 bg-neutral font-poppins px-24">
-    <header class="text-2xl font-bold text-center mt-5">J.CO</header>
+    <header class="text-2xl font-bold text-center mt-5">{{ $restaurant->name }}</header>
     <div class="flex justify-center items-center my-10 gap-16">
-        <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="" class="w-[15%] h-[15%]">
+        <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-[15%] h-[15%]">
         <div class="w-[60%]">
-            <span>J.CO Donuts & Coffee adalah salah satu merek makanan dan minuman ternama asal Indonesia yang dikenal dengan aneka donat lezat, kopi berkualitas, dan yogurt beku yang menggugah selera. Didirikan pada tahun 2005, J.CO mengusung konsep modern dengan cita rasa yang unik, memadukan bahan-bahan segar dan resep inovatif untuk menciptakan donat lembut dengan berbagai topping menarik. </span>
+            <span>{{ $restaurant->description }}</span>
             <div class="pt-5 flex gap-10">
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
@@ -26,7 +26,7 @@
                         />
                       </svg>
                       
-                    <span>J.CO Mall Central Park</span>
+                    <span>{{ $restaurant->address }}</span>
                 </div>
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
@@ -37,7 +37,7 @@
                           stroke-width="2"
                         />
                       </svg>
-                    <span>4.6</span>
+                    <span>{{ $restaurant->rating }}</span>
                 </div>
             </div>
         </div>
