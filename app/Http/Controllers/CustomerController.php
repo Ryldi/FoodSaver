@@ -3,25 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Restaurant;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class RestaurantController extends Controller
+class CustomerController extends Controller
 {
-    public function updateAddress(Request $request)
-    {
-        Restaurant::where('id', Auth::guard('restaurant')->user()->id)->update([
-            'street' => $request->nama_jalan,
-            'subdistrict' => $request->kecamatan,
-            'city' => $request->kota,
-            'province' => $request->provinsi,
-            'postal_code' => $request->kode_pos
-        ]);
-
-        return redirect()->back()->with('success', 'Alamat berhasil diperbarui');
-    }
-
     public function updateProfileImage(Request $request)
     {
         $request->validate([
@@ -34,13 +21,13 @@ class RestaurantController extends Controller
         $mimeType = $file->getMimeType();
         $base64Data = 'data:' . $mimeType . ';base64,' . base64_encode($contents);
 
-        $user = Restaurant::where('id', Auth::guard('restaurant')->user()->id)->first();
+        $user = Customer::where('id', Auth::guard('customer')->user()->id)->first();
 
         if ($user) {
             $user->image = $base64Data;
             $user->save();
 
-            Auth::guard('restaurant')->setUser($user);
+            Auth::guard('customer')->setUser($user);
 
             return redirect()->back()->with('success', 'Profil berhasil diperbarui');
         }
@@ -55,7 +42,7 @@ class RestaurantController extends Controller
             'new_password' => 'required|string',
         ]);
 
-        if(!Hash::check($request->old_password, Auth::guard('restaurant')->user()->password)) {
+        if(!Hash::check($request->old_password, Auth::guard('customer')->user()->password)) {
             return redirect()->back()->with('error', 'Password salah');
         }
 
@@ -67,13 +54,13 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Password baru dan konfirmasi password tidak sama');
         }
 
-        $user = Restaurant::where('id', Auth::guard('restaurant')->user()->id)->first();
+        $user = Customer::where('id', Auth::guard('customer')->user()->id)->first();
 
         if ($user) {
             $user->password = Hash::make($request->new_password);
             $user->save();
 
-            Auth::guard('restaurant')->setUser($user);
+            Auth::guard('customer')->setUser($user);
         
             return redirect()->back()->with('success', 'Password berhasil diperbarui');
         }

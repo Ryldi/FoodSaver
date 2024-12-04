@@ -6,8 +6,8 @@
 {{-- Profile Section --}}
 <div class="relative -mt-20 text-center overflow-hidden">
     <div class="relative w-32 h-32 mx-auto -mt-17">
-        <img src="{{ (Auth::guard('customer')->user()->image) ? asset('storage/' . Auth::guard('customer')->user()->image) : asset('img/avatar.png') }}" alt="Profile" class="w-full h-full rounded-full border-4 bg-white">
-        <button class="absolute bottom-0 right-0 bg-accent text-white p-2 rounded-full hover:bg-accent-hover">
+        <img src="{{ (Auth::guard('customer')->user()->image) ? Auth::guard('customer')->user()->image : asset('img/avatar.png') }}" alt="Profile" class="w-full h-full rounded-full border-4 bg-white">
+        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="absolute bottom-0 right-0 bg-accent text-white p-2 rounded-full hover:bg-accent-hover">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3l8 8-9 9H4v-8L13 3z"/>
             </svg>
@@ -17,7 +17,7 @@
     <p class="text-accent">Bergabung sejak {{ Auth::guard('customer')->user()->created_at->format('F Y') }}</p>
 </div>
 
-<div class="container gap-6 w-1/2">
+<div class="container gap-6 w-1/2 pb-20">
     {{-- Information Card --}}
     <div class="bg-white shadow-md rounded-lg p-4 md:p-6">
         <div class="flex justify-center items-center mb-4">
@@ -41,7 +41,7 @@
                 <p class="text-primary font-medium">{{ Auth::guard('customer')->user()->created_at->format('d F Y') }}</p>
             </div>
             <div class="mt-6 flex flex-col gap-3">
-                <button class="w-full bg-accent  text-white py-2 rounded-lg hover:bg-accent-hover">
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="w-full bg-accent  text-white py-2 rounded-lg hover:bg-accent-hover">
                     Ubah Password
                 </button>
                 <form action="{{ route('logout') }}" method="POST" class="mt-4">
@@ -54,3 +54,7 @@
         </div>
     </div>
 </div>
+
+@include('components.changeImageProfileModal', ['route' => 'updateProfileImageCustomer'])
+
+@include('components.changePasswordModal', ['route' => 'updatePasswordCustomer'])
