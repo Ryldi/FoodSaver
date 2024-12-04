@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\OTPController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OTPController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -45,9 +47,9 @@ Route::get('/myProfile', function(){
     return view('pages.profile');
 })->name('profilePage');
 
-Route::get('/manageProduct', function () {
-    return view('pages.manageProduct');
-})->name('manageProductPage');
+Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
+Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+Route::post('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
 
 Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
 

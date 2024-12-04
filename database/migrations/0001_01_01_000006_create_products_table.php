@@ -15,11 +15,11 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('restaurant_id')->constrained('restaurants')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
-            $table->text('description');
             $table->integer('price');
             $table->integer('stock');
-            $table->integer('sold');
-            $table->binary('image')->nullable();
+            $table->integer('sold')->default(0);
+            $table->longText('image');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
