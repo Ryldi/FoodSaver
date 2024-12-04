@@ -1,3 +1,3 @@
 <div>
-    <h1>Your Otp is {{ $otp }}</h1>
+    <h1>Your OTP is {{ $otp }}</h1>
 </div>
