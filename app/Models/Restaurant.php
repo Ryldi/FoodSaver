@@ -25,6 +25,11 @@ class Restaurant extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+    public function category() : BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

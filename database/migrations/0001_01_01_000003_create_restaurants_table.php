@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('subdistrict');
             $table->integer('postal_code');
+            $table->foreignUuid('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

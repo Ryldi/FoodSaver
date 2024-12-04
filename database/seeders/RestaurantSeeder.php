@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Restaurant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 
 class RestaurantSeeder extends Seeder
 {
@@ -13,6 +14,11 @@ class RestaurantSeeder extends Seeder
      */
     public function run(): void
     {
+        $category = Category::firstOrCreate(
+            ['name' => 'Roti & Kue'], 
+            ['id' => \Illuminate\Support\Str::uuid()]
+        );
+
         Restaurant::create([
             'name' => 'JCO',
             'email' => 'jco@corp.id',
@@ -24,7 +30,8 @@ class RestaurantSeeder extends Seeder
             'province' => 'Daerah Khusus Ibukota Jakarta',
             'city' => 'Jakarta Barat',
             'subdistrict' => 'Grogol petamburan',
-            'postal_code' => 11470
+            'postal_code' => 11470,
+            'category_id' => $category->id
         ]);
     }
 }
