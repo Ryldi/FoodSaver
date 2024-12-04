@@ -65,7 +65,7 @@
           @auth('customer')
           <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500">
             <button id="dropdownHoverButton" data-dropdown-toggle="dropdownProfile" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between gap-3">
-              <img src="{{ (Auth::guard('customer')->user()->image) ? asset('storage/' . Auth::guard('customer')->user()->image) : asset('img/avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
+              <img src="{{ (Auth::guard('customer')->user()->image) ? Auth::guard('customer')->user()->image : asset('img/avatar.png') }}" alt="" class="w-10 h-10 rounded-full">
               <span class="text-lg">{{ Auth::guard('customer')->user()->name }}</span>
             </button>
           </div>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('phone', 15);
-            $table->binary('image')->nullable();
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

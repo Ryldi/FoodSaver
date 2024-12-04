@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->text('description')->nullable();
             $table->integer('balance')->default(0);
-            $table->mediumText('image')->nullable();
+            $table->longText('image')->nullable();
             $table->float('rating')->default(0);
             $table->string('address');
             $table->string('street');
