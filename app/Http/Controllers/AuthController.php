@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Customer;
 use App\Models\OTP;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -22,26 +24,47 @@ class AuthController extends Controller
         return Auth::guard($role)->attempt($credentials) ? redirect(route('indexPage')) : back()->with('error', 'Autentikasi Gagal');
     }
 
-    public static function register(Request $request)
+    public static function register()
     {
-        Restaurant::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'phone' => $request->phone
-        ]);
+        $customerData = session('customerData');
+        $restaurantData = session('restaurantData');
 
+        if (session('userType') === 'customer') {
+            Customer::create([
+                'name' => $customerData['customer_name'],
+                'email' => $customerData['customer_email'],
+                'password' => $customerData['customer_password'],
+                'phone' => $customerData['customer_phone']
+            ]);
+        } else {
+            $categoryId = Category::where('name', $restaurantData['restaurant_category'])->pluck('id')->first();
+
+            Restaurant::create([
+                'category_id' => $categoryId,
+                'name' => $restaurantData['restaurant_name'],
+                'email' => $restaurantData['restaurant_email'],
+                'password' => $restaurantData['restaurant_password'],
+                'phone' => $restaurantData['restaurant_phone'],
+                'street' => $restaurantData['restaurant_street'],
+                'province' =>  $restaurantData['restaurant_province'],
+                'city' => $restaurantData['restaurant_city'],
+                'subdistrict' => $restaurantData['restaurant_subdistrict'],
+                'postal_code' => $restaurantData['restaurant_postal_code']
+            ]);
+        }
+
+        $dataType = session('userType').'Data';
         $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
+            'email' => $$dataType[session('userType') . '_email'],
+            'password' => $$dataType[session('userType') . '_password']
         ];
 
-        if (Auth::guard('restaurant')->attempt($credentials))
+        $userType = session('userType');
+        session()->flush();
+        if (Auth::guard($userType)->attempt($credentials))
         {
-            return redirect(route('indexPage'));
+            return back();
         }
-        
-        return back();
     }
 
     public function logout()

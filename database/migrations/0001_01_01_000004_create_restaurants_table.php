@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('email');
             $table->string('password');
@@ -21,13 +22,11 @@ return new class extends Migration
             $table->integer('balance')->default(0);
             $table->longText('image')->nullable();
             $table->float('rating')->default(0);
-            $table->string('address');
             $table->string('street');
             $table->string('province');
             $table->string('city');
             $table->string('subdistrict');
             $table->integer('postal_code');
-            $table->foreignUuid('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }
