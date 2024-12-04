@@ -58,3 +58,7 @@ Route::get('promo', function(){
 Route::get('myPromo', function(){
     return view('pages.myPromo');
 })->name('myPromoPage');
+
+Route::get('cart', function(){
+    return view('pages.cart');
+})->name('cartPage');

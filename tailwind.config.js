@@ -28,6 +28,7 @@ export default {
           davy:"#525252",
           skyBlue: "#81D4FA",
           sunshine:"#EEFF53",
+          carmine:"#E24A4D",
           neutral: {
             DEFAULT: "#E3F2FD",
             light: "#E8F5E9",
