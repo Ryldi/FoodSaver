@@ -44,31 +44,32 @@
                     <div class="flex items-center justify-center rounded-lg" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">
                         <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-5/6 gap-4 mt-4 justify-center">
                             @csrf
+                            <input type="text" class="hidden" name="userType" value="customer">
                             <div class="flex flex-row gap-2">
                                 <img src="{{ asset('img/auth/data-filled.png') }}" class="w-1/12" alt="">
                                 <p class="font-extrabold text-primary">Data Pengguna</p>
                             </div>
                             <div>
-                                <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ $currentData['name'] ?? old('name') }}">
-                                @error('name')
+                                <input type="text" id="customer_name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="customer_name" value="{{ old('customer_name') }}">
+                                @error('customer_name')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ $currentData['email'] ?? old('email') }}">
-                                @error('email')
+                                <input type="text" id="customer_email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="customer_email" value="{{ old('customer_email') }}">
+                                @error('customer_email')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password" value="{{ $currentData['password'] ?? old('password') }}">
-                                @error('password')
+                                <input type="password" id="customer_password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="customer_password" value="{{ old('customer_password') }}">
+                                @error('customer_password')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ $currentData['phone'] ?? old('name') }}">
-                                @error('phone')
+                                <input type="text" id="customer_phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="customer_phone" value="{{ old('customer_name') }}">
+                                @error('customer_phone')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -80,6 +81,7 @@
                     <div class="flex items-center justify-center rounded-lg" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                         <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-8 justify-center">
                             @csrf
+                            <input type="text" class="hidden" name="userType" value="restaurant">
                             <div class="flex flex-row gap-8">
                                 <div class="flex flex-col gap-4">
                                     <div class="flex flex-row gap-2">
@@ -87,34 +89,34 @@
                                         <p class="font-extrabold text-primary">Data Restoran</p>
                                     </div>
                                     <div>
-                                        <input type="text" id="name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
-                                        @error('name')
+                                        <input type="text" id="restaurant_name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="restaurant_name" value="{{ old('restaurant_name') }}">
+                                        @error('restaurant_name')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="email" value="{{ old('email') }}">
-                                        @error('email')
+                                        <input type="text" id="restaurant_email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="restaurant_email" value="{{ old('restaurant_email') }}">
+                                        @error('restaurant_email')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="password" id="password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="password">
-                                        @error('password')
+                                        <input type="password" id="restaurant_password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="restaurant_password">
+                                        @error('restaurant_password')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="phoneNumber" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="phone" value="{{ old('phone') }}">
-                                        @error('phone')
+                                        <input type="text" id="restaurant_phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="restaurant_phone" value="{{ old('restaurant_phone') }}">
+                                        @error('restaurant_phone')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <select id="countries" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:ring-blue-500 focus:border-blue-500 block">
+                                        <select id="countries" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:ring-blue-500 focus:border-blue-500 block" name="restaurant_category">
                                             <option disabled selected>Kategori</option>
-                                            <option>Home Food</option>
-                                            <option>Fast Food</option>
+                                            <option value="Makanan Rumahan">Home Food</option>
+                                            <option value="Makanan Cepat Saji">Fast Food</option>
                                         </select>
                                     </div>
                                 </div>
@@ -128,38 +130,38 @@
                                         <p class="font-extrabold text-primary">Alamat Restoran</p>
                                     </div>
                                     <div>
-                                        <input type="text" id="address" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Jalan" name="address" value="{{ old('address') }}">
-                                        @error('address')
+                                        <input type="text" id="restaurant_street" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Jalan" name="restaurant_street" value="{{ old('restaurant_street') }}">
+                                        @error('restaurant_street')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="province" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Provinsi" name="province" value="{{ old('province') }}">
-                                        @error('province')
+                                        <input type="text" id="restaurant_province" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Provinsi" name="restaurant_province" value="{{ old('restaurant_province') }}">
+                                        @error('restaurant_province')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="city" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kota" name="city" value="{{ old('city') }}">
-                                        @error('city')
+                                        <input type="text" id="restaurant_city" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kota" name="restaurant_city" value="{{ old('restaurant_city') }}">
+                                        @error('restaurant_city')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="subdistrict" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kecamatan" name="subdistrict" value="{{ old('subdistrict') }}">
-                                        @error('subdistrict')
+                                        <input type="text" id="restaurant_subdistrict" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kecamatan" name="restaurant_subdistrict" value="{{ old('restaurant_subdistrict') }}">
+                                        @error('restaurant_subdistrict')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" id="postal_code" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kode Pos" name="postal_code" value="{{ old('postal_code') }}">
-                                        @error('postal_code')
+                                        <input type="text" id="restaurant_postal_code" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kode Pos" name="restaurant_postal_code" value="{{ old('restaurant_postal_code') }}">
+                                        @error('restaurant_postal_code')
                                             <p class="mx-2 text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
-                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
+                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" type="submmit">
                                 Registrasi
                             </button>
                         </form>
@@ -196,23 +198,31 @@
                     <h3 class="text-xl font-semibold text-primary">Verifikasi OTP</h3>
                     <p class="text-sm text-primary">Kode kamu sudah dikirim melalui email</p>
                 </div>
-                <form action="" method="POST" id="otpFields" class="flex justify-center gap-2 mb-4">
+                <form action="{{ route('verifyOtp') }}" method="POST" id="otpFields" class="flex flex-col justify-center gap-2 mb-4">
                     @csrf
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_1"/>
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_2"/>
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_3"/>
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_4"/>
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_5"/>
-                    <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_6"/>
+                    <div class="flex justify-between">
+                        <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_1"/>
+                        <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_2"/>
+                        <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_3"/>
+                        <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_4"/>
+                        <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_5"/>
+                        <input type="text" maxlength="1" class="w-12 h-12 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="otp_6"/>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <button id="closeModal" class="bg-tertiary hover:bg-opacity-90 text-white py-2 px-4 rounded-lg">
+                            Kirim
+                        </button>
+                    </div>
+                    @error('otpFailed')
+                        <p class="text-red-600">{{ $message }}</p>
+                    @enderror
                 </form>
-                <div class="flex flex-col gap-2">
-                    <button id="resendOtp" class="text-primary hover:underline text-sm">
+                <form action="{{ route('sendOtp') }}" method="POST" class="flex justify-center">
+                    @csrf
+                    <button id="resendOtp" class="text-primary hover:underline text-sm text-center" type="submit">
                         Kirim Ulang OTP
                     </button>
-                    <button id="closeModal" class="bg-tertiary hover:bg-opacity-90 text-white py-2 px-4 rounded-lg">
-                        Kirim
-                    </button>
-                </div>
+                </form>
             </div>
         </div>
         {{-- ini untuk yang otp success --}}
