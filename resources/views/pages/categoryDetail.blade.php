@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="flex flex-col justify-center items-center gap-8 mt-20 mx-28 text-primary">
-        <h1 class="text-3xl font-semibold">Makanan Cepat Saji</h1>
+        <h1 class="text-3xl font-semibold">{{ $category->name }}</h1>
         <form class="w-4/6 mx-auto" method="">
             <div class="flex gap-4">
                 <div class="relative w-full">
@@ -43,24 +43,25 @@
                 </div>
             </div>
         </form>
-        <div class="w-4/6 grid grid-cols-2 items-center gap-x-4 gap-y-6">
-            <a href="" class="flex flex-col gap-2 p-4 rounded-lg bg-neutral-light border border-black shadow-md">
-                <img src="img\restaurant\store\mcd_store.png" alt="" class="rounded-xl">
+        <div class="w-4/6 grid grid-cols-1 md:grid-cols-2 items-center gap-x-4 gap-y-6">
+            @foreach ($restaurants as $item)
+            <a href="{{ route('restaurantDetailPage', ['id' => $item->id]) }}" class="flex flex-col gap-2 p-4 rounded-lg bg-neutral-light border border-black shadow-md">
+                <img src="{{ asset('img/restaurant/store/jco_store.jpg') }}" alt="" class="rounded-xl">
                 <div class="flex justify-between text-primary">
-                    <h2 class="font-extrabold text-xl">McDonald's Palmerah</h2>
-                    <div class="flex flex-row">
-                        <svg class="w-6 h-6 text-sunshine" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <h2 class="font-extrabold text-xl">{{ $item->address }}</h2>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="w-6 h-6 text-sunshine" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" stroke="black" stroke-width="1.5">
                             <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/>
-                          </svg>
-                          <p>4.6</p>
+                        </svg>
+                        <p>{{ $item->rating }}</p>
                     </div>
                 </div>
             </a>
+            @endforeach
         </div>
         <div class="flex justify-content-center">
-            {{-- {{ $restaurant->links() }}  --}}
-            {{-- ini paginatornya ntr --}}
-        </div>     
+            {{ $restaurants->links('pagination::tailwind') }}
+        </div>
     </div>
 </div>
 @endsection
