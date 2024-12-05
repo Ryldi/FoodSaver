@@ -49,7 +49,9 @@ Route::get('/myProfile', function(){
 
 Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
 Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+Route::delete('/deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
 Route::post('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
+Route::put('/editProduct', [ProductController::class, 'editProduct'])->name('editProduct');
 
 Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
 

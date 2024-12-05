@@ -1,7 +1,7 @@
 <div class="w-[15%] py-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow flex flex-col items-center">
     <div class="flex flex-col items-center">
         <button onclick="show()" class="flex flex-col items-center">
-            <img class="p-3 rounded-xl w-[70%] hover:w-[80%] transition-all duration-500" src="{{ asset('img/product/jco/alcapone.png') }}" alt="product image" />
+            <img class="p-3 rounded-xl w-32 hover:scale-110 transition-all duration-500" src="{{ asset('img/product/jco/alcapone.png') }}" alt="product image" />
         </button>
         <div class="">
             <h5 class="text-lg font-semibold tracking-tight text-black dark:text-white">Alcapone</h5>
