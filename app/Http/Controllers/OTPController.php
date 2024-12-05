@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerRegisterRequest;
+use App\Http\Requests\RestaurantRegisterRequest;
 use App\Mail\OTPMail;
 use App\Models\OTP;
 use Illuminate\Http\Request;
@@ -16,9 +18,21 @@ class OTPController extends Controller
 
         return view('auth.register', compact('userData'));
     }
-
+    
     public function sendOtp(Request $request)
     {
+        session(['userType' => $request->userType]);
+
+        if (session('userType') === 'customer') {
+            $validated = app(CustomerRegisterRequest::class)->validated();
+            session(['customerData' => $validated]);
+            // session(['customerData' => $request->only(['customer_name', 'customer_email', 'customer_password', 'customer_phone'])]);
+        } else if (session('userType') === 'restaurant') {
+            $validated = app(RestaurantRegisterRequest::class)->validated();
+            session(['restaurantData' => $validated]);
+            // session(['restaurantData' => $request->only(['restaurant_name', 'restaurant_email', 'restaurant_password', 'restaurant_phone', 'restaurant_category', 'restaurant_street', 'restaurant_province', 'restaurant_city', 'restaurant_subdistrict', 'restaurant_postal_code'])]);
+        }
+
         $email = $request->userType.'_email';
         $selectedOtp = OTP::where('email', $request->{$email})->first();
         $otp = rand(100000, 999999);
@@ -28,12 +42,6 @@ class OTPController extends Controller
                 'email' => $request->{$email},
                 'otp' => $otp
             ]);
-            
-            try {
-                Mail::to($request->{$email})->send(new OTPMail($otp));
-            } catch (\Exception $e) {
-                return response()->json(['error' => 'Failed to send OTP email.'], 500);
-            }
         } else{
             $selectedOtp->update([
                 'otp' => $otp,
@@ -41,10 +49,14 @@ class OTPController extends Controller
             ]);
         }
         
+        try {
+            Mail::to($request->{$email})->send(new OTPMail($otp));
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to send OTP email.'], 500);
+        }
+
         session(['otp' => true]);
-        session(['userType' => $request->userType]);
-        session(['customerData' => $request->only(['customer_name', 'customer_email', 'customer_password', 'customer_phone'])]);
-        session(['restaurantData' => $request->only(['restaurant_name', 'restaurant_email', 'restaurant_password', 'restaurant_phone', 'restaurant_category', 'restaurant_street', 'restaurant_province', 'restaurant_city', 'restaurant_subdistrict', 'restaurant_postal_code'])]);
+        session(['otp_expiry' => now()->addMinute()]);
         
         return redirect()->route('registerPage');
     }
