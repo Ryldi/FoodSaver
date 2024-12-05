@@ -118,6 +118,9 @@
                                             <option value="Makanan Rumahan">Home Food</option>
                                             <option value="Makanan Cepat Saji">Fast Food</option>
                                         </select>
+                                        @error('restaurant_category')
+                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-4">
@@ -238,7 +241,7 @@
                 </a>
             </div>
         </div>  --}}
-        @if (session('otp'))
+        @if (session('otp') && session('otp_expiry') > now())
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     otpModal.show()
