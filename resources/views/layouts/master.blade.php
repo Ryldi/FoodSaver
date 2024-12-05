@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @include('layouts.dependency')
 </head>
-<body>
+<body class="font-poppins">
     @include('components.navbar')
     
     <div class="min-h-screen">

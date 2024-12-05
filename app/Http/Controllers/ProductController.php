@@ -53,4 +53,53 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Status produk berhasil diperbarui');
     }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus');
+    }
+
+    public function editProduct(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric'
+        ]);
+        if($request->file('image') == null)
+        {
+            Product::find($request->productId)->update([
+               "name" => $request->name,
+               "price" => $request->price,
+               "stock" => $request->stock
+            ]);
+
+            return redirect()->back()->with('success', 'Produk berhasil diperbarui');
+        }else if($request->file('image') != null) {
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            $file = $request->file('image');
+            $contents = file_get_contents($file->getRealPath());
+            $base64 = base64_encode($contents);
+            $mimeType = $file->getMimeType();
+            $base64Data = 'data:' . $mimeType . ';base64,' . base64_encode($contents);
+
+            Product::find($request->productId)->update([
+                "image" => $base64Data,
+                "name" => $request->name,
+                "price" => $request->price,
+                "stock" => $request->stock
+            ]);
+
+            return redirect()->back()->with('success', 'Produk berhasil diperbarui');
+        }
+        
+        return redirect()->back()->with('error', 'Produk gagal diperbarui');
+    }
 }
