@@ -1,11 +1,5 @@
 <div class="min-h-screen bg-neutral px-10 py-10">
-    <div class="relative w-full">
-        <a href="#" class="absolute right-8 top-20">
-            <svg class="w-8 h-8 text-black" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M14 7h-4v3a1 1 0 0 1-2 0V7H6a1 1 0 0 0-.997.923l-.917 11.924A2 2 0 0 0 6.08 22h11.84a2 2 0 0 0 1.994-2.153l-.917-11.924A1 1 0 0 0 18 7h-2v3a1 1 0 1 1-2 0V7Zm-2-3a2 2 0 0 0-2 2v1H8V6a4 4 0 0 1 8 0v1h-2V6a2 2 0 0 0-2-2Z" clip-rule="evenodd" />
-            </svg>
-        </a>
-    </div>
+    
 
     <div class="flex flex-col justify-center items-center gap-8 mt-20 mx-28 text-primary">
         <h1 class="text-3xl font-semibold">Promo</h1>

@@ -9,6 +9,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -37,11 +38,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/send-otp', [OTPController::class, 'sendOtp'])->name('sendOtp');
 Route::post('/verify-otp', [OTPController::class, 'verifyOtp'])->name('verifyOtp');
 
-Route::post('/updateAddress', [RestaurantController::class, 'updateAddress'])->name('updateAddress');
-Route::post('/updateProfileImageRestaurant', [RestaurantController::class, 'updateProfileImage'])->name('updateProfileImageRestaurant');
-Route::post('/updateProfileImageCustomer', [CustomerController::class, 'updateProfileImage'])->name('updateProfileImageCustomer');
-Route::post('/updatePasswordRestaurant', [RestaurantController::class, 'updatePassword'])->name('updatePasswordRestaurant');
-Route::post('/updatePasswordCustomer', [CustomerController::class, 'updatePassword'])->name('updatePasswordCustomer');
+Route::put('/updateAddress', [RestaurantController::class, 'updateAddress'])->name('updateAddress');
+Route::put('/updateProfileImageRestaurant', [RestaurantController::class, 'updateProfileImage'])->name('updateProfileImageRestaurant');
+Route::put('/updateProfileImageCustomer', [CustomerController::class, 'updateProfileImage'])->name('updateProfileImageCustomer');
+Route::put('/updatePasswordRestaurant', [RestaurantController::class, 'updatePassword'])->name('updatePasswordRestaurant');
+Route::put('/updatePasswordCustomer', [CustomerController::class, 'updatePassword'])->name('updatePasswordCustomer');
 
 Route::get('/myProfile', function(){
     return view('pages.profile');
@@ -50,7 +51,7 @@ Route::get('/myProfile', function(){
 Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
 Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::delete('/deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
-Route::post('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
+Route::put('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
 Route::put('/editProduct', [ProductController::class, 'editProduct'])->name('editProduct');
 
 Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
@@ -63,6 +64,6 @@ Route::get('myPromo', function(){
     return view('pages.myPromo');
 })->name('myPromoPage');
 
-Route::get('cart', function(){
-    return view('pages.cart');
-})->name('cartPage');
+Route::get('cart', [CartController::class, 'index'])->name('cartPage');
+Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');

@@ -15,7 +15,7 @@ class Restaurant extends Authenticatable
     protected $table = 'restaurants';
     protected $guarded = [];
 
-    public function product() : HasMany
+    public function products() : HasMany
     {
         return $this->hasMany(Product::class);
     }

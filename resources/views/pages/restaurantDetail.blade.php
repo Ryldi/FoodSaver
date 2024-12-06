@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="min-h-screen py-24 bg-neutral font-poppins px-24">
+
+<div class="min-h-screen py-24 bg-neutral px-24">
     <header class="text-2xl font-bold text-center mt-5">{{ $restaurant->name }}</header>
     <div class="flex justify-center items-center my-10 gap-16">
         <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-[15%] h-[15%]">
@@ -24,9 +25,8 @@
                           stroke="black" 
                           stroke-width="1.5"
                         />
-                      </svg>
-                      
-                    <span>{{ $restaurant->address }}</span>
+                    </svg>
+                    <span class="text-sm">{{ $restaurant->name }}, {{ $restaurant->subdistrict }}. {{ $restaurant->city }}</span>
                 </div>
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
@@ -45,8 +45,12 @@
 
     <div class="container">
         <div class="text-2xl font-bold mt-8 mb-3">Produk Tersedia</div>
-        <div class="m-10">
-            @include('components.product_card')
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          @foreach ($products as $item)
+          <div class="">
+              @include('components.product_card', ['product' => $item])
+          </div>
+          @endforeach
         </div>
     </div>
 </div>

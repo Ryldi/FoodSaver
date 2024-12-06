@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,9 +12,10 @@ class RestaurantController extends Controller
 {
     public function index($id)
     {
-        $restaurant = Restaurant::find($id);
+        $restaurant = Restaurant::with('products')->find($id);
+        $products = Product::where('restaurant_id', $restaurant->id)->where('status', true)->get();
 
-        return view('pages.restaurantDetail', compact('restaurant'));
+        return view('pages.restaurantDetail', compact('restaurant', 'products'));
     }
 
     public function updateAddress(Request $request)

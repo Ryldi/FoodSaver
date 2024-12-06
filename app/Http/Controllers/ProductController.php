@@ -70,6 +70,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'stock' => 'required|numeric'
         ]);
+
         if($request->file('image') == null)
         {
             Product::find($request->productId)->update([

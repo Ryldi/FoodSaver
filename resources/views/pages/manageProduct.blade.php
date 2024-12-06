@@ -2,11 +2,8 @@
 
 @section('content')
 
-@include('components.toast')
-
-<div class="container mx-auto p-6 mt-24">
+<div class="container mx-auto p-6 pt-32">
     <h2 class="text-2xl font-semibold text-center mb-6">Produk Tersedia</h2>
-
     <!-- Tombol Tambah Produk -->
     <button data-modal-target="add-product" data-modal-toggle="add-product" class="block text-white bg-accent hover:bg-white hover:text-accent border hover:border-accent transition-all duration-500 font-medium rounded-lg text-xs px-5 py-2.5 text-center mb-5" type="button">
         Tambah Produk +
@@ -38,6 +35,7 @@
                     <td class="px-4 py-2 text-center text-primary border-r border-gray-300">
                         <form action="{{ route('changeProductStatus', ['id' => $item->id]) }}" method="POST" id="productStatusForm-{{ $item->id }}">
                             @csrf
+                            @method('PUT')
                             <label class="inline-flex items-center mb-5 cursor-pointer">
                                 <input type="checkbox" value="" id="statusToggle" class="sr-only peer" {{ $item->status == 1 ? 'checked' : '' }}>
                                 <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-accent rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-accent"></div>
