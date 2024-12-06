@@ -13,8 +13,8 @@ class Review extends Model
     protected $table = 'reviews';
     protected $guarded = [];
 
-    public function restaurant() : BelongsTo
+    public function transaction() : BelongsTo
     {
-        return $this->belongsTo(Restaurant::class, 'restaurant_id', 'id');
+        return $this->belongsTo(TransactionHeaders::class, 'transaction_id', 'id');
     }
 }

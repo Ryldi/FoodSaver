@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\TransactionController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -68,3 +69,5 @@ Route::get('cart', [CartController::class, 'index'])->name('cartPage');
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
 Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
 Route::delete('/deleteCart/{id}', [CartController::class, 'deleteCart'])->name('deleteFromCart');
+
+Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');

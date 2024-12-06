@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('restaurant_id')->constrained('restaurants')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('transaction_id')->constrained('transaction_headers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->float('star');
             $table->text('comment');
             $table->string('image');
