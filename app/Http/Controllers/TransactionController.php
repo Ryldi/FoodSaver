@@ -24,14 +24,17 @@ class TransactionController extends Controller
 
         foreach ($carts as $cart) {
             TransactionDetail::create([
-                'product_id' => $cart->id,
-                'transaction_id' => $cart->id,
+                'product_id' => $cart->product_id,
+                'transaction_id' => $transaction->id,
                 'quantity' => $cart->quantity
             ]);
 
             Cart::where('product_id', $cart->product_id)->where('customer_id', Auth::guard('customer')->user()->id)->delete();
         }
 
-        return redirect()->back('payment', ['transaction_id' => $transaction->id]);
+        $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
+        session(['cart_counts' => $cart_counts]);
+
+        return redirect()->back()->with('success', 'Checkout berhasil');
     }
 }
