@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('transaction_headers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('customer_id')->constrained('customers')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignUuid('review_id')->constrained('reviews')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->date('date');
             $table->string('status');
+            $table->integer('total_price');
             $table->string('snap_token')->nullable();
             $table->timestamps();
         });

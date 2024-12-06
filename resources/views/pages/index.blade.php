@@ -1,4 +1,4 @@
-@extends('layouts.master', ['cart_counts' => ($cart_counts ?? 0)])
+@extends('layouts.master')
 
 @section('content')
 @include('components.hero_carousel')
