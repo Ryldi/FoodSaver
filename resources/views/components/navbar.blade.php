@@ -46,6 +46,30 @@
           </ul>
       </div>
       <div class="md:flex gap-8">
+        @auth('customer')
+        <div class="group flex items-center py-1 px-4 md:px-6 rounded-full transition-all duration-500 hover:text-accent">
+            <button id="notificationButtonCustomer" type="button" class="relative flex items-center">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+                <span class="absolute top-0 right-0 block w-2.5 h-2.5 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full border border-white"></span>
+            </button>
+        </div>
+        @endauth
+
+        @auth('restaurant')
+        <div class="group flex items-center py-1 px-4 md:px-6 rounded-full transition-all duration-500 hover:text-accent">
+            <button id="notificationButtonRestaurant" type="button" class="relative flex items-center">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+                <span class="absolute top-0 right-0 block w-2.5 h-2.5 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full border border-white"></span>
+            </button>
+        </div>
+        @endauth
+
           <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'bg-accent-selected' : '' }}">
               <button id="dropdownHoverButton" data-dropdown-toggle="dropdownLanguage" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between">
                   <div class="gap-1 flex items-center">
