@@ -64,6 +64,10 @@ Route::get('myPromo', function(){
     return view('pages.myPromo');
 })->name('myPromoPage');
 
+Route::get('orderList', function(){
+    return view('pages.orderList');
+})->name('orderListPage');
+
 Route::get('cart', [CartController::class, 'index'])->name('cartPage');
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
 Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
