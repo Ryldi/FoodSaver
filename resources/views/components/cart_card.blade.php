@@ -23,8 +23,10 @@
                 <button type="button" class="px-2 py-1 text-xl text-black border-l border-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-accent" onclick="updateQuantity('increase', '{{ $cart->product->id }}')">+</button>
             </div>
         </form>
-        <button class="bg-carmine text-white w-1/3 text-xs p-2 rounded-xl hover:text-carmine hover:bg-transparent border hover:border-carmine transition-all duration-500">
-            Hapus
-        </button>
+        <form class="bg-carmine text-white w-1/3 text-xs p-2 rounded-xl hover:text-carmine hover:bg-transparent border hover:border-carmine transition-all duration-500 text-center" action="{{ route('deleteFromCart', $cart->product->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Hapus</button>
+        </form>
     </div>
 </div>

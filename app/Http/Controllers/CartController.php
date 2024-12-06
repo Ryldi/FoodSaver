@@ -68,4 +68,14 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Keranjang berhasil diperbarui');
     }
+
+    public function deleteCart($id)
+    {
+        Cart::where('customer_id', Auth::guard('customer')->user()->id)->where('product_id', $id)->delete();
+
+        $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
+        session(['cart_counts' => $cart_counts]);
+
+        return redirect()->back()->with('success', 'Item berhasil dihapus dari keranjang');
+    }
 }
