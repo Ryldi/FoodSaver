@@ -11,11 +11,13 @@
             {{-- Form for File Upload --}}
             <div class="flex items-center justify-center w-full">
                 <form method="POST" action="{{ route($route) }}" enctype="multipart/form-data" class="flex flex-col items-center justify-center w-full h-64 border-2 rounded-lg ">
-                    @csrf     
+                    @csrf
+                    @method('PUT')
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Profile Picture</label>
+                    
                     <input class="block w-[80%] text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" required accept=".png, .jpg, .jpeg" name="image">
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG, JPG or JPEG.</p>
-                    <h3 class="mb-5 text-sm font-normal text-red dark:text-gray-400">Apakah anda yakin ingin mengubah foto profil resto anda?</h3>
+                    <h3 class="mb-5 text-sm font-normal text-red dark:text-gray-400 text-center">Apakah anda yakin ingin mengubah foto profil resto anda?</h3>
                     <div class="flex">
                         <button data-modal-hide="popup-modal" type="submit" class="text-white bg-accent hover:bg-white hover:text-accent border hover:border-accent font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center transition-all duration-500">
                             Ya, ubah

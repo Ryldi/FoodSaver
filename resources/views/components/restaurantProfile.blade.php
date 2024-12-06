@@ -97,6 +97,7 @@
             <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
             <form id="ubahAlamatForm" action="{{ route('updateAddress') }}" method="POST">
                 @csrf
+                @method('PUT')
                 <!-- Nama Jalan -->
                 <div class="mb-4">
                     <label for="nama_jalan" class="block text-primary font-medium">Nama Jalan</label>

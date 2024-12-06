@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Restaurant;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,12 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         $role = $request->role;
+
+        if ($role === 'customer' && Auth::guard($role)->attempt($credentials)) {
+            $user_id = Customer::where('email', $credentials['email'])->first()->id;
+            $cart_counts = Cart::where('customer_id', $user_id)->count() ? Cart::where('customer_id', $user_id)->count() : 0;
+            session(['cart_counts' => $cart_counts]);
+        }
 
         return Auth::guard($role)->attempt($credentials) ? redirect(route('indexPage')) : back()->with('error', 'Autentikasi Gagal');
     }

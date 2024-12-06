@@ -15,12 +15,12 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = [];
 
-    public function transaaction_detail() : HasMany
+    public function transaction_details() : HasMany
     {
         return $this->hasMany(TransactionDetail::class);
     }
 
-    public function cart() : HasMany
+    public function carts() : HasMany
     {
         return $this->hasMany(Cart::class);
     }
