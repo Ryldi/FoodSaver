@@ -50,6 +50,10 @@ Route::get('/myProfile', function(){
 })->name('profilePage');
 
 Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
+Route::get('manageProduct1', function(){
+    return view('pages.manageProduct1');
+})->name('manageProduct1');
+
 Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::delete('/deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
 Route::put('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
