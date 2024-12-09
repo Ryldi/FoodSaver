@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-    public function index()
-    {
-        // dd(Auth::guard('customer')->user()->id);
-        $transactions = TransactionHeader::with('details.product.restaurant')->where('customer_id', Auth::guard('customer')->user()->id)->get();
-        return view('pages.transactionList', compact('transactions'));
-    }
     public function checkout(Request $request)
     {
         $transaction = TransactionHeader::create([
@@ -38,60 +32,9 @@ class TransactionController extends Controller
             Cart::where('product_id', $cart->product_id)->where('customer_id', Auth::guard('customer')->user()->id)->delete();
         }
 
-        TransactionController::setSnapToken($transaction);
-
         $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
-        session(['cart_counts' => $cart_counts]); 
+        session(['cart_counts' => $cart_counts]);
 
-        return redirect()->route('transactionPage', ['id' => $transaction->id])->with('success', 'Transaksi berhasil dibuat, silahkan lakukan pembayaran untuk menyelesaikan transaksi');
-    }
-
-    public function getTransaction($id)
-    {
-        $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
-        // dd($transaction);
-        try {
-            TransactionController::setSnapToken($transaction);
-        } catch (\Throwable $th) {
-        }
-        return view('pages.transactionDetail', compact('transaction'));
-    }
-
-    public static function setSnapToken(TransactionHeader $transaction)
-    {
-        // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = config('midtrans.serverKey');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => $transaction->id,
-                'gross_amount' => $transaction->total_price,
-            ),
-            'customer_details' => array(
-                'first_name' => Auth::guard('customer')->user()->name,
-                'email' => Auth::guard('customer')->user()->email,
-                'phone' => Auth::guard('customer')->user()->phone
-            ),
-        );
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-
-        $transaction->snap_token = $snapToken;
-        $transaction->save();
-    }
-
-    public function paymentSuccess($id)
-    {
-        $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
-        $transaction->status = 'Paid';
-        $transaction->save();
-
-        return redirect()->back()->with('success', 'Pembayaran berhasil dilakukan, silahkan menunggu konfirmasi dari restoran');
+        return redirect()->back()->with('success', 'Checkout berhasil');
     }
 }
