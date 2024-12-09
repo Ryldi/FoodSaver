@@ -75,3 +75,8 @@ Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCa
 Route::delete('/deleteCart/{id}', [CartController::class, 'deleteCart'])->name('deleteFromCart');
 
 Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+
+Route::get('/transactionList', [TransactionController::class, 'index'])->name('transactionListPage');
+Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
+
+Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
