@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class TransactionHeader extends Model
@@ -19,9 +20,9 @@ class TransactionHeader extends Model
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
 
-    public function transaction_detail() : HasMany
+    public function details() : HasMany
     {
-        return $this->hasMany(TransactionDetail::class);
+        return $this->hasMany(TransactionDetail::class, 'transaction_id', 'id');
     }
 
     public function reviews() : HasOne
