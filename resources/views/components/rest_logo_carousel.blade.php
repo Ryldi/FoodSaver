@@ -14,22 +14,22 @@
             >
                 <ul x-ref="logos" class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
                     <li>
-                        <img src="{{ asset('img/restaurant/logo/mcd.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/MCD.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/logo/hokben.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Hokben.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/logo/jco.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/logo/dunkin.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Dunkin.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/logo/holland.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/Holland.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                     <li>
-                        <img src="{{ asset('img/restaurant/logo/burgerKing.png') }}" alt="" class="h-32 rounded-xl"/>
+                        <img src="{{ asset('img/restaurant/logo/BurgerKing.png') }}" alt="" class="h-32 rounded-xl"/>
                     </li>
                 </ul>                
             </div>

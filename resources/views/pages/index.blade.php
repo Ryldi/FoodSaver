@@ -5,7 +5,6 @@
 @include('components.hero_promo')
 
 <div class="">
-    <br>
     <p class="text-center text-2xl font-bold">Populer Minggu ini</p>
     @include('components.rest_carousel')
 </div>
@@ -19,12 +18,12 @@
             <p class="text-sm text-dark/80 mt-3">Kajian BAPPENAS (2021)</p>
         </div>
         <div class="flex justify-center">
-            <img src="{{ asset('img/content/trashRight.png') }}" alt="" class="w-2/5">
+            <img src="{{ asset('img/content/terbuang.png') }}" alt="" class="w-2/5">
         </div>
     </div>
     <div class="flex flex-col md:flex-row justify-around items-center my-5">
         <div class="flex justify-center ms-5">
-            <img src="{{ asset('img/content/trashLeft.png') }}" alt="" class="w-2/3 rounded-xl">
+            <img src="{{ asset('img/content/terbuang2.jpeg') }}" alt="" class="w-2/3 rounded-xl">
         </div>
         <div class="flex flex-col items-center">
             <p class="w-2/4 text-center text-2xl font-bold text-accent">1,3 miliar ton makanan yang terbuang setiap tahunnya secara global.</p>
@@ -43,19 +42,19 @@
         <div class="flex justify-around py-20 px-12">
             <!-- Card 1 -->
             <div class="relative bg-blue-100 rounded-xl p-6 text-center w-60 shadow-md">
-                <img src="{{ asset('img/content/discount.png') }}" alt="Discount" class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32" />
+                <img src="{{ asset('img/content/diskon.png') }}" alt="Delivery" class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32" />
                 <h3 class="mt-10 font-bold text-black/65 text-lg">Bayar murah, rasa tetap terjaga</h3>
                 <p class="text-gray-600 text-sm">Semua makanan yang tersisa dan dijual masih layak dan bersih.</p>
             </div>
             <!-- Card 2 -->
             <div class="relative bg-blue-100 rounded-xl p-6 text-center w-60 shadow-md">
-                <img src="{{ asset('img/content/social.png') }}" alt="Delivery" class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32" />
-                <h3 class="mt-10 font-bold text-black/65 text-lg">Kesadaran sosial dalam mengurangi kelaparan</h3>
-                <p class="text-gray-600 text-sm">Membantu meningkatkan akses pangan bagi kelompok berpenghasilan rendah.</p>
+                <img src="{{ asset('img/content/delivery.png') }}" alt="Delivery" class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32" />
+                <h3 class="mt-10 font-bold text-black/65 text-lg">Cepat mendapatkan makanan</h3>
+                <p class="text-gray-600 text-sm">Ambil pesanan langsung atau menggunakan jasa delivery yang tersedia.</p>
             </div>
             <!-- Card 3 -->
             <div class="relative bg-blue-100 rounded-xl p-6 text-center w-60 shadow-md">
-                <img src="{{ asset('img/content/saveEnvironment.png') }}" alt="Environment" class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32" />
+                <img src="{{ asset('img/content/tangan.png') }}" alt="Environment" class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32" />
                 <h3 class="mt-10 font-bold text-black/65 text-lg">Pemesan makanan yang ramah lingkungan</h3>
                 <p class="text-gray-600 text-sm">Tidak ada makanan yang terbuang akibat SOP toko yang berlaku.</p>
             </div>
@@ -67,7 +66,7 @@
             <!-- Impact 1 -->
             <div class="text-center">
                 <div class="w-40 h-40 mx-auto bg-green-100 rounded-full flex items-center justify-center">
-                    <img src="{{ asset('img/content/saveFood.png') }}" alt="saveFood" class="w-32 h-32" />
+                    <img src="{{ asset('img/content/savefood.png') }}" alt="Icon 1" class="w-32 h-32" />
                 </div>
                 <h3 class="mt-4 text-lg font-semibold text-white">Jumlah makanan berlebih dapat lebih bermanfaat</h3>
             </div>
@@ -75,7 +74,7 @@
             <!-- Impact 2 -->
             <div class="text-center">
                 <div class="w-40 h-40 mx-auto bg-green-100 rounded-full flex items-center justify-center">
-                    <img src="{{ asset('img/content/economy.png') }}" alt="Icon 2" class="w-32 h-32" />
+                    <img src="{{ asset('img/content/ekonomi.png') }}" alt="Icon 2" class="w-32 h-32" />
                 </div>
                 <h3 class="mt-4 text-lg font-semibold text-white">Mengurangi besar kehilangan ekonomi akibat makanan yang tersisa</h3>
             </div>
