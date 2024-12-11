@@ -20,7 +20,7 @@
             </div>
             <!-- Item 2 -->
             <div class="flex gap-4 w-full" data-carousel-item>
-                <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url(' {{ asset('img/hero_carousel/1.jpg') }}'); background-size: cover; background-position: center;">
+                <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url(' {{ asset('img/hero_carousel/2.jpg') }}'); background-size: cover; background-position: center;">
                     <div class="">
                         <div class="absolute inset-0 bg-black/60"></div>
                         <div class="relative z-[1] text-white">
@@ -36,7 +36,7 @@
             </div>
             <!-- Item 3 -->
             <div class="flex gap-4 w-full" data-carousel-item>
-                <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url(' {{ asset('img/hero_carousel/1.jpg') }}'); background-size: cover; background-position: center;">
+                <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url(' {{ asset('img/hero_carousel/3.jpg') }}'); background-size: cover; background-position: center;">
                     <div class="">
                         <div class="absolute inset-0 bg-black/60"></div>
                         <div class="relative z-[1] text-white">

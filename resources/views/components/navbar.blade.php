@@ -1,4 +1,4 @@
-<navbar class="bg-neutral-light flex justify-between items-center border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
+<navbar class="bg-neutral-light flex justify-between items-center border-b border-accent fixed w-full z-40 top-0 shadow-lg py-4">
   <div class="flex justify-between items-center container mx-auto">
       <a class="flex items-center gap-2" href="{{ route('indexPage') }}">
       <img src="{{ asset('img/logo.png') }}" alt="" class="w-32">
