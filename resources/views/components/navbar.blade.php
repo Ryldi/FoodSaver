@@ -1,7 +1,7 @@
 <navbar class="bg-neutral-light flex justify-between items-center border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
   <div class="flex justify-between items-center container mx-auto">
       <a class="flex items-center gap-2" href="{{ route('indexPage') }}">
-      <img src="{{ asset('img/logo.png') }}" alt="" class="w-32">
+      <img src="{{ asset('img/logo.png') }}" alt="" class="w-40 h-auto">
       </a>
       <div class="md:flex md:gap-8">
           <ul class="flex md:gap-4">
@@ -27,21 +27,23 @@
                     </button>
                     @endauth
                 </div>
-              <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                        @foreach ($categories as $item)
-                        <li>
-                            <a href="{{ route('categoryPage', ['id' => $item->id]) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $item->name }}</a>
-                        </li>
-                        @endforeach
-                  </ul>
-              </div>
-              <a href="{{ route('promoPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
-              Promo
-              </a>
-              <a href="{{ route('about-us') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('about-us') ? 'text-accent' : '' }}">
-              Tentang Kami
-              </a>
+                <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                            @foreach ($categories as $item)
+                            <li>
+                                <a href="{{ route('categoryPage', ['id' => $item->id]) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $item->name }}</a>
+                            </li>
+                            @endforeach
+                    </ul>
+                </div>
+                <a href="{{ route('promoPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
+                    Promo
+                </a>
+                @auth('customer')
+                <a href="{{ route('transactionListPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('about-us') ? 'text-accent' : '' }}">
+                    Riwayat Pesanan
+                </a>
+                @endauth
           </ul>
       </div>
       <div class="md:flex gap-8">
@@ -146,7 +148,7 @@
               <span class="text-lg">{{ Auth::guard('customer')->user()->name }}</span>
             </button>
           </div>
-          <div id="dropdownProfile" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <div id="dropdownProfile" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li>
                   <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
@@ -167,7 +169,7 @@
               <span class="text-lg">{{ Auth::guard('restaurant')->user()->name }}</span>
             </button>
           </div>
-          <div id="dropdownProfile" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <div id="dropdownProfile" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li>
                   <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>

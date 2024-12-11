@@ -20,20 +20,14 @@
       </div>
       @endforeach
     </div>
-    <h2 class="text-xl font-bold text-gray-800 mt-8 mb-4">Pilih Jenis Pemesanan</h2>
 
-    <div class="mb-6">
-        <div class="flex items-center mb-2">
-            <input id="cod" type="radio" name="payment_method" value="cod" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-            <label for="cod" class="ml-2 text-sm font-medium text-gray-900">Bayar di tempat</label>
-        </div>
-        <div class="flex items-center">
-            <input id="pay_now" type="radio" name="payment_method" value="pay_now" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-            <label for="pay_now" class="ml-2 text-sm font-medium text-gray-900">Bayar sekarang</label>
-        </div>
+    <div class="flex items-center gap-2 mt-8 mb-4">
+      <svg class="w-[24px] h-[24px] text-accent" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
+      </svg>
+      <h3 class="text-lg font-bold text-gray-800">Lokasi Penjemputan</h3>
     </div>
 
-    <h3 class="text-lg font-bold text-gray-800 mb-4">Lokasi Penjemputan</h3>
     <div class="flex items-center bg-gray-50 p-4 rounded-md shadow-sm">
         <div class="w-1/4 mr-4">
           <iframe
@@ -62,20 +56,25 @@
         </div>
     </div>
 
-    <h3 class="text-lg font-bold text-gray-800 mt-6">Rincian Pemesanan</h3>
+    <div class="flex items-center gap-2 mt-6">
+      <svg class="w-[24px] h-[24px] text-accent" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7ZM8 16a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1-5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
+      </svg>
+      <h3 class="text-lg font-bold text-gray-800">Rincian Pemesanan</h3>
+    </div>
     <div class="flex justify-between items-center mt-4 p-4 bg-gray-50 rounded-md shadow-sm">
         <span class="text-sm font-medium text-gray-800">Total Harga Produk</span>
         <span class="text-lg font-bold text-gray-900">Rp {{ number_format($transaction->total_price, 0, ',', '.') }},00</span>
     </div>
   </div>
   <div class="flex justify-center mt-5">
+    @if ($transaction->status == 'Unpaid')
     <button id="pay-button" class="bg-tertiary text-white ml-auto py-4 px-8 rounded-xl hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500">
       Bayar
     </button>
+    @endif
   </div>
 </div>
-{{-- <div class="mt-40">{{ $transaction->id }}</div> --}}
-{{-- <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>  --}}
 
 <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}"></script>
@@ -94,11 +93,11 @@
           },
           // Optional
           onPending: function(result){
-            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            
           },
           // Optional
           onError: function(result){
-            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            
           }
         });
       };
