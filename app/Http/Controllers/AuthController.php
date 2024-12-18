@@ -25,7 +25,7 @@ class AuthController extends Controller
             session(['cart_counts' => $cart_counts]);
         }
 
-        return Auth::guard($role)->attempt($credentials) ? redirect(route('indexPage')) : back()->with('error', 'Autentikasi Gagal');
+        return Auth::guard($role)->attempt($credentials) ? redirect(route('indexPage')) : back()->with('error', (session()->get('locale') === 'en') ? 'Authentication Failed' : 'Autentikasi Gagal');
     }
 
     public static function register()

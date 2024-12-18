@@ -41,7 +41,7 @@ class CartController extends Controller
                 'quantity' => Cart::where('customer_id', Auth::guard('customer')->user()->id)->where('product_id', $request->product_id)->first()->quantity + $request->quantity
             ]);
 
-            return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully added to cart' : 'Produk berhasil ditambahkan ke keranjang');
         }
 
         Cart::create([
@@ -53,7 +53,7 @@ class CartController extends Controller
         $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
         session(['cart_counts' => $cart_counts]);
 
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully added to cart' : 'Produk berhasil ditambahkan ke keranjang');
     }
 
     public function updateCart(Request $request)
@@ -67,7 +67,7 @@ class CartController extends Controller
             'quantity' => $request->quantity
         ]);
 
-        return redirect()->back()->with('success', 'Keranjang berhasil diperbarui');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Cart successfully updated' : 'Keranjang berhasil diperbarui');
     }
 
     public function deleteCart($id)
@@ -77,6 +77,6 @@ class CartController extends Controller
         $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
         session(['cart_counts' => $cart_counts]);
 
-        return redirect()->back()->with('success', 'Item berhasil dihapus dari keranjang');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully removed to cart' : 'Produk berhasil dihapus dari keranjang');
     }
 }

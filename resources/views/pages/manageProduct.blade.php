@@ -69,6 +69,10 @@
     </div>
 </div>
 
+<div class="flex justify-center mt-6">
+    {{ $products->links('pagination::tailwind') }}
+</div>
+
 @include('components.addProductModal')
 
 <script>

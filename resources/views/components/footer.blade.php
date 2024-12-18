@@ -27,11 +27,11 @@
                 @lang('footer.follow_us')
             </span>
             <div class="flex gap-3 justify-center">
-                <a href="#"><img src="{{ asset('img/social/facebook.png') }}" alt="Facebook" class="w-15 sm:w-20 md:w-20"></a>
-                <a href="#"><img src="{{ asset('img/social/twitter.png') }}" alt="Twitter" class="w-15 sm:w-20 md:w-20"></a>
-                <a href="#"><img src="{{ asset('img/social/youtube.png') }}" alt="YouTube" class="w-15 sm:w-20 md:w-20"></a>
-                <a href="#"><img src="{{ asset('img/social/instagram.png') }}" alt="Instagram" class="w-15 sm:w-20 md:w-20"></a>
-                <a href="#"><img src="{{ asset('img/social/linkedin.png') }}" alt="LinkedIn" class="w-15 sm:w-20 md:w-20"></a>
+                <a href="#"><img src="{{ asset('img/social/facebook.png') }}" alt="Facebook" class="w-20 sm:w-15 md:w-10"></a>
+                <a href="#"><img src="{{ asset('img/social/twitter.png') }}" alt="Twitter" class="w-20 sm:w-15 md:w-10"></a>
+                <a href="#"><img src="{{ asset('img/social/youtube.png') }}" alt="YouTube" class="w-20 sm:w-15 md:w-10"></a>
+                <a href="#"><img src="{{ asset('img/social/instagram.png') }}" alt="Instagram" class="w-20 sm:w-15 md:w-10"></a>
+                <a href="#"><img src="{{ asset('img/social/linkedin.png') }}" alt="LinkedIn" class="w-20 sm:w-15 md:w-10"></a>
             </div>
         </div>
     </div>

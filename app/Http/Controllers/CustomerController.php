@@ -29,10 +29,10 @@ class CustomerController extends Controller
 
             Auth::guard('customer')->setUser($user);
 
-            return redirect()->back()->with('success', 'Profil berhasil diperbarui');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Profile successfully updated' : 'Profil berhasil diperbarui');
         }
 
-        return redirect()->back()->with('error', 'Profil gagal diperbarui');
+        return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Profile failed to update' : 'Profil gagal diperbarui');
     }
 
     public function updatePassword(Request $request)
@@ -43,15 +43,15 @@ class CustomerController extends Controller
         ]);
 
         if(!Hash::check($request->old_password, Auth::guard('customer')->user()->password)) {
-            return redirect()->back()->with('error', 'Password salah');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Wrong old password' : 'Password lama salah');
         }
 
         if(strcmp($request->new_password, $request->old_password) == 0) {
-            return redirect()->back()->with('error', 'Password baru tidak boleh sama dengan password saat ini');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'New password cannot be the same as the current password' : 'Password baru tidak boleh sama dengan password saat ini');
         }
 
         if(strcmp($request->confirm_password, $request->new_password) != 0) {
-            return redirect()->back()->with('error', 'Password baru dan konfirmasi password tidak sama');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Passwords do not match' : 'Password baru dan konfirmasi password tidak sama');
         }
 
         $user = Customer::where('id', Auth::guard('customer')->user()->id)->first();
@@ -62,9 +62,9 @@ class CustomerController extends Controller
 
             Auth::guard('customer')->setUser($user);
         
-            return redirect()->back()->with('success', 'Password berhasil diperbarui');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Password successfully updated' : 'Password berhasil diperbarui');
         }
 
-        return redirect()->back()->with('error', 'Password gagal diperbarui');
+        return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Password failed to update' : 'Password gagal diperbarui');
     }
 }

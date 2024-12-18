@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="bg-neutral text-primary relative mt-16">
+<div class="bg-neutral text-primary relative">
      <div class="relative flex flex-col md:flex-row items-center">
         <img src="{{ asset('img/about/tentangkami.jpg') }}" alt="Team" class="w-full md:w-1/2 object-cover relative z-10 mt-18" />
         <div class="flex justify-center items-center mt-8 relative w-full md:w-1/2  z-10">
             <div class="bg-tertiary w-[1100px] h-[1100px] md:w-[70vw] md:h-[70vw] rounded-full shadow-lg absolute -right-[200px] overflow-hidden z-0">
                 <div class="absolute top-0 left-0 w-full h-full text-primary p-8 flex items-center justify-center z-10"></div>
             </div>
-            <div class="absolute z-10 text-left text-neutral-light p-8">
-                <h2 class="text-neutral-light text-3xl font-bold mb-6">@lang('about.about_us')</h2>
+            <div class="absolute z-10 text-center md:text-left text-neutral-light pb-32 md:p-8">
+                <h2 class="text-neutral-light text-3xl font-bold my-2 pt-14">@lang('about.about_us')</h2>
                 <p class="text-neutral-light leading-relaxed mb-4">
                     @lang('about.description_1')
                 </p>
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="relative z-10 bg-skyBlue py-16 mt-23">
+    <div class="relative z-10 bg-skyBlue md:p-16">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-primary text-2xl font-bold mb-12">@lang('about.team')</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"> <!-- 5 kolom pada layar besar -->

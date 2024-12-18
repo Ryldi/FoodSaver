@@ -1,99 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="robot-error" viewBox="0 0 260 118.9" role="img">
-    <title xml:lang="en">403 Error</title>
-
-            <defs>
-                <clipPath id="white-clip"><circle id="white-eye" fill="#cacaca" cx="130" cy="65" r="20" /> </clipPath>
-             <text id="text-s" class="error-text" y="106"> 403 </text>
-            </defs>
-              <path class="alarm" fill="#e62326" d="M120.9 19.6V9.1c0-5 4.1-9.1 9.1-9.1h0c5 0 9.1 4.1 9.1 9.1v10.6" />
-             <use xlink:href="#text-s" x="-0.5px" y="-1px" fill="black"></use>
-             <use xlink:href="#text-s" fill="#2b2b2b"></use>
-            <g id="robot">
-              <g id="eye-wrap">
-                <use xlink:href="#white-eye"></use>
-                <circle id="eyef" class="eye" clip-path="url(#white-clip)" fill="#000" stroke="#2aa7cc" stroke-width="2" stroke-miterlimit="10" cx="130" cy="65" r="11" />
-<ellipse id="white-eye" fill="#2b2b2b" cx="130" cy="40" rx="18" ry="12" />
-              </g>
-              <circle class="lightblue" cx="105" cy="32" r="2.5" id="tornillo" />
-              <use xlink:href="#tornillo" x="50"></use>
-              <use xlink:href="#tornillo" x="50" y="60"></use>
-              <use xlink:href="#tornillo" y="60"></use>
-            </g>
-          </svg>
-<h1>You are not allowed to enter here</h1>
-<h2>Go <a target="_blank" href="{{ route('indexPage') }}">Home!</a></h2>
-
-
-<style>
-    @import url("https://fonts.googleapis.com/css?family=Bungee");
-
-body {
-  background: #1b1b1b;
-  color: white;
-  font-family: "Bungee", cursive;
-  margin-top: 50px;
-  text-align: center;
-}
-a {
-  color: #2aa7cc;
-  text-decoration: none;
-}
-a:hover {
-  color: white;
-}
-svg {
-  width: 50vw;
-}
-.lightblue {
-  fill: #444;
-}
-.eye {
-  cx: calc(115px + 30px * var(--mouse-x));
-  cy: calc(50px + 30px * var(--mouse-y));
-}
-#eye-wrap {
-  overflow: hidden;
-}
-.error-text {
-  font-size: 120px;
-}
-.alarm {
-  animation: alarmOn 0.5s infinite;
-}
-
-@keyframes alarmOn {
-  to {
-    fill: darkred;
-  }
-}
-
-</style>
-
-<script>
-var root = document.documentElement;
-var eyef = document.getElementById('eyef');
-var cx = document.getElementById("eyef").getAttribute("cx");
-var cy = document.getElementById("eyef").getAttribute("cy");
-
-document.addEventListener("mousemove", evt => {
-  let x = evt.clientX / innerWidth;
-  let y = evt.clientY / innerHeight;
-
-  root.style.setProperty("--mouse-x", x);
-  root.style.setProperty("--mouse-y", y);
-  
-  cx = 115 + 30 * x;
-  cy = 50 + 30 * y;
-  eyef.setAttribute("cx", cx);
-  eyef.setAttribute("cy", cy);
-  
-});
-
-document.addEventListener("touchmove", touchHandler => {
-  let x = touchHandler.touches[0].clientX / innerWidth;
-  let y = touchHandler.touches[0].clientY / innerHeight;
-
-  root.style.setProperty("--mouse-x", x);
-  root.style.setProperty("--mouse-y", y);
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  @include('layouts.dependency')
+</head>
+<body>
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto min-h-screen max-w-screen-xl lg:py-16 lg:px-6 flex justify-center items-center">
+        <div class="mx-auto max-w-screen-sm text-center">
+            <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-accent dark:text-primary-500">404</h1>
+            <p class="mb-4 text-3xl tracking-tight font-bold text-primary md:text-4xl dark:text-white">Something's missing.</p>
+            <p class="mb-4 text-lg font-medium text-gray-500 dark:text-gray-400">Sorry, we can't find that page. You'll find lots to explore on the <a href="{{ route('indexPage') }}" class="hover:text-accent">home page.</a> </p>
+            <a href="#" class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4">Back to Homepage</a>
+        </div>   
+    </div>
+  </section>
+</body>
+</html>

@@ -29,7 +29,7 @@ class RestaurantController extends Controller
             'postal_code' => $request->kode_pos
         ]);
 
-        return redirect()->back()->with('success', 'Alamat berhasil diperbarui');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Address successfully updated' : 'Alamat berhasil diperbarui');
     }
 
     public function updateProfileImage(Request $request)
@@ -52,10 +52,10 @@ class RestaurantController extends Controller
 
             Auth::guard('restaurant')->setUser($user);
 
-            return redirect()->back()->with('success', 'Profil berhasil diperbarui');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Profile successfully updated' : 'Profil berhasil diperbarui');
         }
 
-        return redirect()->back()->with('error', 'Profil gagal diperbarui');
+        return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Product failed to update' : 'Produk gagal diperbarui');
     }
 
     public function updatePassword(Request $request)
@@ -66,15 +66,15 @@ class RestaurantController extends Controller
         ]);
 
         if(!Hash::check($request->old_password, Auth::guard('restaurant')->user()->password)) {
-            return redirect()->back()->with('error', 'Password salah');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Old password is wrong' : 'Password lama salah');
         }
 
         if(strcmp($request->new_password, $request->old_password) == 0) {
-            return redirect()->back()->with('error', 'Password baru tidak boleh sama dengan password saat ini');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'New password cannot be the same as the current password' : 'Password baru tidak boleh sama dengan password saat ini');
         }
 
         if(strcmp($request->confirm_password, $request->new_password) != 0) {
-            return redirect()->back()->with('error', 'Password baru dan konfirmasi password tidak sama');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Passwords do not match' : 'Password baru dan konfirmasi password tidak sama');
         }
 
         $user = Restaurant::where('id', Auth::guard('restaurant')->user()->id)->first();
@@ -85,10 +85,10 @@ class RestaurantController extends Controller
 
             Auth::guard('restaurant')->setUser($user);
         
-            return redirect()->back()->with('success', 'Password berhasil diperbarui');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Password successfully updated' : 'Password berhasil diperbarui');
         }
 
-        return redirect()->back()->with('error', 'Password gagal diperbarui');
+        return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Product failed to update' : 'Produk gagal diperbarui');
     }
 
     public function getAllRestaurant() 
@@ -100,7 +100,7 @@ class RestaurantController extends Controller
 
     public function getByCategory($id)
     {
-        $restaurants = Restaurant::with('category')->where('category_id', $id)->paginate(1);
+        $restaurants = Restaurant::with('category')->where('category_id', $id)->paginate(6);
         $categories = Category::all();
         $selectedCategory = Category::find($id);
         return view('pages.restaurantList', compact('restaurants', 'categories', 'selectedCategory'));
@@ -108,7 +108,7 @@ class RestaurantController extends Controller
 
     public function sortRestaurant()
     {
-        $restaurants = Restaurant::with('category')->orderBy('rating', 'desc')->paginate(1);
+        $restaurants = Restaurant::with('category')->orderBy('rating', 'desc')->paginate(6);
         $categories = Category::all();
         return view('pages.restaurantList', compact('restaurants', 'categories'));
     }

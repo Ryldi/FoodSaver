@@ -1,5 +1,5 @@
 <div class="min-h-screen bg-neutral px-10 py-10">
-    <div class="flex flex-col justify-center items-center gap-4 mt-20 mx-28 text-primary">
+    <div class="flex flex-col justify-center items-center gap-4 mt-20 md:mx-28 text-primary">
         <h1 class="text-3xl font-semibold">@lang('restaurantPromo.addPromo')</h1>
         <div class="flex justify-center items-end">
             <button id="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="flex items-center justify-center border hover:border-accent py-1 px-6 rounded-lg hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500 whitespace-nowrap" type="button">

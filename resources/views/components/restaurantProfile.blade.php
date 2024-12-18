@@ -89,6 +89,53 @@
 </div>
 
 @include('components.changePasswordModal', ['route' => 'updatePasswordRestaurant'])
+@include('components.changeImageProfileModal', ['route' => 'updateProfileImageRestaurant'])
+
+{{-- Change Address Modal --}}
+<div id="ubahAlamatModal" class="hidden">
+    <div class="fixed z-50 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg w-96 p-6">
+            <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
+            <form id="ubahAlamatForm" action="{{ route('updateAddress') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <!-- Nama Jalan -->
+                <div class="mb-4">
+                    <label for="nama_jalan" class="block text-primary font-medium">Nama Jalan</label>
+                    <input id="nama_jalan" name="nama_jalan" type="text" value="{{ Auth::guard('restaurant')->user()->street }}" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Kecamatan -->
+                <div class="mb-4">
+                    <label for="kecamatan" class="block text-primary font-medium">Kecamatan</label>
+                    <input id="kecamatan" name="kecamatan" type="text" value="{{ Auth::guard('restaurant')->user()->subdistrict }}" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Kota -->
+                <div class="mb-4">
+                    <label for="kota" class="block text-primary font-medium">Kota</label>
+                    <input id="kota" name="kota" type="text" value="{{ Auth::guard('restaurant')->user()->city }}" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Provinsi -->
+                <div class="mb-4">
+                    <label for="provinsi" class="block text-primary font-medium">Provinsi</label>
+                    <input id="provinsi" name="provinsi" type="text" value="{{ Auth::guard('restaurant')->user()->province }}" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Kode Pos -->
+                <div class="mb-4">
+                    <label for="kode_pos" class="block text-primary font-medium">Kode Pos</label>
+                    <input id="kode_pos" name="kode_pos" type="text" value="{{ Auth::guard('restaurant')->user()->postal_code }}" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <!-- Pesan Wajib -->
+                <p id="error-message" class="text-red-500 text-sm mt-2 hidden">* Semua field wajib diisi</p>
+                <!-- Action Buttons -->
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button type="button" class="bg-gray-300 hover:bg-white border hover:border-primary text-primary py-2 px-4 rounded-md transition-all duration-500" id="closeModalBtn">Batal</button>
+                    <button type="submit" class="bg-accent hover:bg-white border hover:border-accent hover:text-accent text-white py-2 px-4 rounded-md transition-all duration-500">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {

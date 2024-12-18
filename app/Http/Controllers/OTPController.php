@@ -72,6 +72,6 @@ class OTPController extends Controller
             AuthController::register();
             return redirect(route('indexPage'));
         }
-        return back()->withErrors(['otpFailed' => 'Kode OTP salah!!']);
+        return back()->withErrors(['otpFailed' => (session()->get('locale') === 'en') ? 'OTP code is incorrect' : 'Kode OTP salah']);
     }
 }

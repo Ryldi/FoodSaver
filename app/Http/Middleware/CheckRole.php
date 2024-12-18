@@ -16,14 +16,21 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
+        if($role === 'logged')
+        {
+            return $next($request);
         }
 
-        if($role === 'customer' && Auth::guard($role)->check()) {
-            //do nothing
-        }else{
-            return redirect()->route('forbiddenPage');
+        if (!Auth::guard($role)->check()) {
+            return redirect()->route('loginPage');
+        }
+
+        if(($role === "customer" || $role === "restaurant") && Auth::guard($role)->check()) 
+        {
+            return $next($request);
+        }
+        else{
+            return redirect()->route('forbidden');
         }
         return $next($request);
     }

@@ -1,7 +1,7 @@
-<navbar class="md:flex md:justify-center bg-neutral-light border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
+<navbar class="md:flex md:justify-evenly bg-neutral-light border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
         <a class="flex items-center space-x-3 rtl:space-x-reverse gap-2" href="{{ route('indexPage') }}">
-            <img src="{{ asset('img/logo.png') }}" alt="" class="w-40 h-auto">
+            <img src="{{ asset('img/logo.png') }}" alt="" class="w-40 h-auto md:mx-16">
         </a>
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
@@ -12,29 +12,33 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <div class="flex flex-col md:flex-row">
                 <div class="md:flex md:gap-8 font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-                    <ul class="flex flex-col md:flex-row md:gap-4">
-                        <a href="{{ route('indexPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('indexPage') ? 'text-accent' : '' }} " aria-current="page">
+                    <ul class="flex flex-col md:flex-row md:gap-4 justify-evenly">
+                        <a href="{{ route('indexPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('indexPage') ? 'text-accent' : '' }} " aria-current="page">
                             @lang('navbar.nav_home')
                         </a>
-                        <div class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'text-accent' : '' }}">
+                        <div class="flex items-center justify-center py-1 md:px-1 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'text-accent' : '' }}">
                             @auth('restaurant')
-                            <a href="{{ route('manageProductPage') }}" class="flex items-center py-1 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('manageProductPage') ? 'text-accent' : '' }}">@lang('navbar.nav_product')</a>
+                            <a href="{{ route('manageProductPage') }}" class="flex items-center py-1 px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('manageProductPage') ? 'text-accent' : '' }}">@lang('navbar.nav_product')</a>
                             @elseif(auth('customer')->check())
-                            <a href="{{ route('restaurantPage') }}" class="flex items-center py-1 px-4 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('restaurantPage') ? 'bg-accent-selected' : '' }}">
+                            <a href="{{ route('restaurantPage') }}" class="flex items-center py-1 px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('restaurantPage') ? 'bg-accent-selected' : '' }}">
+                                @lang('navbar.nav_restaurant')
+                            </a>
+                            @else
+                            <a href="{{ route('restaurantPage') }}" class="flex items-center py-1 px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('restaurantPage') ? 'bg-accent-selected' : '' }}">
                                 @lang('navbar.nav_restaurant')
                             </a>
                             @endauth
                         </div>
-                        <a href="{{ route('promoPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
+                        <a href="{{ route('promoPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
                             @lang('navbar.nav_promo')
                         </a>
                         @auth('customer')
-                        <a href="{{ route('transactionListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('transactionListPage') ? 'text-accent' : '' }}">
+                        <a href="{{ route('transactionListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('transactionListPage') ? 'text-accent' : '' }}">
                             @lang('navbar.nav_order')
                         </a>
                         @endauth
                         @auth('restaurant')
-                        <a href="{{ route('orderListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('orderListPage') ? 'text-accent' : '' }}">
+                        <a href="{{ route('orderListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('orderListPage') ? 'text-accent' : '' }}">
                             @lang('navbar.nav_inOrder')
                         </a>
                         @endauth
@@ -118,7 +122,7 @@
                                     <line x1="2" y1="12" x2="22" y2="12" />
                                     <path d="M12 2a15.3 15.3 0 0 1 0 20a15.3 15.3 0 0 1 0-20" />
                                 </svg>
-                                <span>{{ session()->get('locale') }}</span>
+                                <span>{{ (session()->get('locale') == 'en') ? 'EN' : 'ID' }}</span>
                             </div>
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -179,7 +183,7 @@
                     @endauth
                     @guest('restaurant')
                     @guest('customer')
-                    <ul class="flex gap-2 md:gap-4">
+                    <ul class="flex items-center gap-2 md:gap-4">
                         <li class="border hover:border-accent py-1 px-6 rounded-full hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500">
                             <a href="{{ route('loginPage') }}">@lang('navbar.nav_login')</a>
                         </li>
