@@ -23,7 +23,7 @@ class CheckRole
         if($role === 'customer' && Auth::guard($role)->check()) {
             //do nothing
         }else{
-            return redirect()->route('403');
+            return redirect()->route('forbiddenPage');
         }
         return $next($request);
     }
