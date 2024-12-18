@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->date('end');
+            $table->dateTime('end');
             $table->string('status');
             $table->string('desc');
             $table->integer('percent');
             $table->integer('max_disc');
-            $table->foreignId('restaurant_id')->constraint('restaurants')->cascadeOnUpdate()->cascadeOnDelete();;
+            $table->integer('min_spend');
+            $table->foreignUuid('restaurant_id')->constraint('restaurants')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

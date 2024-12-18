@@ -9,9 +9,14 @@
   </a>
   <h1 class="text-center p-4 font-bold text-3xl text-primary">Detail Pemesanan</h1>
   <div class="rounded-lg border border-black bg-white h-1/2 px-16 py-10 flex flex-col">
-    <div class="flex items-center gap-10 mb-14">
-      <img class="w-[15%] h-[15%]" src="{{ ($transaction->details->first()->product->restaurant->image) ? $transaction->details->first()->product->restaurant->image : asset('img/rest_avatar.png') }}" alt="">
-      <span class="text-3xl font-bold">{{ $transaction->details->first()->product->restaurant->name }}</span>
+    <div class="flex justify-between items-start">
+      <div class="flex items-center gap-10 mb-14">
+        <img class="w-[50%] h-[100%]" src="{{ ($transaction->details->first()->product->restaurant->image) ? $transaction->details->first()->product->restaurant->image : asset('img/rest_avatar.png') }}" alt="">
+        <span class="text-3xl font-bold">{{ $transaction->details->first()->product->restaurant->name }}</span>
+      </div>
+      <div class="{{ $transaction->status == 'Unpaid' ? 'text-red-500' : 'text-green-500' }} flex items-center justify-end w-1/4 rounded-lg p-4 gap-2 }}">
+        <span class="text-2xl font-bold">{{ $transaction->status }}</span>
+      </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
       @foreach ($transaction->details as $item)

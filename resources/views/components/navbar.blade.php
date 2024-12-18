@@ -40,8 +40,13 @@
                     Promo
                 </a>
                 @auth('customer')
-                <a href="{{ route('transactionListPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('about-us') ? 'text-accent' : '' }}">
+                <a href="{{ route('transactionListPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('transactionListPage') ? 'text-accent' : '' }}">
                     Riwayat Pesanan
+                </a>
+                @endauth
+                @auth('restaurant')
+                <a href="{{ route('orderListPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('orderListPage') ? 'text-accent' : '' }}">
+                    Pesanan Masuk
                 </a>
                 @endauth
           </ul>

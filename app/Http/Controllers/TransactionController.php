@@ -94,4 +94,13 @@ class TransactionController extends Controller
 
         return redirect()->back()->with('success', 'Pembayaran berhasil dilakukan, silahkan menunggu konfirmasi dari restoran');
     }
+
+    public function orderList()
+    {
+        $transactions = TransactionHeader::with(['customer', 'details.product.restaurant'])
+                        ->where('status', '!=', 'Unpaid')
+                        ->get();
+
+        return view('pages.orderList', compact('transactions'));
+    }
 }
