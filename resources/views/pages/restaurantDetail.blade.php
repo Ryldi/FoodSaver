@@ -1,15 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="min-h-screen py-24 bg-neutral px-10 md:px-50">
-    <header class="text-2xl font-bold text-center mt-20 md:mt-10">{{ $restaurant->name }}</header>
+    <header class="text-2xl font-bold text-center mt-20 md:mt-10">
+        @lang('restaurantDetail.header_title', ['restaurant_name' => $restaurant->name])
+    </header>
     <div class="flex flex-col md:flex-row justify-center items-center my-10 gap-16">
         <div class="md:w-2/3">
             <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-full h-auto">
         </div>
         <div class="md:w-2/3">
-            <span>{{ $restaurant->description }}</span>
+            <span>@lang('restaurantDetail.description')</span>
+            <p>{{ $restaurant->description }}</p>
             <div class="pt-5 flex flex-col md:flex-row gap-10">
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
@@ -28,7 +30,13 @@
                           stroke-width="1.5"
                         />
                     </svg>
-                    <span class="text-sm">{{ $restaurant->name }}, {{ $restaurant->subdistrict }}. {{ $restaurant->city }}</span>
+                    <span class="text-sm">
+                        @lang('restaurantDetail.location', [
+                            'restaurant_name' => $restaurant->name,
+                            'subdistrict' => $restaurant->subdistrict,
+                            'city' => $restaurant->city
+                        ])
+                    </span>
                 </div>
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
@@ -39,14 +47,14 @@
                           stroke-width="2"
                         />
                     </svg>
-                    <span>{{ $restaurant->rating }}</span>
+                    <span>@lang('restaurantDetail.rating'): {{ $restaurant->rating }}</span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="text-2xl font-bold mt-8 mb-3">Produk Tersedia</div>
+        <div class="text-2xl font-bold mt-8 mb-3">@lang('restaurantDetail.available_products')</div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           @foreach ($products as $item)
           <div class="">
