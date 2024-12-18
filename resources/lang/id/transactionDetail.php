@@ -17,3 +17,5 @@ return [
     'address' => 'Alamat',
     'map' => 'Peta Lokasi',
 ];
+
+?>

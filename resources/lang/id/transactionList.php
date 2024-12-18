@@ -12,3 +12,5 @@ return [
     'prepared' => 'Sedang Disiapkan',
     'completed' => 'Sudah Selesai'
 ];
+
+?>

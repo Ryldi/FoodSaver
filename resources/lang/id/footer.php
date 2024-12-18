@@ -7,3 +7,5 @@ return [
     'terms_conditions' => 'Syarat dan Ketentuan',
     'follow_us' => 'Ikuti Kami',
 ];
+
+?>

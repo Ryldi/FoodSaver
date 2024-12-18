@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="container mx-auto p-6 pt-32 ">
-    <h2 class="text-2xl font-semibold text-center mb-6">Produk Tersedia</h2>
+    <h2 class="text-2xl font-semibold text-center mb-6">@lang('manageProduct.available_products')</h2>
     <!-- Tombol Tambah Produk -->
     <button data-modal-target="add-product" data-modal-toggle="add-product" class="block text-white bg-accent hover:bg-white hover:text-accent border hover:border-accent transition-all duration-500 font-medium rounded-lg text-xs px-5 py-2.5 text-center mb-5" type="button">
-        Tambah Produk +
+        @lang('manageProduct.add_product')
     </button>
 
     <!-- Tabel Produk -->
@@ -14,12 +14,12 @@
         <table class="min-w-full bg-white rounded-md shadow-md border border-gray-300">
             <thead class="bg-accent">
                 <tr>
-                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Gambar Produk</th>
-                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Nama Menu</th>
-                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Harga</th>
-                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Stock</th>
-                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Tampilkan</th>
-                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">Aksi</th>
+                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">@lang('manageProduct.product_image')</th>
+                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">@lang('manageProduct.menu_name')</th>
+                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">@lang('manageProduct.price')</th>
+                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">@lang('manageProduct.stock')</th>
+                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">@lang('manageProduct.show')</th>
+                    <th class="px-4 py-2 text-center text-sm font-semibold text-white border-b border-gray-300">@lang('manageProduct.action')</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="butt" stroke-linejoin="round" stroke-width="2" d="M12 20h9M13 5l7 7-5 5-7-7 5-5z"></path>
                             </svg>
-                            <span class="text-xs">Ubah</span>
+                            <span class="text-xs">@lang('manageProduct.change')</span>
                         </button>
                         @include('components.editProductModal', ['product' => $item])
 
@@ -57,7 +57,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="butt" stroke-linejoin="round" stroke-width="2" d="M19 7H5M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 7h16l-1 14H5L4 7z"></path>
                             </svg>
-                            <span class="text-xs">Hapus</span>
+                            <span class="text-xs">@lang('manageProduct.delete')</span>
                         </button>
 
                         @include('components.deleteProductModal', ['product' => $item])

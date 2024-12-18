@@ -14,7 +14,7 @@
         </button>
     </div>
     <p class="text-primary font-semibold text-3xl mt-2">{{ Auth::guard('restaurant')->user()->name }}</p>
-    <p class="text-accent">Bergabung sejak {{ Auth::guard('restaurant')->user()->created_at->format('F Y') }}</p>
+    <p class="text-accent">@lang('restaurantProfile.joined') {{ Auth::guard('restaurant')->user()->created_at->format('F Y') }}</p>
 </div>
 
 {{-- Info and Address Section --}}
@@ -24,48 +24,48 @@
         {{-- Information Card (Kiri) --}}
         <div class="bg-white shadow-md rounded-lg p-4 md:p-6">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold">Informasi</h2>
+                <h2 class="text-2xl font-bold">@lang('restaurantProfile.information')</h2>
                 <button id="ubahAlamatBtn" class="flex items-center bg-accent text-white py-1 px-4 rounded-lg hover:bg-accent-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4l4 4-9 9H4v-4L16 4z"/>
                     </svg>
-                    Ubah Alamat
+                    @lang('restaurantProfile.change_address')
                 </button>
             </div>
             <div class="space-y-4">
                 <div class="flex justify-between items-center border-b pb-2">
-                    <p class="text-primary">Nama Lengkap</p>
+                    <p class="text-primary">@lang('restaurantProfile.full_name')</p>
                     <p class="text-primary font-medium">{{ Auth::guard('restaurant')->user()->address }}</p>
                 </div>
                 <div class="flex justify-between items-center border-b pb-2">
-                    <p class="text-primary">Email</p>
+                    <p class="text-primary">@lang('restaurantProfile.email')</p>
                     <p class="text-primary font-medium">{{ Auth::guard('restaurant')->user()->email }}</p>
                 </div>
                 <div class="flex justify-between items-center border-b pb-2">
-                    <p class="text-primary">Nomor HP</p>
+                    <p class="text-primary">@lang('restaurantProfile.phone_number')</p>
                     <p class="text-primary font-medium">{{ Auth::guard('restaurant')->user()->phone }}</p>
                 </div>
                 <div class="flex justify-between items-center border-b pb-2">
-                    <p class="text-primary">Bergabung</p>
+                    <p class="text-primary">@lang('restaurantProfile.joined')</p>
                     <p class="text-primary font-medium">{{ Auth::guard('restaurant')->user()->created_at->format('d F Y') }}</p>
                 </div>
                 <div class="mt-6 flex flex-col gap-3">
-                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="w-full bg-accent  text-white py-2 rounded-lg hover:bg-accent-hover">
-                        Ubah Password
+                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="w-full bg-accent text-white py-2 rounded-lg hover:bg-accent-hover">
+                        @lang('restaurantProfile.change_password')
                     </button>
                     <form action="{{ route('logout') }}" method="POST" class="mt-4">
                         @csrf
                         <button type="submit" class="w-full bg-red text-white py-2 rounded-lg hover:bg-red-hover">
-                            Keluar
+                            @lang('restaurantProfile.logout')
                         </button>
                     </form>
                 </div>
             </div>
         </div>
 
-        {{-- Address Section (Kanan) --}}
+        {{-- Address Section --}}
         <div class="bg-white shadow-md rounded-lg p-4 md:p-6">
-            <h2 class="text-2xl font-bold mb-4">Alamat</h2>
+            <h2 class="text-2xl font-bold mb-4">@lang('restaurantProfile.address')</h2>
             <iframe
                 src="https://maps.google.com/maps?q={{ urlencode(Auth::guard('restaurant')->user()->street) }}+Kec.+{{ urlencode(Auth::guard('restaurant')->user()->subdistrict) }},+Kota+{{ urlencode(Auth::guard('restaurant')->user()->city) }},+{{ urlencode(Auth::guard('restaurant')->user()->province) }}+{{ urlencode(Auth::guard('restaurant')->user()->postal_code) }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
@@ -79,58 +79,11 @@
             <div class="flex items-center space-x-2 mt-4">
                 <svg class="w-[48px] h-[48px] text-accent dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
-                </svg>                                                
+                </svg>                                                 
                 <p class="text-primary">
                     {{ Auth::guard('restaurant')->user()->street }}, Kec. {{ Auth::guard('restaurant')->user()->subdistrict }}, Kota {{ Auth::guard('restaurant')->user()->city }}, {{ Auth::guard('restaurant')->user()->province }} {{ Auth::guard('restaurant')->user()->postal_code }}
                 </p>
             </div>
-        </div>
-    </div>
-</div>
-
-@include('components.changeImageProfileModal', ['route' => 'updateProfileImageRestaurant'])
-    
-{{-- Change Address Modal --}}
-<div id="ubahAlamatModal" class="hidden">
-    <div class="fixed z-50 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white rounded-lg w-96 p-6">
-            <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
-            <form id="ubahAlamatForm" action="{{ route('updateAddress') }}" method="POST">
-                @csrf
-                @method('PUT')
-                <!-- Nama Jalan -->
-                <div class="mb-4">
-                    <label for="nama_jalan" class="block text-primary font-medium">Nama Jalan</label>
-                    <input id="nama_jalan" name="nama_jalan" type="text" value="{{ Auth::guard('restaurant')->user()->street }}" class="w-full p-2 border border-gray-300 rounded-md">
-                </div>
-                <!-- Kecamatan -->
-                <div class="mb-4">
-                    <label for="kecamatan" class="block text-primary font-medium">Kecamatan</label>
-                    <input id="kecamatan" name="kecamatan" type="text" value="{{ Auth::guard('restaurant')->user()->subdistrict }}" class="w-full p-2 border border-gray-300 rounded-md">
-                </div>
-                <!-- Kota -->
-                <div class="mb-4">
-                    <label for="kota" class="block text-primary font-medium">Kota</label>
-                    <input id="kota" name="kota" type="text" value="{{ Auth::guard('restaurant')->user()->city }}" class="w-full p-2 border border-gray-300 rounded-md">
-                </div>
-                <!-- Provinsi -->
-                <div class="mb-4">
-                    <label for="provinsi" class="block text-primary font-medium">Provinsi</label>
-                    <input id="provinsi" name="provinsi" type="text" value="{{ Auth::guard('restaurant')->user()->province }}" class="w-full p-2 border border-gray-300 rounded-md">
-                </div>
-                <!-- Kode Pos -->
-                <div class="mb-4">
-                    <label for="kode_pos" class="block text-primary font-medium">Kode Pos</label>
-                    <input id="kode_pos" name="kode_pos" type="text" value="{{ Auth::guard('restaurant')->user()->postal_code }}" class="w-full p-2 border border-gray-300 rounded-md">
-                </div>
-                <!-- Pesan Wajib -->
-                <p id="error-message" class="text-red-500 text-sm mt-2 hidden">* Semua field wajib diisi</p>
-                <!-- Action Buttons -->
-                <div class="flex justify-end space-x-4 mt-4">
-                    <button type="button" class="bg-gray-300 hover:bg-white border hover:border-primary text-primary py-2 px-4 rounded-md transition-all duration-500" id="closeModalBtn">Batal</button>
-                    <button type="submit" class="bg-accent hover:bg-white border hover:border-accent hover:text-accent text-white py-2 px-4 rounded-md transition-all duration-500">Simpan</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>

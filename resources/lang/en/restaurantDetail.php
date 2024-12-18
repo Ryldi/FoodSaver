@@ -8,4 +8,5 @@ return [
     'available_products' => 'Available Products',
 ];
 
+?>
 

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="min-h-screen bg-neutral py-28 md:py-24 font-poppins">
-    <h1 class="text-center p-4 font-semibold text-4xl">Keranjang</h1>
+    <h1 class="text-center p-4 font-semibold text-4xl">@lang('cart.cart')</h1>
     <div class="flex flex-col gap-4 p-4">
         @foreach ($carts as $item)
         <div class="rounded-lg border border-black bg-white h-1/2 p-4">
@@ -17,12 +17,12 @@
                     @endforeach
                 </div>
                 <div class="flex justify-between">
-                    <h2 class="font-semibold text-2xl">Total ({{ $item['carts']->sum('quantity') }} items)</h2>
+                    <h2 class="font-semibold text-2xl">@lang('cart.total_items', ['count' => $item['carts']->sum('quantity')])</h2>
                     <h2 class="font-semibold text-2xl">Rp {{ number_format($item['total_price'], 0, ',', '.') }},00</h2>
                 </div>
                 <hr class="w-full h-1 bg-black">
                 <button data-modal-target="select-modal-{{ $item['restaurant']->id }}" data-modal-toggle="select-modal-{{ $item['restaurant']->id }}" class="flex justify-between text-white bg-tertiary hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                    <span>Promo Voucher</span> 
+                    <span>@lang('cart.promo_voucher')</span> 
                     <span>&gt;&gt;&gt;</span>
                 </button>
                 @include('components.cart_coupon_modal', ['cart' => $item])
@@ -31,7 +31,7 @@
                     <input type="hidden" name="restaurant_id" value="{{ $item['restaurant']->id }}">
                     <input type="hidden" name="total_price" value="{{ $item['total_price'] }}">
                     <button type="submit" class="bg-tertiary text-white ml-auto py-4 px-8 rounded-xl hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500">
-                    Checkout
+                        @lang('cart.checkout')
                     </button>
                 </form>
             </div>
@@ -47,7 +47,6 @@
         margin: 0; 
     }
 </style>
-
 
 <script>
     function updateQuantity(action, product_id) {

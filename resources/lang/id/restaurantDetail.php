@@ -8,4 +8,6 @@ return [
     'available_products' => 'Produk Tersedia',
 ];
 
+?>
+
 
