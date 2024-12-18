@@ -10,11 +10,11 @@
 <body class="bg-neutral overflow-hidden">
     @include('components.toast')
     <div class="flex flex-row h-screen">
-        <div class="w-1/2 flex">
-            <div class="flex flex-col gap-6  mx-auto my-10 items-center">
+        <div class="w-full md:w-1/2 flex">
+            <div class="flex flex-col gap-6 mx-auto my-10 items-center">
                 <div class="flex flex-col gap-2">
-                    <h1 class="text-5xl text-primary font-semibold text-center">Masuk</h1>
-                    <p class="text-davy font-medium text-2xl text-center">Halo, silahkan masuk menggunakan akun anda</p>
+                    <h1 class="text-3xl md:text-5xl text-primary font-semibold text-center">Masuk</h1>
+                    <p class="text-davy font-medium text-xl md:text-2xl text-center">Halo, silahkan masuk menggunakan akun anda</p>
                 </div>
                 {{-- <div class="border-b border-gray-200">
                     <ul class="flex flex-wrap gap-2 -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300" role="tablist">
@@ -103,14 +103,14 @@
                         </p>
                     </button>
                 </div>
-                <p class="mt-6 text-center text-davy">
+                <p class="mt-2 md:mt-6 text-center text-davy">
                     Belum Punya Akun? 
                     <a href="{{ route('registerPage') }}" class="text-tertiary hover:text-blue-700 font-medium">Registrasi</a>
                 </p>
             </div>
         </div>
-        <div class="w-1/2">
-            <img src="{{ asset('img/auth/loginBG.png') }}" class="" alt="Login Background">
+        <div class="md:w-1/2">
+            <img src="{{ asset('img/auth/loginBG.png') }}" class="hidden md:block" alt="Login Background">
         </div>
     </div>
 </body>

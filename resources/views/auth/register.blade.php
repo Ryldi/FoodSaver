@@ -9,15 +9,15 @@
 </head>
 <body class="bg-neutral overflow-hidden">
     <div class="flex flex-row h-screen items-center justify-center">
-        <div class="w-1/2">
-            <img src="{{ asset('img/auth/registerBG.png') }}" class="h-full object-cover" alt="Register Background">
+        <div class="md:w-1/2">
+            <img src="{{ asset('img/auth/registerBG.png') }}" class="hidden md:block md:h-full md:object-cover" alt="Register Background">
         </div>
-        <div class="w-1/2 flex">
-            <div class="flex flex-col gap-2 mx-auto my-10 items-center">
+        <div class="w-full md:w-1/2 flex">
+            <div class="flex flex-col gap-2 min-w-72 mx-auto my-10 items-center">
                 <div class="flex flex-col gap-2 mx-auto items-center">
                     <div class="flex flex-col gap-2">
-                        <h1 class="text-5xl text-primary font-semibold text-center">Registrasi</h1>
-                        <p class="text-davy font-medium text-2xl text-center">Halo, silahkan registrasi akun anda</p>
+                        <h1 class="text-2xl md:text-4xl text-primary font-semibold text-center">Registrasi</h1>
+                        <p class="text-davy font-medium text-md md:text-lg text-center">Halo, silahkan registrasi akun anda</p>
                     </div>  
                 </div>
                 <div class="border-b border-gray-200">
@@ -42,7 +42,7 @@
                 </div>
                 <div id="default-styled-tab-content" class="w-full">
                     <div class="flex items-center justify-center rounded-lg" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-5/6 gap-4 mt-4 justify-center">
+                        <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-5/6 gap-4 mt-2 justify-center">
                             @csrf
                             <input type="text" class="hidden" name="userType" value="customer">
                             <div class="flex flex-row gap-2">
@@ -73,17 +73,17 @@
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" type="submit">
+                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-xl md:text-2xl py-1 px-10 rounded-xl" type="submit">
                                 Registrasi
                             </button>
                         </form>
                     </div>
                     <div class="flex items-center justify-center rounded-lg" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                        <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-8 justify-center">
+                        <form action="{{ route('sendOtp') }}" method="POST" class="flex flex-col w-full gap-3 justify-center">
                             @csrf
                             <input type="text" class="hidden" name="userType" value="restaurant">
                             <div class="flex flex-row gap-8">
-                                <div class="flex flex-col gap-4">
+                                <div class="flex flex-col gap-3">
                                     <div class="flex flex-row gap-2">
                                         <img src="{{ asset('img/auth/data-filled.png') }}" class="w-1/12" alt="">
                                         <p class="font-extrabold text-primary">Data Restoran</p>
@@ -91,25 +91,25 @@
                                     <div>
                                         <input type="text" id="restaurant_name" class=" rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Lengkap" name="restaurant_name" value="{{ old('restaurant_name') }}">
                                         @error('restaurant_name')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="restaurant_email" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Email" name="restaurant_email" value="{{ old('restaurant_email') }}">
                                         @error('restaurant_email')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="password" id="restaurant_password" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kata Sandi" name="restaurant_password">
                                         @error('restaurant_password')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="restaurant_phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="restaurant_phone" value="{{ old('restaurant_phone') }}">
                                         @error('restaurant_phone')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
@@ -119,11 +119,11 @@
                                             <option value="Makanan Cepat Saji">Fast Food</option>
                                         </select>
                                         @error('restaurant_category')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="flex flex-col gap-4">
+                                <div class="flex flex-col gap-3">
                                     <div class="flex flex-row gap-2">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -135,36 +135,36 @@
                                     <div>
                                         <input type="text" id="restaurant_street" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nama Jalan" name="restaurant_street" value="{{ old('restaurant_street') }}">
                                         @error('restaurant_street')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="restaurant_province" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Provinsi" name="restaurant_province" value="{{ old('restaurant_province') }}">
                                         @error('restaurant_province')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="restaurant_city" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kota" name="restaurant_city" value="{{ old('restaurant_city') }}">
                                         @error('restaurant_city')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="restaurant_subdistrict" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kecamatan" name="restaurant_subdistrict" value="{{ old('restaurant_subdistrict') }}">
                                         @error('restaurant_subdistrict')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
                                         <input type="text" id="restaurant_postal_code" class="shadow appearance-none border rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Kode Pos" name="restaurant_postal_code" value="{{ old('restaurant_postal_code') }}">
                                         @error('restaurant_postal_code')
-                                            <p class="mx-2 text-red-600">{{ $message }}</p>
+                                            <p class="mx-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
-                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-2xl py-1 px-10 rounded-xl" type="submmit">
+                            <button class="bg-accent hover:bg-opacity-90 text-white font-semibold text-md md:text-lg py-1 px-10 rounded-xl" type="submmit">
                                 Registrasi
                             </button>
                         </form>
@@ -175,21 +175,21 @@
                     <span class="text-davy mx-2">Atau</span>
                     <hr class="w-full border-t border-black">
                 </div>
-                <div class="flex flex-col gap-4 justify-around w-4/6">
-                    <button class="flex flex-row bg-neutral-light border border-black justify-center py-1 px-4 rounded-xl focus:outline-none focus:shadow-outline" type="button">
+                <div class="flex flex-col gap-3 justify-around w-4/6">
+                    <button class="flex flex-row bg-neutral-light border border-black justify-center py-1 px-2 rounded-xl focus:outline-none focus:shadow-outline" type="button">
                         <p>Login With </p>
                         <p class="font-bold ml-1">
                             Google 
                         </p>
                     </button>
-                    <button class="flex flex-row bg-neutral-light border border-black justify-center py-1 px-4 rounded-xl focus:outline-none focus:shadow-outline" type="button">
+                    <button class="flex flex-row bg-neutral-light border border-black justify-center py-1 px-2 rounded-xl focus:outline-none focus:shadow-outline" type="button">
                         <p>Login With </p>
                         <p class="font-bold ml-1">
                             Facebook
                         </p>
                     </button>
                 </div>
-                <p class="mt-4 text-center text-davy">
+                <p class="text-center text-davy">
                     Sudah Punya Akun? 
                      <a href="{{ route('loginPage') }}" class="text-tertiary hover:text-blue-700 font-medium">Masuk</a>
                 </p>
