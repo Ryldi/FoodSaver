@@ -1,6 +1,6 @@
 <div class="col-span-2 xl:col-span-1 w-full bg-neutral-light border border-black rounded-lg shadow-md flex flex-col md:flex-row">
     <div class="w-full bg-neutral-light border border-black rounded-lg shadow-md flex flex-col md:flex-row">
-        <div class="md:w-1/4">
+        <div class="w-auto h-auto">
             <div class="flex flex-col items-center justify-center w-full bg-red-500 text-white rounded-l-lg p-4 gap-2">
                 <img src="{{ ($item->restaurant->image) ? $item->restaurant->image : asset('img/rest_avatar.png') }}" class="rounded-full w-auto h-16" alt="">
                 <div class="text-center md:ml-4">
@@ -29,7 +29,7 @@
                     <form action="{{ route('claimCoupon', ['id' => $item->id]) }}" method="POST">
                         @csrf
                         <button class="flex-shrink-0 gap-1 z-10 inline-flex items-center py-1.5 px-6 text-sm font-medium text-center text-neutral-light bg-accent border border-gray-300 rounded-lg focus:ring-4 focus:outline-none hover:bg-accent-hover" type="submit">
-                            Claim &gt;
+                            Claim <span>&gt;</span>
                         </button>
                     </form>
                 </div>
