@@ -103,4 +103,20 @@ class TransactionController extends Controller
 
         return view('pages.orderList', compact('transactions'));
     }
+
+    public function prepareOrder($id) {
+        $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
+        $transaction->status = 'Prepared';
+        $transaction->save();
+
+        return redirect()->back()->with('success', 'Status produk berhasil diperbarui, silahkan siapkan pesanan milik pelanggan');
+    }
+
+    public function completeOrder($id) {
+        $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
+        $transaction->status = 'Completed';
+        $transaction->save();
+
+        return redirect()->back()->with('success', 'Pesanan berhasil diselesaikan');
+    }
 }

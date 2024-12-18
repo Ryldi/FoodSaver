@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -88,5 +89,34 @@ class RestaurantController extends Controller
         }
 
         return redirect()->back()->with('error', 'Password gagal diperbarui');
+    }
+
+    public function getAllRestaurant() 
+    {
+        $restaurants = Restaurant::with('category')->paginate(1);
+        $categories = Category::all();
+        return view('pages.restaurantList', compact('restaurants', 'categories'));
+    }
+
+    public function getByCategory($id)
+    {
+        $restaurants = Restaurant::with('category')->where('category_id', $id)->paginate(1);
+        $categories = Category::all();
+        $selectedCategory = Category::find($id);
+        return view('pages.restaurantList', compact('restaurants', 'categories', 'selectedCategory'));
+    }
+
+    public function sortRestaurant()
+    {
+        $restaurants = Restaurant::with('category')->orderBy('rating', 'desc')->paginate(1);
+        $categories = Category::all();
+        return view('pages.restaurantList', compact('restaurants', 'categories'));
+    }
+
+    public function searchRestaurant(Request $request)
+    {
+        $restaurants = Restaurant::with('category')->where('name', 'like', '%' . $request->query('search') . '%')->paginate(1);
+        $categories = Category::all();
+        return view('pages.restaurantList', compact('restaurants', 'categories'));
     }
 }

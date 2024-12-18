@@ -7,11 +7,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OTPController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CouponController;
+use App\Models\Restaurant;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -31,7 +31,12 @@ Route::get('/policy', function(){
     return view('pages.policy');
 })->name('policy');
 
-Route::get('/categoryDetail/{id}', [CategoryController::class, 'index'])->name('categoryPage');
+Route::get('/restaurant', [RestaurantController::class, 'getAllRestaurant'])->name('restaurantPage');
+Route::get('/category/{id}', [RestaurantController::class, 'getByCategory'])->name('restaurantFilter');
+Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
+Route::get('/restaurantSort', [RestaurantController::class, 'sortRestaurant'])->name('restaurantSort');
+Route::get('/restaurantSearch', [RestaurantController::class, 'searchRestaurant'])->name('searchRestaurant');
+
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -60,11 +65,6 @@ Route::delete('/deleteProduct/{id}', [ProductController::class, 'deleteProduct']
 Route::put('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
 Route::put('/editProduct', [ProductController::class, 'editProduct'])->name('editProduct');
 
-Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
-
-
-
-
 Route::get('orderList', [TransactionController::class, 'orderList'])->name('orderListPage');
 
 Route::get('cart', [CartController::class, 'index'])->name('cartPage');
@@ -76,6 +76,9 @@ Route::post('/checkout', [TransactionController::class, 'checkout'])->name('chec
 
 Route::get('/transactionList', [TransactionController::class, 'index'])->name('transactionListPage');
 Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
+
+Route::put('/prepareOrder/{id}', [TransactionController::class, 'prepareOrder'])->name('prepareOrder');
+Route::put('/completeOrder/{id}', [TransactionController::class, 'completeOrder'])->name('completeOrder');
 
 Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
 

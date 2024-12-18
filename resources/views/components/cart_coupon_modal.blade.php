@@ -18,7 +18,7 @@
             <!-- Modal body -->
             <div class="p-4 md:p-5">
                 <p class="text-gray-500 dark:text-gray-400 mb-4">Pilih voucher yang ingin digunakan:</p>
-                <ul class="space-y-4 mb-4">
+                <ul class="space-y-4 mb-4 max-h-96 overflow-y-auto">
                     @foreach ($cart['coupons'] as $coupon)
                     <li>
                         <input type="radio" id="job-{{ $coupon->id }}" name="job-{{ $coupon->id }}" value="{{ $coupon->id }}" class="hidden peer" required />

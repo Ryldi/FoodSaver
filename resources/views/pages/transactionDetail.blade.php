@@ -14,8 +14,24 @@
         <img class="w-[50%] h-[100%]" src="{{ ($transaction->details->first()->product->restaurant->image) ? $transaction->details->first()->product->restaurant->image : asset('img/rest_avatar.png') }}" alt="">
         <span class="text-3xl font-bold">{{ $transaction->details->first()->product->restaurant->name }}</span>
       </div>
-      <div class="{{ $transaction->status == 'Unpaid' ? 'text-red-500' : 'text-green-500' }} flex items-center justify-end w-1/4 rounded-lg p-4 gap-2 }}">
+      <div class="{{ $transaction->status == 'Unpaid' ? 'text-red-500' : 'text-green-500' }} flex flex-col items-center justify-end w-1/4 rounded-lg p-4 gap-2 }}">
         <span class="text-2xl font-bold">{{ $transaction->status }}</span>
+        @auth('restaurant')
+        @if ($transaction->status == 'Paid')
+        <form action="{{ route('prepareOrder', ['id' => $transaction->id]) }}" method="POST">
+          @csrf
+          @method('PUT')
+          <button type="submit" class="bg-accent text-white hover:bg-white hover:text-accent border hover:border-accent transition-all duration-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Siapkan Pesanan</button>
+        </form>
+        @endif
+        @if ($transaction->status == 'Prepared')
+        <form action="{{ route('completeOrder', ['id' => $transaction->id]) }}" method="POST">
+          @csrf
+          @method('PUT')
+          <button type="submit" class="bg-accent text-white hover:bg-white hover:text-accent border hover:border-accent transition-all duration-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Selesaikan Pesanan</button>
+        </form> 
+        @endif
+        @endauth
       </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -73,11 +89,13 @@
     </div>
   </div>
   <div class="flex justify-center mt-5">
+    @auth('customer')
     @if ($transaction->status == 'Unpaid')
     <button id="pay-button" class="bg-tertiary text-white ml-auto py-4 px-8 rounded-xl hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500">
       Bayar
     </button>
     @endif
+    @endauth
   </div>
 </div>
 
