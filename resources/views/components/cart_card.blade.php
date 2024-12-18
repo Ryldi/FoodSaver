@@ -1,6 +1,6 @@
 <div class="flex gap-2 flex-col p-4 bg-neutral border border-black rounded-lg shadow">
-    <div class="flex flex-row gap-4">
-        <div class="w-1/2 flex justify-center">
+    <div class="flex flex-col md:flex-row gap-4">
+        <div class="md:w-1/2 flex justify-center">
             <img class="object-cover rounded-xl w-[60%] h-auto" src="{{ $cart->product->image }}" alt="product image" />
         </div>
         <div class="flex flex-col justify-between gap-2">
@@ -12,7 +12,7 @@
             
         </div>
     </div>
-    <div class="flex flex-col md:flex-row justify-between items-center mt-4">
+    <div class="flex justify-between items-center mt-4">
         <form action="{{ route('updateCart') }}" method="POST" id="inputQuantity-{{ $cart->product->id }}">
             @csrf
             @method('PUT')

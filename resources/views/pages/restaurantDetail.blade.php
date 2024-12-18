@@ -5,7 +5,7 @@
 <div class="min-h-screen py-24 bg-neutral px-10 md:px-50">
     <header class="text-2xl font-bold text-center mt-20 md:mt-10">{{ $restaurant->name }}</header>
     <div class="flex flex-col md:flex-row justify-center items-center my-10 gap-16">
-        <div class="md:w-2/3">
+        <div class="">
             <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-full h-auto">
         </div>
         <div class="md:w-2/3">
