@@ -31,6 +31,13 @@ Route::get('/policy', function(){
     return view('pages.policy');
 })->name('policy');
 
+Route::get('/setLang/{locale}', function($locale){
+    if(in_array($locale, ['en', 'id'])){
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('setLanguage');
+
 Route::get('/restaurant', [RestaurantController::class, 'getAllRestaurant'])->name('restaurantPage');
 Route::get('/category/{id}', [RestaurantController::class, 'getByCategory'])->name('restaurantFilter');
 Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');

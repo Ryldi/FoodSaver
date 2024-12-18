@@ -7,9 +7,9 @@
                 <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url('{{ asset('img/hero_carousel/1.jpg') }}'); background-size: cover; background-position: center;">
                     <div class="absolute inset-0 bg-black/60"></div>
                     <div class="relative z-[1] text-white">
-                        <h1 class="text-2xl sm:text-2xl md:text-3xl font-bold w-[80%]">Sisa Tak Terbuang, Rasa Tetap Terjaga</h1>
-                        <p class="text-sm sm:text-sm md:text-md my-3 w-[60%]">Selamatkan makanan berlebih dari toko makanan dengan harga selalu diskon 50% tanpa syarat!</p>
-                        <a type="button" class="text-white text-sm md:text-base bg-accent hover:bg-accent-hover rounded-full px-4 py-1 text-center me-2 mb-2 cursor-pointer">Lihat Makanan</a>
+                        <h1 class="text-2xl sm:text-2xl md:text-3xl font-bold w-[80%]">@lang('home.tag_hero_header')</h1>
+                        <p class="text-sm sm:text-sm md:text-md my-3 w-[60%]">@lang('home.tag_hero_description')</p>
+                        <a type="button" class="text-white text-sm md:text-base bg-accent hover:bg-accent-hover rounded-full px-4 py-1 text-center me-2 mb-2 cursor-pointer">@lang('home.btn_view_more')</a>
                     </div>
                     <div class="z-[1]">
                         <img src="{{ asset('img/hero_carousel/hand.png') }}" alt="" width="250">
@@ -21,9 +21,9 @@
                 <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url('{{ asset('img/hero_carousel/2.jpg') }}'); background-size: cover; background-position: center;">
                     <div class="absolute inset-0 bg-black/60"></div>
                     <div class="relative z-[1] text-white">
-                        <h1 class="text-2xl sm:text-2xl md:text-3xl font-bold w-[80%]">Sisa Tak Terbuang, Rasa Tetap Terjaga</h1>
-                        <p class="text-sm sm:text-sm md:text-md my-3 w-[60%]">Selamatkan makanan berlebih dari toko makanan dengan harga selalu diskon 50% tanpa syarat!</p>
-                        <a type="button" class="text-white text-sm md:text-base bg-accent hover:bg-accent-hover rounded-full px-4 py-1 text-center me-2 mb-2 cursor-pointer">Lihat Makanan</a>
+                        <h1 class="text-2xl sm:text-2xl md:text-3xl font-bold w-[80%]">@lang('home.tag_hero_header')</h1>
+                        <p class="text-sm sm:text-sm md:text-md my-3 w-[60%]">@lang('home.tag_hero_description')</p>
+                        <a type="button" class="text-white text-sm md:text-base bg-accent hover:bg-accent-hover rounded-full px-4 py-1 text-center me-2 mb-2 cursor-pointer">@lang('home.btn_view_more')</a>
                     </div>
                     <div class="z-[1]">
                         <img src="{{ asset('img/hero_carousel/hand.png') }}" alt="" width="250">
@@ -35,9 +35,9 @@
                 <div class="relative w-full flex justify-center items-center py-40 px-10" style="background-image: url('{{ asset('img/hero_carousel/3.jpg') }}'); background-size: cover; background-position: center;">
                     <div class="absolute inset-0 bg-black/60"></div>
                     <div class="relative z-[1] text-white">
-                        <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold w-[80%]">Sisa Tak Terbuang, Rasa Tetap Terjaga</h1>
-                        <p class="text-sm sm:text-sm md:text-md my-3 w-[60%]">Selamatkan makanan berlebih dari toko makanan dengan harga selalu diskon 50% tanpa syarat!</p>
-                        <a type="button" class="text-white text-sm md:text-base bg-accent hover:bg-accent-hover rounded-full px-4 py-1 text-center me-2 mb-2 cursor-pointer">Lihat Makanan</a>
+                        <h1 class="text-2xl sm:text-2xl md:text-3xl font-bold w-[80%]">@lang('home.tag_hero_header')</h1>
+                        <p class="text-sm sm:text-sm md:text-md my-3 w-[60%]">@lang('home.tag_hero_description')</p>
+                        <a type="button" class="text-white text-sm md:text-base bg-accent hover:bg-accent-hover rounded-full px-4 py-1 text-center me-2 mb-2 cursor-pointer">@lang('home.btn_view_more')</a>
                     </div>
                     <div class="z-[1]">
                         <img src="{{ asset('img/hero_carousel/hand.png') }}" alt="" width="250">

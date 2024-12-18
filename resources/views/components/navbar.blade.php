@@ -110,7 +110,7 @@
                           <line x1="2" y1="12" x2="22" y2="12" />
                           <path d="M12 2a15.3 15.3 0 0 1 0 20a15.3 15.3 0 0 1 0-20" />
                       </svg>
-                      <span>ID</span>
+                      <span>{{ session()->get('locale') }}</span>
                   </div>
                   <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -120,10 +120,10 @@
           <div id="dropdownLanguage" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                   <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indonesia</a>
+                      <a href="{{ route('setLanguage', 'id') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white {{ (session()->get('locale') == 'id') ? 'text-accent bg-gray-100 dark:bg-gray-600' : '' }}">Indonesia</a>
                   </li>
                   <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</a>
+                      <a href="{{ route('setLanguage', 'en') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white {{ (session()->get('locale') == 'en') ? 'text-accent bg-gray-100 dark:bg-gray-600' : '' }}">English</a>
                   </li>
               </ul>
           </div>
