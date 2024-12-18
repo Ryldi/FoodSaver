@@ -1,10 +1,10 @@
 <div class="min-h-screen bg-neutral px-4 sm:px-6 md:px-10 py-15 pt-24">
   <div class="flex flex-col justify-center items-center gap-6 sm:gap-8 mt-10 sm:mt-20 mx-4 sm:mx-10 lg:mx-28 text-primary">
     <!-- Title -->
-    <h1 class="text-2xl sm:text-3xl font-semibold mt-10">Promo</h1>
+    <h1 class="text-2xl sm:text-3xl font-semibold mt-6">Promo</h1>
 
     <!-- Search Form -->
-    <form class="w-5/6 sm:w-5/6 md:w-4/6 mx-auto">
+    <form class="w-full sm:w-full md:w-full mx-auto">
         <div class="flex flex-col sm:flex-row md:flex-row gap-4">
             <!-- Search Input -->
             <div class="relative w-full md:w-full">
@@ -28,13 +28,17 @@
     <!-- Hero Promo -->
     @include('components.hero_promo')
 
-    <div class="w-full max-w-auto p-4 border-2 border-gray-800 rounded-lg shadow-md bg-neutral-light">
-        <div class="flex flex-col gap-4 md:flex-row md:gap-6">
-            @foreach ($coupons as $item)
+    <div class="w-full max-w-auto p-4 border-2 border-gray-800 rounded-lg shadow-md bg-neutral-light mb-8">
+        <div class="grid grid-cols-2 gap-4 md:flex-row md:gap-6">
+            @forelse ($coupons as $item)
                 @include('components.customer_coupon_card', ['item' => $item])
-            @endforeach
+            @empty
+                <div class="text-center text-gray-500 w-full">
+                    No promo available
+                </div>
+            @endforelse
+            </div>
         </div>
-    </div>
   </div>
 </div>
 
