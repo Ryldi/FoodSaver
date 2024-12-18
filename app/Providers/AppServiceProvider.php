@@ -26,6 +26,5 @@ class AppServiceProvider extends ServiceProvider
     {
         // View::share('categories', Category::all());
         Paginator::useTailwind();
-        
     }
 }
