@@ -2,13 +2,15 @@
 
 @section('content')
 
-<div class="min-h-screen py-24 bg-neutral px-24">
-    <header class="text-2xl font-bold text-center mt-5">{{ $restaurant->name }}</header>
-    <div class="flex justify-center items-center my-10 gap-16">
-        <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-[15%] h-[15%]">
-        <div class="w-[60%]">
+<div class="min-h-screen py-24 bg-neutral px-10 md:px-50">
+    <header class="text-2xl font-bold text-center mt-20 md:mt-10">{{ $restaurant->name }}</header>
+    <div class="flex flex-col md:flex-row justify-center items-center my-10 gap-16">
+        <div class="md:w-2/3">
+            <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-full h-auto">
+        </div>
+        <div class="md:w-2/3">
             <span>{{ $restaurant->description }}</span>
-            <div class="pt-5 flex gap-10">
+            <div class="pt-5 flex flex-col md:flex-row gap-10">
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
                         <path 
@@ -36,7 +38,7 @@
                           stroke="black"
                           stroke-width="2"
                         />
-                      </svg>
+                    </svg>
                     <span>{{ $restaurant->rating }}</span>
                 </div>
             </div>
