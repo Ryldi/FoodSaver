@@ -16,7 +16,8 @@ return [
     'tag_problem_8' => 'Food and Agriculture Report',
     'tag_problem_9' => 'Organization 2023',
 
-    'tag_solution_header' => 'Food Saver is the Solution!',
+    'tag_solution_header1' => 'Food Saver',
+    'tag_solution_header2' => 'is the Solution!',
 
     'tag_solution_subheader_1' => 'Pay cheap, taste is maintained',
     'tag_solution_content_1' => 'All the remaining food that is sold is still fit and clean.',
