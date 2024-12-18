@@ -18,7 +18,7 @@
                                 <h2 class="text-2xl font-bold">@lang('transactionList.restaurant_name', ['restaurant_name' => $item->details->first()->product->restaurant->name])</h2>
                             </div>
                             <hr class="border-t-2 border-black w-full"/>
-                            <div class="flex justify-between items-center">
+                            <div class="flex justify-between items-center gap-8 md:gap-0">
                                 <p class="text-md {{ $item->status == 'Unpaid' ? 'text-red-600/80' : 'text-green-500/80' }}">
                                     @lang('transactionList.' . strtolower($item->status))
                                 </p>
