@@ -13,7 +13,7 @@
 
     @auth('customer')
         <div class="absolute z-[31] w-full">
-            <a href="{{ route('cartPage') }}" class="fixed right-24 top-28">
+            <a href="{{ route('cartPage') }}" class="fixed right-1 md:right-24 top-28">
                 <svg class="hover:scale-110 transition-all duration-500" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 120 120">
                     <rect x="30" y="40" width="60" height="50" rx="10" ry="10" fill="#EAF5EF" stroke="#2D6457" stroke-width="4" />
                     <path d="M40 40 Q40 25 60 25 Q80 25 80 40" fill="none" stroke="#2D6457" stroke-width="4" />
