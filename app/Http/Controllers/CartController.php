@@ -22,7 +22,8 @@ class CartController extends Controller
             return [
                 'restaurant' => $group->first()->product->restaurant,
                 'carts' => $group,
-                'total_price' => $total
+                'total_price' => $total,
+                'coupons' => ($cart->product->restaurant->coupons) ? $cart->product->restaurant->coupons : null //ini masih ngambil coupon restaurant, bukan coupon customer
             ];
         });
         return view('pages.cart', compact('carts'));

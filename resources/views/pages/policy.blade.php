@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="bg-neutral text-primary relative py-10">
+<div class="bg-neutral text-primary relative mt-20 py-10">
     <div class="container mx-auto px-4">
         <h1 class="text-primary text-4xl font-bold text-center mb-8">Kebijakan & Privasi</h1>
         

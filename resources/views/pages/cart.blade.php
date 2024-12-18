@@ -26,7 +26,12 @@
                     <h2 class="font-semibold text-2xl">Rp {{ number_format($item['total_price'], 0, ',', '.') }},00</h2>
                 </div>
                 <hr class="w-full h-1 bg-black">
-                <form action="{{ route('checkout') }}" method="POST" onsubmit="checkout({{ json_encode($item['carts']->toArray()) }})">
+                <button data-modal-target="select-modal-{{ $item['restaurant']->id }}" data-modal-toggle="select-modal-{{ $item['restaurant']->id }}" class="flex justify-between text-white bg-tertiary hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    <span>Promo Voucher</span> 
+                    <span>&gt;&gt;&gt;</span>
+                </button>
+                @include('components.cart_coupon_modal', ['cart' => $item])
+                <form class="flex justify-end" action="{{ route('checkout') }}" method="POST" onsubmit="checkout({{ json_encode($item['carts']->toArray()) }})">
                     @csrf
                     <input type="hidden" name="restaurant_id" value="{{ $item['restaurant']->id }}">
                     <input type="hidden" name="total_price" value="{{ $item['total_price'] }}">

@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CouponController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -61,17 +62,10 @@ Route::put('/editProduct', [ProductController::class, 'editProduct'])->name('edi
 
 Route::get('/restaurant/{id}', [RestaurantController::class, 'index'])->name('restaurantDetailPage');
 
-Route::get('promo', function(){
-    return view('pages.promo');
-})->name('promoPage');
 
-Route::get('myPromo', function(){
-    return view('pages.myPromo');
-})->name('myPromoPage');
 
-Route::get('orderList', function(){
-    return view('pages.orderList');
-})->name('orderListPage');
+
+Route::get('orderList', [TransactionController::class, 'orderList'])->name('orderListPage');
 
 Route::get('cart', [CartController::class, 'index'])->name('cartPage');
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
@@ -84,3 +78,10 @@ Route::get('/transactionList', [TransactionController::class, 'index'])->name('t
 Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
 
 Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
+
+Route::get('/promo', [CouponController::class, 'index'])->name('promoPage');
+Route::get('/myPromo', [CouponController::class, 'myPromo'])->name('myPromoPage');
+Route::post('/addPromo', [CouponController::class, 'add'])->name('addPromo');
+Route::delete('/deletePromo', [CouponController::class, 'delete'])->name('deletePromo');
+Route::put('/updatePromo', [CouponController::class, 'update'])->name('updatePromo');
+Route::post('/claimCoupon/{id}', [CouponController::class, 'claim'])->name('claimCoupon');
