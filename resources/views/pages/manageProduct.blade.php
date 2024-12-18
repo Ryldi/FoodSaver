@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mx-auto p-6 pt-32">
+<div class="container mx-auto p-6 pt-32 ">
     <h2 class="text-2xl font-semibold text-center mb-6">Produk Tersedia</h2>
     <!-- Tombol Tambah Produk -->
     <button data-modal-target="add-product" data-modal-toggle="add-product" class="block text-white bg-accent hover:bg-white hover:text-accent border hover:border-accent transition-all duration-500 font-medium rounded-lg text-xs px-5 py-2.5 text-center mb-5" type="button">
@@ -10,7 +10,7 @@
     </button>
 
     <!-- Tabel Produk -->
-    <div class="overflow-x-auto">
+    <div class="max-w-[100%] overflow-x-auto">
         <table class="min-w-full bg-white rounded-md shadow-md border border-gray-300">
             <thead class="bg-accent">
                 <tr>
@@ -27,7 +27,7 @@
                 <!-- Example Product Data -->
                 <tr class="border-b border-gray-300">
                     <td class="px-4 py-2 text-center border-r border-gray-300">
-                        <img src="{{ $item->image }}" alt="Alcapone" class="h-32 rounded-xl mx-auto" />
+                        <img src="{{ $item->image }}" alt="Alcapone" class="h-16 md:h-32 rounded-xl mx-auto" />
                     </td>
                     <td class="px-4 py-2 text-center text-primary border-r border-gray-300">{{ $item->name }}</td>
                     <td class="px-4 py-2 text-center text-primary border-r border-gray-300">{{ number_format($item->price, 0, ',', '.') }}</td>
