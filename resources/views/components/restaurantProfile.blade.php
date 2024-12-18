@@ -92,7 +92,7 @@
     
 {{-- Change Address Modal --}}
 <div id="ubahAlamatModal" class="hidden">
-    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="fixed z-50 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="bg-white rounded-lg w-96 p-6">
             <h2 class="text-xl font-semibold mb-4">Ubah Alamat</h2>
             <form id="ubahAlamatForm" action="{{ route('updateAddress') }}" method="POST">
