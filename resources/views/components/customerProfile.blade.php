@@ -17,7 +17,7 @@
     <p class="text-accent">Bergabung sejak {{ Auth::guard('customer')->user()->created_at->format('F Y') }}</p>
 </div>
 
-<div class="container gap-6 w-1/2 pb-20">
+<div class="min-w-96 container gap-6 w-1/2 pb-20">
     {{-- Information Card --}}
     <div class="bg-white shadow-md rounded-lg p-4 md:p-6">
         <div class="flex justify-center items-center mb-4">
