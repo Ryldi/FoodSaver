@@ -26,7 +26,7 @@
         <form class="bg-carmine text-white text-xs py-2 px-5 rounded-xl hover:text-carmine hover:bg-transparent border hover:border-carmine transition-all duration-500 text-center" action="{{ route('deleteFromCart', $cart->product->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit">Hapus</button>
+            <button type="submit">@lang('cart_card.btn_delete')</button>
         </form>
     </div>
 </div>

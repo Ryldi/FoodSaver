@@ -5,7 +5,7 @@
                 <img src="{{ ($item->restaurant->image) ? $item->restaurant->image : asset('img/rest_avatar.png') }}" class="rounded-full w-auto h-16" alt="">
                 <div class="text-center md:ml-4">
                     <h2 class="text-3xl font-extrabold">{{ $item->percent }}%</h2>
-                    <p class="text-lg font-semibold">OFF</p>
+                    <p class="text-lg font-semibold">@lang('customer_coupon_card.off')</p>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                     <form action="{{ route('restaurantDetailPage', ['id' => $item->restaurant->id]) }}" method="GET">
                         @csrf
                         <button class="flex-shrink-0 gap-1 z-10 inline-flex items-center py-1.5 px-6 text-sm font-medium text-center text-neutral-light bg-accent border border-gray-300 rounded-lg focus:ring-4 focus:outline-none hover:bg-accent-hover" type="submit">
-                            Use <span class="ml-1">&gt;</span>
+                            @lang('customer_coupon_card.use') <span class="ml-1">&gt;</span>
                         </button>
                     </form>
                 </div>
@@ -29,7 +29,7 @@
                     <form action="{{ route('claimCoupon', ['id' => $item->id]) }}" method="POST">
                         @csrf
                         <button class="flex-shrink-0 gap-1 z-10 inline-flex items-center py-1.5 px-6 text-sm font-medium text-center text-neutral-light bg-accent border border-gray-300 rounded-lg focus:ring-4 focus:outline-none hover:bg-accent-hover" type="submit">
-                            Claim <span>&gt;</span>
+                            @lang('customer_coupon_card.claim') <span>&gt;</span>
                         </button>
                     </form>
                 </div>
@@ -37,8 +37,8 @@
             </div>
             <hr class="border-t-2 border-black w-full my-4" />
             <div class="flex justify-between items-center">
-                <button class="text-sm text-red-600 hover:underline" data-modal-target="promoModal-{{ $item->id }}" data-modal-toggle="promoModal-{{ $item->id }}">Syarat</button>
-                <p class="text-sm text-gray-500">Berakhir {{ $item->end->format('d M Y') }}</p>
+                <button class="text-sm text-red-600 hover:underline" data-modal-target="promoModal-{{ $item->id }}" data-modal-toggle="promoModal-{{ $item->id }}">@lang('customer_coupon_card.terms')</button>
+                <p class="text-sm text-gray-500">@lang('customer_coupon_card.ends') {{ $item->end->format('d M Y') }}</p>
             </div>
         </div>
     </div>

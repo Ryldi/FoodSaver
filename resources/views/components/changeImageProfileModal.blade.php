@@ -13,16 +13,16 @@
                 <form method="POST" action="{{ route($route) }}" enctype="multipart/form-data" class="flex flex-col items-center justify-center w-full h-64 border-2 rounded-lg ">
                     @csrf
                     @method('PUT')
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Profile Picture</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">@lang('changeImageProfileModal.upload_profile_picture')</label>
                     
                     <input class="block w-[80%] text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" required accept=".png, .jpg, .jpeg" name="image">
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG, JPG or JPEG.</p>
-                    <h3 class="mb-5 text-sm font-normal text-red dark:text-gray-400 text-center">Apakah anda yakin ingin mengubah foto profil resto anda?</h3>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">@lang('changeImageProfileModal.file_input_help')</p>
+                    <h3 class="mb-5 text-sm font-normal text-red dark:text-gray-400 text-center">@lang('changeImageProfileModal.confirm_change')</h3>
                     <div class="flex">
                         <button data-modal-hide="popup-modal" type="submit" class="text-white bg-accent hover:bg-white hover:text-accent border hover:border-accent font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center transition-all duration-500">
-                            Ya, ubah
+                            @lang('changeImageProfileModal.yes_change')
                         </button>
-                        <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red rounded-lg border hover:bg-white hover:border-red hover:text-red  focus:z-10 focus:ring-4 transition-all duration-500">Batalkan</button>
+                        <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red rounded-lg border hover:bg-white hover:border-red hover:text-red  focus:z-10 focus:ring-4 transition-all duration-500">@lang('changeImageProfileModal.cancel')</button>
                     </div>
                 </form>
             </div>

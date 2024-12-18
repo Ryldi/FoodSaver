@@ -10,3 +10,5 @@ return [
     'filter_most_buy' => 'Most Bought',
     'category_label' => 'Category:',
 ];
+
+?>

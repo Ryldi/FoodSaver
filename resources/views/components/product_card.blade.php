@@ -20,7 +20,7 @@
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                 </div>
                 <button type="submit" class="bg-tertiary text-white text-xs p-2 rounded-lg hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500">
-                    Tambah ke Keranjang
+                    @lang('product_card.btn_add_to_cart')
                 </button>
             </div>
         </form>

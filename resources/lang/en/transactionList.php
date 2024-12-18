@@ -12,3 +12,5 @@ return [
     'prepared' => 'Prepared',
     'completed' => 'Completed'
 ];
+
+?>

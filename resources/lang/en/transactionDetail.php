@@ -17,3 +17,5 @@ return [
     'address' => 'Address',
     'map' => 'Map Location',
 ];
+
+?>

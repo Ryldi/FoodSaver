@@ -7,3 +7,5 @@ return [
     'terms_conditions' => 'Terms and Conditions',
     'follow_us' => 'Follow Us',
 ];
+
+?>

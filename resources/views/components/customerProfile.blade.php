@@ -14,40 +14,40 @@
         </button>
     </div>
     <p class="text-primary font-semibold text-3xl mt-2">{{ Auth::guard('customer')->user()->name }}</p>
-    <p class="text-accent">Bergabung sejak {{ Auth::guard('customer')->user()->created_at->format('F Y') }}</p>
+    <p class="text-accent">@lang('customerProfile.joined') {{ Auth::guard('customer')->user()->created_at->format('F Y') }}</p>
 </div>
 
 <div class="min-w-96 container gap-6 w-1/2 pb-20">
     {{-- Information Card --}}
     <div class="bg-white shadow-md rounded-lg p-4 md:p-6">
         <div class="flex justify-center items-center mb-4">
-            <h2 class="text-2xl font-bold">Informasi</h2>
+            <h2 class="text-2xl font-bold">@lang('customerProfile.informasi')</h2>
         </div>
         <div class="space-y-4">
             <div class="flex justify-between items-center border-b pb-2">
-                <p class="text-primary">Nama Lengkap</p>
+                <p class="text-primary">@lang('customerProfile.full_name')</p>
                 <p class="text-primary font-medium">{{ Auth::guard('customer')->user()->name }}</p>
             </div>
             <div class="flex justify-between items-center border-b pb-2">
-                <p class="text-primary">Email</p>
+                <p class="text-primary">@lang('customerProfile.email')</p>
                 <p class="text-primary font-medium">{{ Auth::guard('customer')->user()->email }}</p>
             </div>
             <div class="flex justify-between items-center border-b pb-2">
-                <p class="text-primary">Nomor HP</p>
+                <p class="text-primary">@lang('customerProfile.phone_number')</p>
                 <p class="text-primary font-medium">{{ Auth::guard('customer')->user()->phone }}</p>
             </div>
             <div class="flex justify-between items-center border-b pb-2">
-                <p class="text-primary">Bergabung</p>
+                <p class="text-primary">@lang('customerProfile.joined')</p>
                 <p class="text-primary font-medium">{{ Auth::guard('customer')->user()->created_at->format('d F Y') }}</p>
             </div>
             <div class="mt-6 flex flex-col gap-3">
-                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="w-full bg-accent  text-white py-2 rounded-lg hover:bg-accent-hover">
-                    Ubah Password
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="w-full bg-accent text-white py-2 rounded-lg hover:bg-accent-hover">
+                    @lang('customerProfile.change_password')
                 </button>
                 <form action="{{ route('logout') }}" method="POST" class="mt-4">
                     @csrf
                     <button type="submit" class="w-full bg-red text-white py-2 rounded-lg hover:bg-red-hover">
-                        Keluar
+                        @lang('customerProfile.logout')
                     </button>
                 </form>
             </div>
