@@ -9,4 +9,5 @@ return [
     'details' => 'Details',
     'unpaid' => 'Unpaid',
     'paid' => 'Paid',
+    'completed' => 'Completed'
 ];
