@@ -16,7 +16,7 @@
                         <p class="text-sm text-gray-500">{{ $transaction->created_at }}</p>
                     </div>
                     <div class="flex justify-start">
-                        <a href="" class="flex items-center justify-center border hover:border-accent py-2 px-6 rounded-lg hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500 whitespace-nowrap">
+                        <a href="{{ route('transactionPage', ['id' => $transaction->id]) }}" class="flex items-center justify-center border hover:border-accent py-2 px-6 rounded-lg hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500 whitespace-nowrap">
                             Detail
                         </a>
                     </div>
