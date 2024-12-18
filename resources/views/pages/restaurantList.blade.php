@@ -3,7 +3,7 @@
 @section('content')
 <div class="min-h-screen bg-neutral px-4 py-10">
     <div class="flex flex-col justify-center items-center gap-8 mt-20 mx-auto text-primary max-w-screen-lg">
-        <h1 class="text-3xl font-semibold text-center">Restaurant</h1>
+        <h1 class="text-3xl font-semibold text-center mt-6">Restaurant</h1>
         <div class="w-full md:w-4/6 mx-auto">
             <div class="flex items-center justify-center gap-6 w-full">
                 <!-- Search input -->
