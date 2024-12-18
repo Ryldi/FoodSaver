@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="min-h-screen bg-neutral py-28 px-10 font-poppins">
-  <a href="{{ route('transactionListPage') }}">
+  <a href="{{ (Auth::guard('customer')->check()) ? route('transactionListPage') : route('orderListPage') }}">
     <svg class="w-12 h-12 text-primary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
     </svg>      
   </a>
   <h1 class="text-center p-4 font-bold text-3xl text-primary">{{ __('transactionDetail.title') }}</h1>
   <div class="rounded-lg border border-black bg-white h-1/2 px-4 md:px-16 py-10 flex flex-col">
-    <div class="flex flex-col md:flex-row justify-between items-start">
+    <div class="flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start">
       <div class="flex items-center gap-10 mb-6 md:mb-14">
         <img class="w-[50%] h-[100%]" src="{{ ($transaction->details->first()->product->restaurant->image) ? $transaction->details->first()->product->restaurant->image : asset('img/rest_avatar.png') }}" alt="">
         <span class="text-3xl font-bold">{{ $transaction->details->first()->product->restaurant->name }}</span>
       </div>
-      <div class="{{ $transaction->status == 'Unpaid' ? 'text-red-500' : 'text-green-500' }} flex flex-col items-center justify-end w-1/4 rounded-lg p-4 gap-2 }}">
+      <div class="{{ $transaction->status == 'Unpaid' ? 'text-red-500' : 'text-green-500' }} flex items-center justify-end md:w-1/4 rounded-lg p-4 gap-2 }}">
         <span class="text-2xl font-bold">{{ __('transactionDetail.status_'.$transaction->status) }}</span>
         @auth('restaurant')
         @if ($transaction->status == 'Paid')

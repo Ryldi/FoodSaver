@@ -95,3 +95,7 @@ Route::post('/addPromo', [CouponController::class, 'add'])->name('addPromo');
 Route::delete('/deletePromo', [CouponController::class, 'delete'])->name('deletePromo');
 Route::put('/updatePromo', [CouponController::class, 'update'])->name('updatePromo');
 Route::post('/claimCoupon/{id}', [CouponController::class, 'claim'])->name('claimCoupon');
+
+Route::get('/forbidden', function(){
+    return view('auth.403');
+})->name('forbidden');
