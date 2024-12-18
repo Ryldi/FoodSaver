@@ -6,28 +6,28 @@
       <div class="md:flex md:gap-8">
           <ul class="flex md:gap-4">
                 <a href="{{ route('indexPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('indexPage') ? 'text-accent' : '' }} " aria-current="page">
-                Home
+                @lang('navbar.nav_1')
                 </a>
                 <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'text-accent' : '' }}">
                     @auth('restaurant')
-                    <a href="{{ route('manageProductPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('manageProductPage') ? 'text-accent' : '' }}">My Product</a>
+                    <a href="{{ route('manageProductPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('manageProductPage') ? 'text-accent' : '' }}">@lang('navbar.nav_5')</a>
                     @elseif(auth('customer')->check())
                     <a href="{{ route('restaurantPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('restaurantPage') ? 'bg-accent-selected' : '' }}">
-                        Restaurant
+                        @lang('navbar.nav_2')
                     </a>
                     @endauth
                 </div>
                 <a href="{{ route('promoPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
-                    Promo
+                    @lang('navbar.nav_3')
                 </a>
                 @auth('customer')
                 <a href="{{ route('transactionListPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('transactionListPage') ? 'text-accent' : '' }}">
-                    Riwayat Pesanan
+                    @lang('navbar.nav_4')
                 </a>
                 @endauth
                 @auth('restaurant')
                 <a href="{{ route('orderListPage') }}" class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('orderListPage') ? 'text-accent' : '' }}">
-                    Pesanan Masuk
+                    @lang('navbar.nav_6')
                 </a>
                 @endauth
           </ul>
@@ -137,12 +137,12 @@
           <div id="dropdownProfile" class="z-40 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li>
-                  <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                  <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">@lang('navbar.nav_dropdown_profile1')</a>
               </li>
               <li>
                   <form action="{{ route('logout') }}" method="POST" class="block">
                       @csrf
-                      <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                      <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">@lang('navbar.nav_dropdown_profile2')</button>
                   </form>
               </li>
             </ul>
@@ -157,13 +157,13 @@
           </div>
           <div id="dropdownProfile" class="z-40 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-              <li>
-                  <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+              <li></a>
               </li>
+                  <a href="{{ route('profilePage') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">@lang('navbar.nav_dropdown_profile1')
               <li>
                   <form action="{{ route('logout') }}" method="POST" class="block">
                       @csrf
-                      <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                      <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">@lang('navbar.nav_dropdown_profile2')</button>
                   </form>
               </li>
             </ul>
@@ -173,10 +173,10 @@
           @guest('customer')
           <ul class="flex gap-2 md:gap-4">
               <li class="border hover:border-accent py-1 px-6 rounded-full hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500">
-                  <a href="{{ route('loginPage') }}">Masuk</a>
+                  <a href="{{ route('loginPage') }}">@lang('navbar.nav_7')</a>
               </li>
               <li class="border hover:border-accent py-1 px-6 rounded-full hover:text-accent hover:bg-transparent text-white bg-accent transition-all duration-500">
-                  <a href="{{ route('registerPage') }}">Daftar Sekarang</a>
+                  <a href="{{ route('registerPage') }}">@lang('navbar.nav_8')</a>
               </li>
           </ul>
           @endguest

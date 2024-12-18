@@ -16,7 +16,8 @@ return [
     'tag_problem_8' => 'Laporan Food and Agriculture',
     'tag_problem_9' => 'Organization 2023',
 
-    'tag_solution_header' => 'Food Saver menjadi solusinya!',
+    'tag_solution_header1' => 'Food Saver',
+    'tag_solution_header2' => 'menjadi solusinya!',
 
     'tag_solution_subheader_1' => 'Bayar murah, rasa tetap terjaga',
     'tag_solution_content_1' => 'Semua makanan yang tersisa dan dijual masih layak dan bersih.',
