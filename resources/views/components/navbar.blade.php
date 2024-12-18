@@ -1,4 +1,4 @@
-<navbar class="flex justify-center bg-neutral-light border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
+<navbar class="md:flex md:justify-center bg-neutral-light border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
         <a class="flex items-center space-x-3 rtl:space-x-reverse gap-2" href="{{ route('indexPage') }}">
             <img src="{{ asset('img/logo.png') }}" alt="" class="w-40 h-auto">
@@ -14,28 +14,28 @@
                 <div class="md:flex md:gap-8 font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                     <ul class="flex flex-col md:flex-row md:gap-4">
                         <a href="{{ route('indexPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('indexPage') ? 'text-accent' : '' }} " aria-current="page">
-                        Home
+                            @lang('navbar.nav_1')
                         </a>
                         <div class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'text-accent' : '' }}">
                             @auth('restaurant')
-                            <a href="{{ route('manageProductPage') }}" class="flex items-center py-1 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('manageProductPage') ? 'text-accent' : '' }}">My Product</a>
+                            <a href="{{ route('manageProductPage') }}" class="flex items-center py-1 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('manageProductPage') ? 'text-accent' : '' }}">@lang('navbar.nav_5')</a>
                             @elseif(auth('customer')->check())
                             <a href="{{ route('restaurantPage') }}" class="flex items-center py-1 px-4 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('restaurantPage') ? 'bg-accent-selected' : '' }}">
-                                Restaurant
+                                @lang('navbar.nav_2')
                             </a>
                             @endauth
                         </div>
                         <a href="{{ route('promoPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
-                            Promo
+                            @lang('navbar.nav_3')
                         </a>
                         @auth('customer')
                         <a href="{{ route('transactionListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('transactionListPage') ? 'text-accent' : '' }}">
-                            Riwayat Pesanan
+                            @lang('navbar.nav_4')
                         </a>
                         @endauth
                         @auth('restaurant')
                         <a href="{{ route('orderListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('orderListPage') ? 'text-accent' : '' }}">
-                            Pesanan Masuk
+                            @lang('navbar.nav_6')
                         </a>
                         @endauth
                     </ul>
