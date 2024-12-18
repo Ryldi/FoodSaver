@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="min-h-screen bg-white pt-20">
+<div class="min-h-screen bg-white pt-28 md:pt-20">
     @auth('customer')
         @include('components.customerProfile')
     @endauth

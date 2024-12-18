@@ -13,7 +13,7 @@ class TransactionController extends Controller
     public function index()
     {
         // dd(Auth::guard('customer')->user()->id);
-        $transactions = TransactionHeader::with('details.product.restaurant')->where('customer_id', Auth::guard('customer')->user()->id)->get();
+        $transactions = TransactionHeader::with('details.product.restaurant')->where('customer_id', Auth::guard('customer')->user()->id)->orderBy('created_at', 'desc')->get();
         return view('pages.transactionList', compact('transactions'));
     }
     public function checkout(Request $request)
@@ -99,6 +99,7 @@ class TransactionController extends Controller
     {
         $transactions = TransactionHeader::with(['customer', 'details.product.restaurant'])
                         ->where('status', '!=', 'Unpaid')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('pages.orderList', compact('transactions'));

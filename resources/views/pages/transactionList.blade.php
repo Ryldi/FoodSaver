@@ -8,7 +8,7 @@
             @foreach ($transactions as $item)
             <div class="flex bg-neutral flex-col w-full gap-4 my-3">
                 <div class="w-full border border-black rounded-lg shadow-md">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col md:flex-row">
                         <div class="flex items-center justify-center md:w-1/4 rounded-l-lg p-4">
                             <img src="{{ ($item->details->first()->product->restaurant->image) ? $item->details->first()->product->restaurant->image : asset('img/rest_avatar.png') }}" class="rounded-full w-32 h-32" alt="">
                         </div>
