@@ -1,6 +1,6 @@
 <div class="col-span-2 xl:col-span-1 w-full bg-neutral-light border border-black rounded-lg shadow-md">
-    <div class="flex">
-        <div class="flex flex-col items-center justify-center w-1/4 bg-red-500 text-white rounded-l-lg p-4 gap-2">
+    <div class="flex flex-col md:flex-row">
+        <div class="flex flex-col items-center justify-center md:w-1/4 bg-red-500 text-white rounded-l-lg p-4 gap-2">
             <img src="{{ (Auth::guard('restaurant')->user()->image) ? Auth::guard('restaurant')->user()->image : asset('img/rest_avatar.png') }}" class="rounded-full w-auto h-16" alt="">
 
             <div class="text-center">

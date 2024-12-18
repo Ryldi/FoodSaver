@@ -90,7 +90,6 @@ Route::middleware(['CustomerMiddleware'])->group(function () {
     Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
 
     Route::get('/transactionList', [TransactionController::class, 'index'])->name('transactionListPage');
-    Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
 
     Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
 
@@ -106,4 +105,5 @@ Route::middleware(['AuthMiddleware'])->group(function () {
     })->name('profilePage');
 
     Route::get('/promo', [CouponController::class, 'index'])->name('promoPage');
+    Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
 });

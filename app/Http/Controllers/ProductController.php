@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('restaurant_id', Auth::guard('restaurant')->user()->id)->get();
+        $products = Product::where('restaurant_id', Auth::guard('restaurant')->user()->id)->paginate(3);
         return view('pages.manageProduct', compact('products'));
     }
 
@@ -24,7 +24,7 @@ class ProductController extends Controller
         ]);
 
         if(Product::where('restaurant_id', Auth::guard('restaurant')->user()->id)->where('name', $request->name)->exists()) {
-            return redirect()->back()->with('error', 'Produk sudah ada');
+            return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Product already exists' : 'Produk sudah ada');
         }
 
         $file = $request->file('image');
@@ -41,7 +41,7 @@ class ProductController extends Controller
             'image' => $base64Data
         ]);
 
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully added' : 'Produk berhasil ditambahkan');
     }
 
     public function changeProductStatus($id)
@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product->status = !$curr_status;
         $product->save();
 
-        return redirect()->back()->with('success', 'Status produk berhasil diperbarui');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product status successfully updated' : 'Status produk berhasil diperbarui');
     }
 
     public function deleteProduct($id)
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect()->back()->with('success', 'Produk berhasil dihapus');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully deleted' : 'Produk berhasil dihapus');
     }
 
     public function editProduct(Request $request)
@@ -79,7 +79,7 @@ class ProductController extends Controller
                "stock" => $request->stock
             ]);
 
-            return redirect()->back()->with('success', 'Produk berhasil diperbarui');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully updated' : 'Produk berhasil diperbarui');
         }else if($request->file('image') != null) {
             $request->validate([
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
@@ -98,9 +98,9 @@ class ProductController extends Controller
                 "stock" => $request->stock
             ]);
 
-            return redirect()->back()->with('success', 'Produk berhasil diperbarui');
+            return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product successfully updated' : 'Produk berhasil diperbarui');
         }
         
-        return redirect()->back()->with('error', 'Produk gagal diperbarui');
+        return redirect()->back()->with('error', (session()->get('locale') === 'en') ? 'Product failed to update' : 'Produk gagal diperbarui');
     }
 }

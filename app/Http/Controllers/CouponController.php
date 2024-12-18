@@ -56,7 +56,7 @@ class CouponController extends Controller
             'restaurant_id' => Auth::guard('restaurant')->user()->id
         ]);
 
-        return redirect()->back()->with('success', 'Kupon berhasil ditambahkan');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Coupon successfully added' : 'Kupon berhasil ditambahkan');
     }
 
     public function delete(Request $request)
@@ -65,7 +65,7 @@ class CouponController extends Controller
         $coupon = Coupon::find($request->id);
         $coupon->delete();
 
-        return redirect()->back()->with('success', 'Kupon berhasil dihapus');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Coupon successfully deleted' : 'Kupon berhasil dihapus');
     }
 
     public function update(Request $request)
@@ -89,7 +89,7 @@ class CouponController extends Controller
             'min_spend' => $request->min_spend
         ]);
 
-        return redirect()->back()->with('success', 'Kupon berhasil diperbarui');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Coupon successfully updated' : 'Kupon berhasil diperbarui');
     }
 
     public function claim($id)
@@ -99,6 +99,6 @@ class CouponController extends Controller
             'coupon_id' => $id
         ]);
 
-        return redirect()->back()->with('success', 'Kupon berhasil diklaim');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Coupon successfully claimed' : 'Kupon berhasil diklaim');
     }
 }

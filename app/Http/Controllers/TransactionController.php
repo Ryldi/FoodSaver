@@ -43,7 +43,7 @@ class TransactionController extends Controller
         $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
         session(['cart_counts' => $cart_counts]); 
 
-        return redirect()->route('transactionPage', ['id' => $transaction->id])->with('success', 'Transaksi berhasil dibuat, silahkan lakukan pembayaran untuk menyelesaikan transaksi');
+        return redirect()->route('transactionPage', ['id' => $transaction->id])->with('success', (session()->get('locale') === 'en') ? 'Transaction successfully created, please make payment to complete the transaction' : 'Transaksi berhasil dibuat, silahkan lakukan pembayaran untuk menyelesaikan transaksi');
     }
 
     public function getTransaction($id)
@@ -92,7 +92,7 @@ class TransactionController extends Controller
         $transaction->status = 'Paid';
         $transaction->save();
 
-        return redirect()->back()->with('success', 'Pembayaran berhasil dilakukan, silahkan menunggu konfirmasi dari restoran');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Payment successfully made, please wait for confirmation from the restaurant' : 'Pembayaran berhasil dilakukan, silahkan menunggu konfirmasi dari restoran');
     }
 
     public function orderList()
@@ -110,7 +110,7 @@ class TransactionController extends Controller
         $transaction->status = 'Prepared';
         $transaction->save();
 
-        return redirect()->back()->with('success', 'Status produk berhasil diperbarui, silahkan siapkan pesanan milik pelanggan');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product status successfully updated, please prepare the order of the customer' : 'Status produk berhasil diperbarui, silahkan siapkan pesanan milik pelanggan');
     }
 
     public function completeOrder($id) {
@@ -118,6 +118,6 @@ class TransactionController extends Controller
         $transaction->status = 'Completed';
         $transaction->save();
 
-        return redirect()->back()->with('success', 'Pesanan berhasil diselesaikan');
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Order successfully completed' : 'Pesanan berhasil diselesaikan');
     }
 }

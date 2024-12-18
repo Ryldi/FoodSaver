@@ -1,6 +1,6 @@
 <div class="py-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow flex flex-col items-center">
     <div class="flex flex-col items-center">
-        <button onclick="show(this)" data-product-id="{{ $product->id }}" class="flex flex-col items-center">
+        <button {{ (Auth::guard('customer')->check()) ? '' : 'disabled' }} onclick="show(this)" data-product-id="{{ $product->id }}" class="flex flex-col items-center">
             <div class="p-3">
                 <img class="rounded-xl w-32 hover:scale-110 transition-all duration-500" src="{{ $product->image }}" alt="product image" />
             </div>
