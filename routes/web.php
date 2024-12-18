@@ -11,7 +11,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CouponController;
-use App\Models\Restaurant;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -52,50 +51,59 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/send-otp', [OTPController::class, 'sendOtp'])->name('sendOtp');
 Route::post('/verify-otp', [OTPController::class, 'verifyOtp'])->name('verifyOtp');
 
-Route::put('/updateAddress', [RestaurantController::class, 'updateAddress'])->name('updateAddress');
-Route::put('/updateProfileImageRestaurant', [RestaurantController::class, 'updateProfileImage'])->name('updateProfileImageRestaurant');
-Route::put('/updateProfileImageCustomer', [CustomerController::class, 'updateProfileImage'])->name('updateProfileImageCustomer');
-Route::put('/updatePasswordRestaurant', [RestaurantController::class, 'updatePassword'])->name('updatePasswordRestaurant');
-Route::put('/updatePasswordCustomer', [CustomerController::class, 'updatePassword'])->name('updatePasswordCustomer');
-
-Route::get('/myProfile', function(){
-    return view('pages.profile');
-})->name('profilePage');
-
-Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
-Route::get('manageProduct1', function(){
-    return view('pages.manageProduct1');
-})->name('manageProduct1');
-
-Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
-Route::delete('/deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
-Route::put('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
-Route::put('/editProduct', [ProductController::class, 'editProduct'])->name('editProduct');
-
-Route::get('orderList', [TransactionController::class, 'orderList'])->name('orderListPage');
-
-Route::get('cart', [CartController::class, 'index'])->name('cartPage');
-Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
-Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
-Route::delete('/deleteCart/{id}', [CartController::class, 'deleteCart'])->name('deleteFromCart');
-
-Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
-
-Route::get('/transactionList', [TransactionController::class, 'index'])->name('transactionListPage');
-Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
-
-Route::put('/prepareOrder/{id}', [TransactionController::class, 'prepareOrder'])->name('prepareOrder');
-Route::put('/completeOrder/{id}', [TransactionController::class, 'completeOrder'])->name('completeOrder');
-
-Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
-
-Route::get('/promo', [CouponController::class, 'index'])->name('promoPage');
-Route::get('/myPromo', [CouponController::class, 'myPromo'])->name('myPromoPage');
-Route::post('/addPromo', [CouponController::class, 'add'])->name('addPromo');
-Route::delete('/deletePromo', [CouponController::class, 'delete'])->name('deletePromo');
-Route::put('/updatePromo', [CouponController::class, 'update'])->name('updatePromo');
-Route::post('/claimCoupon/{id}', [CouponController::class, 'claim'])->name('claimCoupon');
-
 Route::get('/forbidden', function(){
     return view('auth.403');
 })->name('forbidden');
+
+Route::middleware(['RestaurantMiddleware'])->group(function () {
+    //restaurant
+    Route::put('/updateAddress', [RestaurantController::class, 'updateAddress'])->name('updateAddress');
+    Route::put('/updateProfileImageRestaurant', [RestaurantController::class, 'updateProfileImage'])->name('updateProfileImageRestaurant');
+    Route::put('/updatePasswordRestaurant', [RestaurantController::class, 'updatePassword'])->name('updatePasswordRestaurant');
+
+    Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
+    Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+    Route::delete('/deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
+    Route::put('/changeProductStatus/{id}', [ProductController::class, 'changeProductStatus'])->name('changeProductStatus');
+    Route::put('/editProduct', [ProductController::class, 'editProduct'])->name('editProduct');
+
+    Route::get('orderList', [TransactionController::class, 'orderList'])->name('orderListPage');
+
+    Route::put('/prepareOrder/{id}', [TransactionController::class, 'prepareOrder'])->name('prepareOrder');
+    Route::put('/completeOrder/{id}', [TransactionController::class, 'completeOrder'])->name('completeOrder');
+
+    Route::post('/addPromo', [CouponController::class, 'add'])->name('addPromo');
+    Route::delete('/deletePromo', [CouponController::class, 'delete'])->name('deletePromo');
+    Route::put('/updatePromo', [CouponController::class, 'update'])->name('updatePromo');
+});
+
+Route::middleware(['CustomerMiddleware'])->group(function () {
+    //customer
+    Route::put('/updateProfileImageCustomer', [CustomerController::class, 'updateProfileImage'])->name('updateProfileImageCustomer');
+    Route::put('/updatePasswordCustomer', [CustomerController::class, 'updatePassword'])->name('updatePasswordCustomer');
+
+    Route::get('cart', [CartController::class, 'index'])->name('cartPage');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
+    Route::delete('/deleteCart/{id}', [CartController::class, 'deleteCart'])->name('deleteFromCart');
+
+    Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+
+    Route::get('/transactionList', [TransactionController::class, 'index'])->name('transactionListPage');
+    Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
+
+    Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
+
+    Route::get('/myPromo', [CouponController::class, 'myPromo'])->name('myPromoPage');
+
+    Route::post('/claimCoupon/{id}', [CouponController::class, 'claim'])->name('claimCoupon');
+});
+
+Route::middleware(['AuthMiddleware'])->group(function () {
+    //logged
+    Route::get('/myProfile', function(){
+        return view('pages.profile');
+    })->name('profilePage');
+
+    Route::get('/promo', [CouponController::class, 'index'])->name('promoPage');
+});

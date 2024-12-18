@@ -89,6 +89,7 @@
 </div>
 
 @include('components.changePasswordModal', ['route' => 'updatePasswordRestaurant'])
+@include('components.changeImageProfileModal', ['route' => 'updateProfileImageRestaurant'])
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
