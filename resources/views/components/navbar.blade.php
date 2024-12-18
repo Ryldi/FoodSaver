@@ -40,7 +40,7 @@
                         @endauth
                     </ul>
                 </div>
-                <div class="flex flex-row justify-evenly gap-8">
+                <div class="flex flex-row justify-evenly pt-4 md:pt-0  gap-8">
                     @auth('customer')
                         <div class="relative group flex items-center py-1 px-4 md:px-6 rounded-full transition-all duration-500 hover:text-accent">
                             <button id="notificationButtonCustomer" data-dropdown-toggle="notificationDropdownCustomer" class="relative flex items-center focus:outline-none">

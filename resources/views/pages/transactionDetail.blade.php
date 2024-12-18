@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="min-h-screen bg-neutral p-24 font-poppins">
+<div class="min-h-screen bg-neutral py-28 px-10 font-poppins">
   <a href="{{ route('transactionListPage') }}">
     <svg class="w-12 h-12 text-primary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
     </svg>      
   </a>
   <h1 class="text-center p-4 font-bold text-3xl text-primary">{{ __('transactionDetail.title') }}</h1>
-  <div class="rounded-lg border border-black bg-white h-1/2 px-16 py-10 flex flex-col">
-    <div class="flex justify-between items-start">
-      <div class="flex items-center gap-10 mb-14">
+  <div class="rounded-lg border border-black bg-white h-1/2 px-4 md:px-16 py-10 flex flex-col">
+    <div class="flex flex-col md:flex-row justify-between items-start">
+      <div class="flex items-center gap-10 mb-6 md:mb-14">
         <img class="w-[50%] h-[100%]" src="{{ ($transaction->details->first()->product->restaurant->image) ? $transaction->details->first()->product->restaurant->image : asset('img/rest_avatar.png') }}" alt="">
         <span class="text-3xl font-bold">{{ $transaction->details->first()->product->restaurant->name }}</span>
       </div>
@@ -49,8 +49,8 @@
       <h3 class="text-lg font-bold text-gray-800">{{ __('transactionDetail.location_title') }}</h3>
     </div>
 
-    <div class="flex items-center bg-gray-50 p-4 rounded-md shadow-sm">
-        <div class="w-1/4 mr-4">
+    <div class="flex flex-col md:flex-row items-center bg-gray-50 p-4 rounded-md shadow-sm">
+        <div class="md:w-1/4 mr-4">
           <iframe
             src="https://maps.google.com/maps?q={{ urlencode($transaction->details->first()->product->restaurant->name) }}+{{ urlencode($transaction->details->first()->product->restaurant->street) }},+Kec.+{{ 
             urlencode($transaction->details->first()->product->restaurant->subdistrict) }},+Kota+{{ 
@@ -82,7 +82,7 @@
       </svg>
       <h3 class="text-lg font-bold text-gray-800">{{ __('transactionDetail.order_details_title') }}</h3>
     </div>
-    <div class="flex justify-between items-center mt-4 p-4 bg-gray-50 rounded-md shadow-sm">
+    <div class="flex flex-col md:flex-row justify-between items-center mt-4 p-4 bg-gray-50 rounded-md shadow-sm">
         <span class="text-sm font-medium text-gray-800">{{ __('transactionDetail.total_price_label') }}</span>
         <span class="text-lg font-bold text-gray-900">Rp {{ number_format($transaction->total_price, 0, ',', '.') }},00</span>
     </div>
