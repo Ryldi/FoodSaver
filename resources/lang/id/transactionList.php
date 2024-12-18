@@ -9,4 +9,6 @@ return [
     'details' => 'Detail',
     'unpaid' => 'Belum Dibayar',
     'paid' => 'Sudah Dibayar',
+    'prepared' => 'Sedang Disiapkan',
+    'completed' => 'Sudah Selesai'
 ];

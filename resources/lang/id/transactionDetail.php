@@ -1,17 +1,19 @@
 <?php
 
 return [
-    'header_detail_pemesanan' => 'Detail Pemesanan',
-    'order_list' => 'Daftar Pemesanan',
+    'title' => 'Detail Pemesanan',
+    'total_price_label' => 'Total Harga Produk',
+    'status_Unpaid' => 'Belum Dibayar',
+    'status_Paid' => 'Lunas',
+    'status_Prepared' => 'Sedang Disiapkan',
+    'status_Completed' => 'Sudah Selesai',
+    'order_button_prepare' => 'Siapkan Pesanan',
+    'order_button_complete' => 'Selesaikan Pesanan',
     'payment_button' => 'Bayar',
-    'status_paid' => 'Lunas',
-    'status_unpaid' => 'Belum Dibayar',
-    'status_prepared' => 'Pesanan Siap',
-    'prepare_order_button' => 'Siapkan Pesanan',
-    'complete_order_button' => 'Selesaikan Pesanan',
-    'pickup_location' => 'Lokasi Penjemputan',
-    'order_details' => 'Rincian Pemesanan',
-    'total_product_price' => 'Total Harga Produk',
-    'total_price' => 'Total Harga',
-    'completed' => 'Selesai'
+    'location_title' => 'Lokasi Penjemputan',
+    'order_details_title' => 'Rincian Pemesanan',
+    'restaurant' => 'Restoran',
+    'phone' => 'Telepon',
+    'address' => 'Alamat',
+    'map' => 'Peta Lokasi',
 ];
