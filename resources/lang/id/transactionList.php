@@ -10,7 +10,8 @@ return [
     'unpaid' => 'Belum Dibayar',
     'paid' => 'Sudah Dibayar',
     'prepared' => 'Sedang Disiapkan',
-    'completed' => 'Sudah Selesai'
+    'completed' => 'Sudah Selesai',
+    'no_items' => 'Belum ada pesanan yang dilakukan',
 ];
 
 ?>

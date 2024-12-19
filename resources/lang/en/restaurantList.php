@@ -9,6 +9,7 @@ return [
     'filter_popular' => 'Popular',
     'filter_most_buy' => 'Most Bought',
     'category_label' => 'Category:',
+    'no_items' => 'No restaurant found',
 ];
 
 ?>

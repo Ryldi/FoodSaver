@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="min-h-screen bg-neutral py-28 md:py-24 font-poppins">
+<div class="min-h-screen bg-neutral py-28 md:py-32 font-poppins">
     <h1 class="text-center p-4 font-semibold text-4xl">@lang('cart.cart')</h1>
     <div class="flex flex-col gap-4 p-4">
         @foreach ($carts as $item)
@@ -37,6 +37,11 @@
             </div>
         </div>
         @endforeach
+        @if (count($carts) == 0)
+            <div class="container bg-white rounded-lg shadow-lg p-4 flex justify-center">
+                <h3 class="font-semibold text-lg">@lang('cart.no_items')</h3>
+            </div>
+        @endif
     </div>
 </div>
 

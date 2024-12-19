@@ -8,6 +8,7 @@ return [
     'checkout' => 'Bayar',
     'empty_cart' => 'Keranjang belanja Anda kosong.',
     'remove' => 'Hapus',
+    'no_items' => 'Belum ada barang di keranjang belanja Anda.',
 ];
 
 ?>

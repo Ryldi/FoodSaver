@@ -18,6 +18,10 @@ return [
     'province' => 'Province',
     'postal_code' => 'Postal Code',
     'required_fields' => '* All fields are required',
+    'change_description' => 'Change Description',
+    'description_label' => 'Restaurant Description',
+    'description_placeholder' => 'Enter your restaurant description here',
+    'submit' => 'Submit',
 ];
 
 ?>

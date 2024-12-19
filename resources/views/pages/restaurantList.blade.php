@@ -77,6 +77,11 @@
                 </div>
             </a>
             @endforeach
+            @if (count($restaurants) == 0)
+            <div class="col-span-1 md:col-span-2 bg-white rounded-lg shadow-lg p-4 flex justify-center">
+                <h3 class="font-semibold text-lg">@lang('restaurantList.no_items')</h3>
+            </div>
+            @endif
         </div>
 
         <!-- Pagination -->

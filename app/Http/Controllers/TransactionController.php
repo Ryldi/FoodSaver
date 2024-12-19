@@ -89,6 +89,11 @@ class TransactionController extends Controller
     public function paymentSuccess($id)
     {
         $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
+        foreach ($transaction->details as $detail) {
+            $product = $detail->product;
+            $product->quantity = $product->quantity - $detail->quantity;
+            $product->save();
+        }
         $transaction->status = 'Paid';
         $transaction->save();
 
@@ -99,6 +104,9 @@ class TransactionController extends Controller
     {
         $transactions = TransactionHeader::with(['customer', 'details.product.restaurant'])
                         ->where('status', '!=', 'Unpaid')
+                        ->whereHas('details.product.restaurant', function ($query) {
+                            $query->where('id', '=', Auth::guard('restaurant')->user()->id);
+                        })
                         ->orderBy('created_at', 'desc')
                         ->get();
 

@@ -3,7 +3,7 @@
 return [
     'modal_title' => 'Add Product',
     'image_label' => 'Product Image',
-    'image_description' => 'Image Format: PNG, JPG or JPEG.',
+    'image_description' => 'Image Format: PNG, JPG or JPEG (Max. 2MB).',
     'name_label' => 'Product Name',
     'name_placeholder' => 'Enter product name',
     'price_label' => 'Price',

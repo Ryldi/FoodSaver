@@ -2,7 +2,7 @@
 
 return [
     'upload_profile_picture' => 'Unggah Foto Profil',
-    'file_input_help' => 'PNG, JPG, atau JPEG.',
+    'file_input_help' => 'PNG, JPG, atau JPEG. Maks. 2MB.',
     'confirm_change' => 'Apakah anda yakin ingin mengubah foto profil resto anda?',
     'yes_change' => 'Ya, ubah',
     'cancel' => 'Batalkan',

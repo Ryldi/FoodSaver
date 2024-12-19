@@ -10,7 +10,8 @@ return [
     'unpaid' => 'Unpaid',
     'paid' => 'Paid',
     'prepared' => 'Prepared',
-    'completed' => 'Completed'
+    'completed' => 'Completed',
+    'no_items' => 'There are no orders that have been made',
 ];
 
 ?>

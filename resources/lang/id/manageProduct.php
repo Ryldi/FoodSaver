@@ -11,6 +11,7 @@ return [
     'action' => 'Aksi',
     'change' => 'Ubah',
     'delete' => 'Hapus',
+    'no_items' => 'Tidak ada produk yang telah ditambahkan',
 ];
 
 ?>
