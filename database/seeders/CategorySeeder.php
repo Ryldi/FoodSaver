@@ -13,10 +13,13 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([
-            'name' => 'Makanan Cepat Saji',
-            'id' => \Illuminate\Support\Str::uuid()
-        ]);
-
+        Category::create(
+            ['name' => 'Minuman dan Kopi'],
+            ['id' => \Illuminate\Support\Str::uuid()]
+        );
+        Category::create(
+            ['name' => 'Masakan Padang'],
+            ['id' => \Illuminate\Support\Str::uuid()]
+        );
     }
 }

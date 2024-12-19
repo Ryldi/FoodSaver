@@ -12,6 +12,11 @@
                 @foreach ($coupons as $item)
                     @include('components.restaurant_coupon_card', ['coupon' => $item])
                 @endforeach
+                @if (count($coupons) == 0)
+                <div class="col-span-2 bg-white rounded-lg shadow-lg p-4 flex justify-center">
+                    <h3 class="font-semibold text-lg">Kupon tidak tersedia</h3>
+                </div>
+                @endif
             </div>
         </div>
 

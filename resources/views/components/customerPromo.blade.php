@@ -33,9 +33,9 @@
             @forelse ($coupons as $item)
                 @include('components.customer_coupon_card', ['item' => $item])
             @empty
-                <div class="text-center text-gray-500 w-full">
-                    No promo available
-                </div>
+            <div class="col-span-2 bg-white rounded-lg shadow-lg p-4 flex justify-center">
+                <h3 class="font-semibold text-lg">Promo tidak tersedia</h3>
+            </div>
             @endforelse
             </div>
         </div>

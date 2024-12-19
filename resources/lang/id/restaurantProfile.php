@@ -18,6 +18,10 @@ return [
     'province' => 'Provinsi',
     'postal_code' => 'Kode Pos',
     'required_fields' => '* Semua field wajib diisi',
+    'change_description' => 'Ubah Deskripsi',
+    'description_label' => 'Deskripsi Restoran',
+    'description_placeholder' => 'Masukkan deskripsi restoran Anda disini',
+    'submit' => 'Simpan',
 ];
 
 ?>

@@ -11,6 +11,7 @@ return [
     'action' => 'Action',
     'change' => 'Change',
     'delete' => 'Delete',
+    'no_items' => 'There are no products that have been added',
 ];
 
 ?>

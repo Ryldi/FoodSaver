@@ -68,7 +68,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="customer_phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="customer_phone" value="{{ old('customer_name') }}">
+                                <input type="text" id="customer_phone" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:outline-none focus:shadow-outline" placeholder="Nomor HP" name="customer_phone" value="{{ old('customer_phone') }}">
                                 @error('customer_phone')
                                     <p class="mx-2 text-red-600">{{ $message }}</p>
                                 @enderror
@@ -115,8 +115,9 @@
                                     <div>
                                         <select id="countries" class="rounded-xl w-full py-1 bg-neutral-light text-davy focus:ring-blue-500 focus:border-blue-500 block" name="restaurant_category">
                                             <option disabled selected>Kategori</option>
-                                            <option value="Makanan Rumahan">Home Food</option>
-                                            <option value="Makanan Cepat Saji">Fast Food</option>
+                                            @foreach ($categories as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('restaurant_category')
                                             <p class="mx-2 text-sm text-red-600">{{ $message }}</p>

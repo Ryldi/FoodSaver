@@ -60,6 +60,7 @@ Route::middleware(['RestaurantMiddleware'])->group(function () {
     Route::put('/updateAddress', [RestaurantController::class, 'updateAddress'])->name('updateAddress');
     Route::put('/updateProfileImageRestaurant', [RestaurantController::class, 'updateProfileImage'])->name('updateProfileImageRestaurant');
     Route::put('/updatePasswordRestaurant', [RestaurantController::class, 'updatePassword'])->name('updatePasswordRestaurant');
+    Route::put('/updateDescription', [RestaurantController::class, 'updateDescription'])->name('updateDescription');
 
     Route::get('/manageProduct', [ProductController::class, 'index'])->name('manageProductPage');
     Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');

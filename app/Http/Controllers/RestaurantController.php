@@ -93,7 +93,7 @@ class RestaurantController extends Controller
 
     public function getAllRestaurant() 
     {
-        $restaurants = Restaurant::with('category')->paginate(1);
+        $restaurants = Restaurant::with('category')->paginate(6);
         $categories = Category::all();
         return view('pages.restaurantList', compact('restaurants', 'categories'));
     }
@@ -115,8 +115,17 @@ class RestaurantController extends Controller
 
     public function searchRestaurant(Request $request)
     {
-        $restaurants = Restaurant::with('category')->where('name', 'like', '%' . $request->query('search') . '%')->paginate(1);
+        $restaurants = Restaurant::with('category')->where('name', 'like', '%' . $request->query('search') . '%')->paginate(6);
         $categories = Category::all();
         return view('pages.restaurantList', compact('restaurants', 'categories'));
+    }
+
+    public function updateDescription(Request $request)
+    {
+        Restaurant::where('id', Auth::guard('restaurant')->user()->id)->update([
+            'description' => $request->description
+        ]);
+
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Description successfully updated' : 'Deskripsi berhasil diperbarui');
     }
 }

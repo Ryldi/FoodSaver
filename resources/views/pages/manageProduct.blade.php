@@ -66,6 +66,11 @@
                 @endforeach
             </tbody>
         </table>
+        @if ($products->isEmpty())
+        <div class="container bg-white rounded-lg shadow-lg p-4 flex justify-center">
+            <h3 class="font-semibold text-lg">@lang('manageProduct.no_items')</h3>
+        </div>
+        @endif
     </div>
 </div>
 

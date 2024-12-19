@@ -41,7 +41,7 @@ class AuthController extends Controller
                 'phone' => $customerData['customer_phone']
             ]);
         } else {
-            $categoryId = Category::where('name', $restaurantData['restaurant_category'])->pluck('id')->first();
+            $categoryId = Category::where('id', $restaurantData['restaurant_category'])->pluck('id')->first();
 
             Restaurant::create([
                 'category_id' => $categoryId,

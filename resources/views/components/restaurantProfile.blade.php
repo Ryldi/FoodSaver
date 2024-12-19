@@ -35,7 +35,7 @@
             <div class="space-y-4">
                 <div class="flex justify-between items-center border-b pb-2">
                     <p class="text-primary">@lang('restaurantProfile.full_name')</p>
-                    <p class="text-primary font-medium">{{ Auth::guard('restaurant')->user()->address }}</p>
+                    <p class="text-primary font-medium">{{ Auth::guard('restaurant')->user()->name }}</p>
                 </div>
                 <div class="flex justify-between items-center border-b pb-2">
                     <p class="text-primary">@lang('restaurantProfile.email')</p>
@@ -53,6 +53,9 @@
                     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="w-full bg-accent text-white py-2 rounded-lg hover:bg-accent-hover">
                         @lang('restaurantProfile.change_password')
                     </button>
+                    <button data-modal-target="desc-modal" data-modal-toggle="desc-modal" class="w-full bg-accent text-white py-2 rounded-lg hover:bg-accent-hover">
+                        @lang('restaurantProfile.change_description')
+                    </button>
                     <form action="{{ route('logout') }}" method="POST" class="mt-4">
                         @csrf
                         <button type="submit" class="w-full bg-red text-white py-2 rounded-lg hover:bg-red-hover">
@@ -67,7 +70,7 @@
         <div class="bg-white shadow-md rounded-lg p-4 md:p-6">
             <h2 class="text-2xl font-bold mb-4">@lang('restaurantProfile.address')</h2>
             <iframe
-                src="https://maps.google.com/maps?q={{ urlencode(Auth::guard('restaurant')->user()->street) }}+Kec.+{{ urlencode(Auth::guard('restaurant')->user()->subdistrict) }},+Kota+{{ urlencode(Auth::guard('restaurant')->user()->city) }},+{{ urlencode(Auth::guard('restaurant')->user()->province) }}+{{ urlencode(Auth::guard('restaurant')->user()->postal_code) }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q={{ urlencode(Auth::guard('restaurant')->user()->name) }}+{{ urlencode(Auth::guard('restaurant')->user()->street) }}+Kec.+{{ urlencode(Auth::guard('restaurant')->user()->subdistrict) }},+Kota+{{ urlencode(Auth::guard('restaurant')->user()->city) }},+{{ urlencode(Auth::guard('restaurant')->user()->province) }}+{{ urlencode(Auth::guard('restaurant')->user()->postal_code) }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="300"
                 frameborder="0"
@@ -134,6 +137,51 @@
             </form>
         </div>
     </div>
+</div>
+
+{{-- Change Description Modal --}}
+<!-- Change Password Modal -->
+<div id="desc-modal" tabindex="-1" aria-hidden="true" class="z-50 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-lg max-h-full min-h-[80vh]">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-center p-4 md:p-5 border-b rounded-t gap-5">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    @lang('changePasswordModal.title')
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="desc-modal">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form class="p-4 md:p-5 flex flex-col justify-center" method="POST" action="{{ route('updateDescription') }}">
+                @csrf
+                @method('PUT')
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            @lang('restaurantProfile.description_label')
+                        </label>
+                        <textarea 
+                            name="description" 
+                            id="description" 
+                            rows="4" 
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-accent focus:border-accent block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+                            placeholder="@lang('restaurantProfile.description_placeholder')" 
+                            required>{{ Auth::guard('restaurant')->user()->description }}</textarea>
+                    </div>
+                </div>
+                <button type="submit" class="text-accent inline-flex items-center justify-center border border-accent hover:border-accent hover:text-white hover:bg-accent focus:ring-4 focus:outline-none focus:ring-accent-selected font-medium rounded-lg text-sm px-5 py-2.5 my-8 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-all duration-500">
+                    @lang('restaurantProfile.submit')
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
 </div>
 
 

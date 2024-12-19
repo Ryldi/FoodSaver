@@ -9,6 +9,7 @@ return [
     'filter_popular' => 'Populer',
     'filter_most_buy' => 'Paling Banyak Dibeli',
     'category_label' => 'Kategori:',
+    'no_items' => 'Restoran tidak ditemukan',
 ];
 
 ?>

@@ -1,5 +1,5 @@
 <navbar class="md:flex md:justify-evenly bg-neutral-light border-b border-accent fixed w-full z-40 top-0 shadow-lg py-2">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
+    <div class="max-w-screen-3xl flex flex-wrap items-center justify-between p-4">
         <a class="flex items-center space-x-3 rtl:space-x-reverse gap-2" href="{{ route('indexPage') }}">
             <img src="{{ asset('img/logo.png') }}" alt="" class="w-40 h-auto md:mx-16">
         </a>

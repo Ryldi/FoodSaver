@@ -6,12 +6,17 @@
         @lang('restaurantDetail.header_title', ['restaurant_name' => $restaurant->name])
     </header>
     <div class="flex flex-col md:flex-row justify-center items-center my-10 gap-16">
-        <div class="">
-            <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-full h-auto">
+        <div class="flex justify-center md:max-w-[30%]">
+            <img src="{{ ($restaurant->image) ? $restaurant->image : asset('img/rest_avatar.png') }}" alt="" class="w-[70%] md:max-w-[50%] h-auto">
         </div>
         <div class="md:w-2/3">
             <span>@lang('restaurantDetail.description')</span>
             <p>{{ $restaurant->description }}</p>
+            @if ($restaurant->description == null || $restaurant->description == '')
+            <div class="bg-white rounded-lg shadow-lg p-4 flex justify-center">
+                <h3 class="font-semibold text-lg">@lang('restaurantDetail.no_desc')</h3>
+            </div>
+            @endif
             <div class="pt-5 flex flex-col md:flex-row gap-10">
                 <div class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 64 64">
@@ -56,12 +61,17 @@
     <div class="container">
         <div class="text-2xl font-bold mt-8 mb-3">@lang('restaurantDetail.available_products')</div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          @foreach ($products as $item)
-          <div class="">
-              @include('components.product_card', ['product' => $item])
-          </div>
-          @endforeach
+            @foreach ($products as $item)
+            <div class="">
+                @include('components.product_card', ['product' => $item])
+            </div>
+            @endforeach
         </div>
+        @if (count($products) == 0)
+            <div class="bg-white rounded-lg shadow-lg p-4 flex justify-center">
+                <h3 class="font-semibold text-lg">@lang('restaurantDetail.no_items')</h3>
+            </div>
+        @endif
     </div>
 </div>
 @endsection
