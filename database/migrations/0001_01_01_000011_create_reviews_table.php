@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('transaction_id')->constrained('transaction_headers')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->float('star');
+            $table->float('rating');
             $table->text('comment');
-            $table->string('image');
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
             </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <div class="flex flex-col md:flex-row">
+            <div class="flex flex-col md:flex-row gap-8">
                 <div class="md:flex md:gap-8 font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                     <ul class="flex flex-col md:flex-row md:gap-4 justify-evenly">
                         <a href="{{ route('indexPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('indexPage') ? 'text-accent' : '' }} " aria-current="page">
@@ -29,9 +29,16 @@
                             </a>
                             @endauth
                         </div>
+                        @auth('customer')
                         <a href="{{ route('promoPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
                             @lang('navbar.nav_promo')
                         </a>
+                        @endauth
+                        @auth('restaurant')
+                        <a href="{{ route('promoPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('promoPage') ? 'bg-accent-selected' : '' }}">
+                            @lang('navbar.nav_promo')
+                        </a>
+                        @endauth
                         @auth('customer')
                         <a href="{{ route('transactionListPage') }}" class="flex items-center justify-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('transactionListPage') ? 'text-accent' : '' }}">
                             @lang('navbar.nav_order')
@@ -44,77 +51,83 @@
                         @endauth
                     </ul>
                 </div>
-                <div class="flex flex-row justify-evenly pt-4 md:pt-0  gap-8">
+                <div class="flex flex-row justify-evenly pt-4 md:pt-0 gap-8 md:gap-4">
                     @auth('customer')
-                        <div class="relative group flex items-center py-1 px-4 md:px-6 rounded-full transition-all duration-500 hover:text-accent">
-                            <button id="notificationButtonCustomer" data-dropdown-toggle="notificationDropdownCustomer" class="relative flex items-center focus:outline-none">
+                        <div class="relative group flex items-center py-1 px-4 md:px-2 rounded-full transition-all duration-500 hover:text-accent">
+                            <button id="dropdownHoverButton" data-dropdown-toggle="notificationDropdownCustomer" data-dropdown-trigger="hover" class="relative flex items-center focus:outline-none">
                                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z" />
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                                 </svg>
-                                <span class="absolute top-0 right-0 block w-2.5 h-2.5 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full border border-white"></span>
                             </button>
                             <div id="notificationDropdownCustomer" class="hidden absolute right-0 z-50 mt-2 w-80 bg-white divide-y divide-gray-100 rounded-lg shadow-lg">
                                 <div class="py-2 px-4 bg-gray-100 border-b">
                                 <span class="font-semibold text-gray-700">Notifikasi</span>
                                 </div>
-                                <div class="p-2 space-y-2">
-                                <a href="/order-details" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
-                                    <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
-                                    <div class="ml-3 text-sm">
-                                    <p class="font-medium text-gray-700">Pesanan Anda telah diterima oleh J.CO</p>
-                                    <p class="text-gray-500 text-xs">03 Desember 2024 - 21:30 PM</p>
-                                    </div>
-                                </a>
-                                <a href="/order-details" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
-                                    <img src="{{ asset('img/restaurant/logo/Jco.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
-                                    <div class="ml-3 text-sm">
-                                    <p class="font-medium text-gray-700">Pesanan anda telah diterima oleh J.CO, klik untuk melihat detail pesanan</p>
-                                    <p class="text-gray-500 text-xs">03 Desember 2024 - 21:00 PM</p>
-                                    </div>
-                                </a>
+                                <div class="p-2 space-y-2 overflow-y-auto max-h-[250px]">
+                                @if(session('notifications') !== null)
+                                    @if (session('notifications')->count() > 0)
+                                    @foreach (session('notifications') as $notif)
+                                        @if ($notif['status'] === 'prepare_order')
+                                        <a href="/transaction/{{ $notif['transaction_id'] }}" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
+                                            <div class="ml-3 text-sm">
+                                            <p class="font-medium text-gray-700">Pesanan anda telah disiapkan oleh {{ $notif['restaurant_name'] }}, klik untuk melihat detail pesanan</p>
+                                            <p class="text-gray-500 text-xs">{{ $notif['created_at']->diffForHumans() }}</p>
+                                            </div>
+                                        </a>
+                                        @elseif ($notif['status'] === 'complete_order')
+                                        <a href="/transaction/{{ $notif['transaction_id'] }}" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
+                                            <div class="ml-3 text-sm">
+                                            <p class="font-medium text-gray-700">Pesanan anda telah diselesaikan oleh {{ $notif['restaurant_name'] }}, klik untuk melihat detail</p>
+                                            <p class="text-gray-500 text-xs">{{ $notif['created_at']->diffForHumans() }}</p>
+                                            </div>
+                                        </a>
+                                        @endif
+                                    @endforeach
+                                    @else
+                                    <p class="text-sm text-gray-500 text-center">Tidak ada notifikasi</p>
+                                    @endif
+                                @endif
                                 </div>
                             </div>
                         </div>
                     @endauth
         
                     @auth('restaurant')
-                        <div class="relative group flex items-center py-1 px-4 md:px-6 rounded-full transition-all duration-500 hover:text-accent">
-                            <button id="notificationButtonRestaurant" data-dropdown-toggle="notificationDropdownRestaurant" class="relative flex items-center focus:outline-none">
+                        <div class="relative group flex items-center py-1 px-4 md:px-2 rounded-full transition-all duration-500 hover:text-accent">
+                            <button id="dropdownHoverButton" data-dropdown-toggle="notificationDropdownRestaurant" data-dropdown-trigger="hover" class="relative flex items-center focus:outline-none">
                                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z" />
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                                 </svg>
-                                <span class="absolute top-0 right-0 block w-2.5 h-2.5 transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full border border-white"></span>
                             </button>
-        
                             <div id="notificationDropdownRestaurant" class="hidden absolute right-0 z-50 mt-2 w-80 bg-white divide-y divide-gray-100 rounded-lg shadow-lg">
                                 <div class="py-2 px-4 bg-gray-100 border-b">
                                     <span class="font-semibold text-gray-700">Notifikasi</span>
                                 </div>
-                                <div class="p-2 space-y-2">
-                                    <a href="/restaurant-orders" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
-                                        <img src="{{ asset('img/about/bernard.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
-                                        <div class="ml-3 text-sm">
-                                            <p class="font-medium text-gray-700">Pesanan masuk dari Bernard Bereness, klik untuk melihat detail pesanan</p>
-                                            <p class="text-gray-500 text-xs">03 Desember 2024 - 21:30 PM</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="p-2 space-y-2">
-                                    <a href="/restaurant-orders" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
-                                        <img src="{{ asset('img/about/bernard.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
-                                        <div class="ml-3 text-sm">
-                                            <p class="font-medium text-gray-700">Pesanan masuk dari Bernard Bereness, klik untuk melihat detail pesanan</p>
-                                            <p class="text-gray-500 text-xs">03 Desember 2024 - 21:00 PM</p>
-                                        </div>
-                                    </a>
+                                <div class="p-2 space-y-2 overflow-y-auto max-h-[250px]">
+                                @if(session('notifications') !== null)
+                                    @if (session('notifications')->count() > 0)
+                                        @foreach (session('notifications') as $notif)
+                                            @if ($notif['status'] == 'income_order')
+                                            <a href="/transaction/{{ $notif['transaction_id'] }}" class="flex items-start p-2 bg-gray-50 hover:bg-gray-100 rounded-lg">
+                                                <div class="ml-3 text-sm">
+                                                <p class="font-medium text-gray-700">Terdapat pesanan masuk dari {{ $notif['customer_name'] }}, klik untuk melihat detail pesanan</p>
+                                                <p class="text-gray-500 text-xs">{{ $notif['created_at']->diffForHumans() }}</p>
+                                                </div>
+                                            </a>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <p class="text-sm text-gray-500 text-center">Tidak ada notifikasi</p>
+                                    @endif
+                                @endif
                                 </div>
                             </div>
                         </div>
                     @endauth
         
-                    <div class="flex items-center py-1 px-4 md:px-6 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'bg-accent-selected' : '' }}">
+                    <div class="flex items-center py-1 px-4 md:px-2 rounded-full hover:text-accent transition-all duration-500 {{ request()->routeIs('profile.view') ? 'bg-accent-selected' : '' }}">
                         <button id="dropdownHoverButton" data-dropdown-toggle="dropdownLanguage" data-dropdown-trigger="hover" type="button" class="flex items-center justify-between">
                             <div class="gap-1 flex items-center">
                                 <svg class="w-5 h-5 ms-2.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
@@ -198,5 +211,3 @@
         </div>
     </div>
 </navbar>
-
-

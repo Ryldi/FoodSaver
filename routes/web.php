@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('pages.index');
@@ -84,6 +85,7 @@ Route::middleware(['CustomerMiddleware'])->group(function () {
     Route::put('/updatePasswordCustomer', [CustomerController::class, 'updatePassword'])->name('updatePasswordCustomer');
 
     Route::get('cart', [CartController::class, 'index'])->name('cartPage');
+    Route::post('cart', [CartController::class, 'loadCoupon'])->name('selectCoupon');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
     Route::put('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
     Route::delete('/deleteCart/{id}', [CartController::class, 'deleteCart'])->name('deleteFromCart');
@@ -94,9 +96,12 @@ Route::middleware(['CustomerMiddleware'])->group(function () {
 
     Route::get('/success/{id}', [TransactionController::class, 'paymentSuccess'])->name('paymentSuccess');
 
+    Route::put('/reviewOrder/{id}', [TransactionController::class, 'reviewOrder'])->name('reviewOrder');
+
     Route::get('/myPromo', [CouponController::class, 'myPromo'])->name('myPromoPage');
 
     Route::post('/claimCoupon/{id}', [CouponController::class, 'claim'])->name('claimCoupon');
+    
 });
 
 Route::middleware(['AuthMiddleware'])->group(function () {
@@ -107,4 +112,5 @@ Route::middleware(['AuthMiddleware'])->group(function () {
 
     Route::get('/promo', [CouponController::class, 'index'])->name('promoPage');
     Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction'])->name('transactionPage');
+    Route::get('/api/notifications', [NotificationController::class, 'getNotifications'])->name('getNotifications');
 });

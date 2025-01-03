@@ -19,14 +19,6 @@
                 @endif
             </div>
         </div>
-
-        <div class="flex items-center gap-2 text-sm mt-4">
-            <button class="w-8 h-8 text-gray-500 hover:text-black">&laquo;</button>
-            <button class="w-8 h-8 flex items-center justify-center bg-blue-700 text-white rounded">1</button>
-            <button class="w-8 h-8 flex items-center justify-center text-blue-700 border border-blue-700 rounded">2</button>
-            <button class="w-8 h-8 flex items-center justify-center text-blue-700 border border-blue-700 rounded">3</button>
-            <button class="w-8 h-8 text-gray-500 hover:text-black">&raquo;</button>
-        </div>
     </div>
 
     {{-- Modal Tambah --}}
@@ -77,7 +69,7 @@
                     </div>
                     <div class="col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-primary dark:text-white">@lang('restaurantPromo.description')</label>
-                        <input type="text" name="description" id="description" class="block p-2.5 w-full text-sm text-primary bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="@lang('restaurantPromo.description')"></input>                    
+                        <input type="text" name="description" id="description" class="block p-2.5 w-full text-sm text-primary bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="@lang('restaurantPromo.description')" required></input>                    
                     </div>
                     <div class="col-span-2">
                         <div class="flex justify-center">

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'off' => 'Diskon',
+    'off' => 'Potongan',
     'claim' => 'Ambil',
     'use' => 'Gunakan',
     'terms' => 'Syarat',

@@ -19,5 +19,12 @@ class CustomerSeeder extends Seeder
             'name' => 'Bernard',
             'phone' => '081369251040'
         ]);
+
+        Customer::create([
+            'email' => 'a@gmail.com',
+            'password' => 'abc',
+            'name' => 'Budi',
+            'phone' => '081369251040'
+        ]);
     }
 }
