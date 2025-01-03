@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction_headers', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('customer_id')->constrained('customers')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('transaction_id')->constrained('transaction_headers')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('status');
-            $table->integer('total_price');
-            $table->integer('discount_price')->default(0);
-            $table->uuid('coupon_id')->nullable();
-            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction_headers');
+        Schema::dropIfExists('notifications');
     }
 };

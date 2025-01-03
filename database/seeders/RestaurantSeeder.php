@@ -26,7 +26,7 @@ class RestaurantSeeder extends Seeder
 
         Restaurant::create([
             'name' => 'JCO Central Park Mall',
-            'email' => 'jco.centralpark@corp.id',
+            'email' => 'jco@corp.id',
             'password' => 'abc',
             'phone' => '0123456789',
             'description' => 'J.CO Donuts & Coffee adalah salah satu merek makanan dan minuman ternama asal Indonesia yang dikenal dengan aneka donat lezat, kopi berkualitas, dan yogurt beku yang menggugah selera. Didirikan pada tahun 2005, J.CO mengusung konsep modern dengan cita rasa yang unik, memadukan bahan-bahan segar dan resep inovatif untuk menciptakan donat lembut dengan berbagai topping menarik.',

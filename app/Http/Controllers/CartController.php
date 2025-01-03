@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Coupon;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -19,14 +21,62 @@ class CartController extends Controller
             foreach ($group as $cart) {
                 $total += $cart->product->price * $cart->quantity;
             }
+            $customer = Customer::with('customer_coupon')->find(Auth::guard('customer')->user()->id);
+            $customerCoupons = $customer->customer_coupon()->with('coupon.restaurant')->get();
+
             return [
                 'restaurant' => $group->first()->product->restaurant,
                 'carts' => $group,
                 'total_price' => $total,
-                'coupons' => ($cart->product->restaurant->coupons) ? $cart->product->restaurant->coupons : null //ini masih ngambil coupon restaurant, bukan coupon customer
+                'coupons' => $customerCoupons->where('coupon.restaurant.id', $group->first()->product->restaurant->id)
+                                            ->where('coupon.status', 'active')
+                                            ->where('is_used', 0)
+                                                ->pluck('coupon'),
             ];
         });
         return view('pages.cart', compact('carts'));
+    }
+
+    public function loadCoupon(Request $request)
+    {
+        $request->validate([
+            'coupon' => 'required'
+        ]);
+
+        
+
+        $items = Cart::where('customer_id', Auth::guard('customer')->user()->id)->with('product.restaurant')->get();
+        $total = $items->sum('product.price');
+        $carts = $items->groupBy(function ($cart) {
+            return $cart->product->restaurant->id;
+        })->map(function ($group) use ($request) {
+            $total = 0;
+            foreach ($group as $cart) {
+                $total += $cart->product->price * $cart->quantity;
+            }
+
+            $coupon = Coupon::with('restaurant')->find($request->coupon);
+            if($coupon->restaurant->id != $group->first()->product->restaurant->id || $coupon->status != 'active' || $total < $coupon->min_spend) {
+                $coupon = null;
+            }
+
+            $customer = Customer::with('customer_coupon')->find(Auth::guard('customer')->user()->id);
+            $customerCoupons = $customer->customer_coupon()->with('coupon.restaurant')->get();
+
+            return [
+                'restaurant' => $group->first()->product->restaurant,
+                'carts' => $group,
+                'total_price' => $total,
+                'coupons' => $customerCoupons->where('coupon.restaurant.id', $group->first()->product->restaurant->id)
+                                            ->where('coupon.status', 'active')
+                                            ->where('is_used', 0)
+                                                ->pluck('coupon'), //ini masih ngambil coupon restaurant, bukan coupon customer
+                'coupon' => $coupon
+            ];
+        });
+
+        return view('pages.cart', compact('carts'));
+
     }
 
     public function addToCart(Request $request)

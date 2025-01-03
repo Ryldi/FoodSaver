@@ -29,4 +29,9 @@ class TransactionHeader extends Model
     {
         return $this->hasOne(Review::class);
     }
+
+    public function notifications() : HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

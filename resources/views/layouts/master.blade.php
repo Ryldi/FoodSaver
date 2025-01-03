@@ -29,5 +29,19 @@
     </div>
 
     @include('components.footer')
+    <script>
+        // setInterval(() => {
+        //     fetch('{{ route('getNotifications') }}', {
+        //         method: 'GET'
+        //     }).catch(error => {
+        //         console.error('Error:', error);
+        //     });
+        // }, 5000);
+        fetch('{{ route('getNotifications') }}', {
+                method: 'GET'
+            }).catch(error => {
+                console.error('Error:', error);
+        });
+    </script>
 </body>
 </html>

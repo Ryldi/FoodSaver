@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TransactionHeader;
 use App\Models\TransactionDetail;
+use App\Models\Notification;
 use App\Models\Cart;
+use App\Models\Coupon;
+use App\Models\Restaurant;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
@@ -18,11 +22,29 @@ class TransactionController extends Controller
     }
     public function checkout(Request $request)
     {
-        $transaction = TransactionHeader::create([
-            'customer_id' => Auth::guard('customer')->user()->id,   
-            'status' => 'Unpaid',
-            'total_price' => $request->total_price
-        ]);
+        $transaction = null;
+        if($request->coupon_id != null) {
+            $coupon = Coupon::find($request->coupon_id);
+
+            $discount_price = $request->total_price * $coupon->percent / 100;
+            if($discount_price > $coupon->max_disc) {
+                $discount_price = $coupon->max_disc;
+            }
+
+            $transaction = TransactionHeader::create([
+                'customer_id' => Auth::guard('customer')->user()->id,   
+                'status' => 'Unpaid',
+                'total_price' => $request->total_price,
+                'discount_price' => $discount_price,
+                'coupon_id' => $request->coupon_id
+            ]);
+        }else{
+            $transaction = TransactionHeader::create([
+                'customer_id' => Auth::guard('customer')->user()->id,   
+                'status' => 'Unpaid',
+                'total_price' => $request->total_price
+            ]);
+        }
 
         $carts = Cart::whereHas('product', function ($query) use ($request) {
             $query->where('restaurant_id', $request->restaurant_id);
@@ -71,7 +93,7 @@ class TransactionController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => $transaction->id,
-                'gross_amount' => $transaction->total_price,
+                'gross_amount' => $transaction->total_price - $transaction->discount_price,
             ),
             'customer_details' => array(
                 'first_name' => Auth::guard('customer')->user()->name,
@@ -91,11 +113,16 @@ class TransactionController extends Controller
         $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
         foreach ($transaction->details as $detail) {
             $product = $detail->product;
-            $product->quantity = $product->quantity - $detail->quantity;
+            $product->stock = $product->stock - $detail->quantity;
             $product->save();
         }
         $transaction->status = 'Paid';
         $transaction->save();
+
+        Notification::create([
+            'transaction_id' => $transaction->id,
+            'status' => 'income_order'
+        ]);
 
         return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Payment successfully made, please wait for confirmation from the restaurant' : 'Pembayaran berhasil dilakukan, silahkan menunggu konfirmasi dari restoran');
     }
@@ -118,6 +145,11 @@ class TransactionController extends Controller
         $transaction->status = 'Prepared';
         $transaction->save();
 
+        Notification::create([
+            'transaction_id' => $transaction->id,
+            'status' => 'prepare_order'
+        ]);
+
         return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Product status successfully updated, please prepare the order of the customer' : 'Status produk berhasil diperbarui, silahkan siapkan pesanan milik pelanggan');
     }
 
@@ -126,6 +158,42 @@ class TransactionController extends Controller
         $transaction->status = 'Completed';
         $transaction->save();
 
+        Notification::create([
+            'transaction_id' => $transaction->id,
+            'status' => 'complete_order'
+        ]);
+
         return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Order successfully completed' : 'Pesanan berhasil diselesaikan');
+    }
+
+    public function reviewOrder(Request $request, $id) {
+
+        $transaction = TransactionHeader::with('details.product.restaurant')->where('id', $id)->first();
+
+        $rating = 0;
+        try {
+            $transactions = TransactionHeader::where('status', 'Reviewed')->get();
+            $restaurant_rating = $transactions->first()->details->first()->product->restaurant->rating;
+            $reviewed = $transactions->count();
+            $total_rating = $restaurant_rating + $request->rating;
+            $rating = $total_rating / ($reviewed + 1);
+        } catch (\Throwable $th) {
+            $rating = $request->rating;
+        }
+
+        Review::create([
+            'transaction_id' => $id,
+            'rating' => $request->rating,
+            'comment' => $request->comment
+        ]);
+
+        $transaction->status = 'Reviewed';
+        $transaction->save();
+
+        $restaurant = Restaurant::where('id', $transaction->details->first()->product->restaurant->id)->first();
+        $restaurant->rating = $rating;
+        $restaurant->save();
+
+        return redirect()->back()->with('success', (session()->get('locale') === 'en') ? 'Order successfully reviewed' : 'Pesanan berhasil direview');
     }
 }
