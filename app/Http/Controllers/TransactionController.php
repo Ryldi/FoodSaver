@@ -8,6 +8,7 @@ use App\Models\TransactionDetail;
 use App\Models\Notification;
 use App\Models\Cart;
 use App\Models\Coupon;
+use App\Models\CustomerCoupon;
 use App\Models\Restaurant;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
@@ -116,6 +117,11 @@ class TransactionController extends Controller
             $product->stock = $product->stock - $detail->quantity;
             $product->save();
         }
+        
+        $coupon = CustomerCoupon::where('customer_id', Auth::guard('customer')->user()->id)->where('coupon_id', $transaction->coupon_id)->first();
+        $coupon->used = 1;
+        $coupon->save();
+
         $transaction->status = 'Paid';
         $transaction->save();
 
