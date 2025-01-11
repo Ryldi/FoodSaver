@@ -28,7 +28,7 @@ class CouponController extends Controller
     public function myPromo()
     {
         $coupons = Coupon::with('restaurant')->whereHas('customer_coupon', function ($query) {
-            $query->where('customer_id', Auth::guard('customer')->user()->id);
+            $query->where('customer_id', Auth::guard('customer')->user()->id)->where('is_used', 0);
         })->where('status', 'active')->get();
 
         return view('pages.myPromo', compact('coupons'));
