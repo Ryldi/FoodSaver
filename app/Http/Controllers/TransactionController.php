@@ -61,6 +61,10 @@ class TransactionController extends Controller
             Cart::where('product_id', $cart->product_id)->where('customer_id', Auth::guard('customer')->user()->id)->delete();
         }
 
+        CustomerCoupon::where('customer_id', Auth::guard('customer')->user()->id)
+              ->where('coupon_id', $transaction->coupon_id)
+              ->increment('is_used', 1, ['updated_at' => now()]);
+
         TransactionController::setSnapToken($transaction);
 
         $cart_counts = Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() ? Cart::where('customer_id', Auth::guard('customer')->user()->id)->count() : 0;
@@ -117,10 +121,6 @@ class TransactionController extends Controller
             $product->stock = $product->stock - $detail->quantity;
             $product->save();
         }
-        
-        $coupon = CustomerCoupon::where('customer_id', Auth::guard('customer')->user()->id)->where('coupon_id', $transaction->coupon_id)->first();
-        $coupon->used = 1;
-        $coupon->save();
 
         $transaction->status = 'Paid';
         $transaction->save();
