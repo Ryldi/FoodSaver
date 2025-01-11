@@ -70,7 +70,7 @@ class CartController extends Controller
                 'coupons' => $customerCoupons->where('coupon.restaurant.id', $group->first()->product->restaurant->id)
                                             ->where('coupon.status', 'active')
                                             ->where('is_used', 0)
-                                                ->pluck('coupon'), //ini masih ngambil coupon restaurant, bukan coupon customer
+                                            ->pluck('coupon'), //ini masih ngambil coupon restaurant, bukan coupon customer
                 'coupon' => $coupon
             ];
         });
