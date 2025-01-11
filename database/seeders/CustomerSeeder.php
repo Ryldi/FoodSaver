@@ -20,11 +20,11 @@ class CustomerSeeder extends Seeder
             'phone' => '081369251040'
         ]);
 
-        Customer::create([
-            'email' => 'a@gmail.com',
+         Customer::create([
+            'email' => 'ivanadrian0864"gmail.com',
             'password' => 'abc',
-            'name' => 'Budi',
-            'phone' => '081369251040'
+            'name' => 'Ivan',
+            'phone' => '08979780001'
         ]);
     }
 }
