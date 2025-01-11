@@ -11,6 +11,7 @@ return [
     'paid' => 'Paid',
     'prepared' => 'Prepared',
     'completed' => 'Completed',
+    'reviewed' => 'Reviewed',
     'no_items' => 'There are no orders that have been made',
 ];
 

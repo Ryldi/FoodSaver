@@ -16,7 +16,7 @@
             @csrf
             <div class="flex flex-col items-center gap-2">
                 <div class="flex justify-center mt-3">
-                    <input name="quantity" type="number" value="1" min="1" class="w-1/2 text-center border rounded-lg text-sm">
+                    <input name="quantity" type="number" value="1" min="1" max="{{ $product->stock }}" class="w-auto text-center border rounded-lg text-sm">
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                 </div>
                 <button type="submit" class="bg-tertiary text-white text-xs p-2 rounded-lg hover:text-tertiary hover:bg-transparent border hover:border-tertiary transition-all duration-500">
