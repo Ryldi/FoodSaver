@@ -36,7 +36,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Grogol Petamburan',
             'postal_code' => 11470,
             'category_id' => $category->id,
-            'rating' => 4.5
         ]);
         
         Restaurant::create([
@@ -51,7 +50,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Penjaringan',
             'postal_code' => 14470,
             'category_id' => $category->id,
-            'rating' => 4
         ]);
         
         Restaurant::create([
@@ -66,7 +64,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Tanah Abang',
             'postal_code' => 10220,
             'category_id' => $category2->id,
-            'rating' => 3.8
         ]);
         
         Restaurant::create([
@@ -81,7 +78,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Beji',
             'postal_code' => 16424,
             'category_id' => $category2->id,
-            'rating' => 5
         ]);
         
         Restaurant::create([
@@ -96,7 +92,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Menteng',
             'postal_code' => 10310,
             'category_id' => $category2->id,
-            'rating' => 4.5
         ]);
         
         Restaurant::create([
@@ -111,7 +106,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Palmerah',
             'postal_code' => 11410,
             'category_id' => $category->id,
-            'rating' => 4.6
         ]);
         
         Restaurant::create([
@@ -126,7 +120,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Menteng',
             'postal_code' => 10350,
             'category_id' => $category2->id,
-            'rating' => 4
         ]);
         
         Restaurant::create([
@@ -141,7 +134,6 @@ class RestaurantSeeder extends Seeder
             'subdistrict' => 'Palmerah',
             'postal_code' => 11480,
             'category_id' => $category->id,
-            'rating' => 4.2
         ]);
 
     }
