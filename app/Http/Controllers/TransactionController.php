@@ -164,6 +164,10 @@ class TransactionController extends Controller
         $transaction->status = 'Completed';
         $transaction->save();
 
+        $restaurant = Restaurant::where('id', $transaction->details->first()->product->restaurant->id)->first();
+        $restaurant->balance += $transaction->total_price - $transaction->discount_price;
+        $restaurant->save();
+
         Notification::create([
             'transaction_id' => $transaction->id,
             'status' => 'complete_order'
