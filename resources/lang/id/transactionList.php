@@ -11,6 +11,7 @@ return [
     'paid' => 'Sudah Dibayar',
     'prepared' => 'Sedang Disiapkan',
     'completed' => 'Sudah Selesai',
+    'reviewed' => 'Sudah Direview',
     'no_items' => 'Belum ada pesanan yang dilakukan',
 ];
 
